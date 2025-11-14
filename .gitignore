@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+.eggs/
+*.egg-info/
+.pytest_cache/
+.envrc
+.mypy_cache/
+ruff_cache/
+data/snapshots/**/generated*
