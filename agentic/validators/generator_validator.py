@@ -3,9 +3,8 @@ from __future__ import annotations
 
 import json
 import sys
-from importlib import import_module
+import tempfile
 from pathlib import Path
-from typing import Any
 
 import yaml
 
@@ -29,14 +28,16 @@ VEHICLE_FIELDS = {
 }
 
 
-def _load_generator() -> Any:
-    return import_module("generator.synthetic_generator_v01")
-
-
 def main() -> int:
-    module = _load_generator()
-    persons_a, vehicles_a = module.generate_person_vehicle_dataset(num_records=5, seed=123)
-    persons_b, vehicles_b = module.generate_person_vehicle_dataset(num_records=5, seed=123)
+    from enterprise_synthetic_data_hub.generation.generator import (
+        generate_snapshot_bundle,
+        write_snapshot_bundle,
+    )
+
+    bundle_a = generate_snapshot_bundle(num_records=5, seed=123)
+    bundle_b = generate_snapshot_bundle(num_records=5, seed=123)
+    persons_a, vehicles_a = bundle_a.persons, bundle_a.vehicles
+    persons_b, vehicles_b = bundle_b.persons, bundle_b.vehicles
 
     errors: list[str] = []
     if persons_a != persons_b or vehicles_a != vehicles_b:
@@ -50,11 +51,58 @@ def main() -> int:
         if missing:
             errors.append(f"Person record missing fields: {sorted(missing)}")
             break
+    person_lookup = {person["person_id"]: person for person in persons_a}
     for vehicle in vehicles_a:
         missing = VEHICLE_FIELDS - vehicle.keys()
         if missing:
             errors.append(f"Vehicle record missing fields: {sorted(missing)}")
             break
+        owner = person_lookup.get(vehicle["person_id"])
+        if owner is None:
+            errors.append("Vehicle references unknown person_id")
+            break
+        if vehicle["lob_type"] != owner["lob_type"]:
+            errors.append("Vehicle lob_type must match owning Person")
+            break
+        if vehicle["garaging_state"] != owner["state"]:
+            errors.append("Garaging state must mirror owning Person")
+            break
+        if vehicle["garaging_postal_code"] != owner["postal_code"]:
+            errors.append("Garaging postal code must mirror owning Person")
+            break
+
+    if not any(person.get("address_line_2") for person in persons_a):
+        errors.append("Expected at least one Person with address_line_2 populated")
+
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        output_path = write_snapshot_bundle(bundle_a, Path(tmp_dir))
+        metadata_path = output_path.with_name(
+            output_path.name.replace("dataset_", "metadata_")
+        )
+        if not output_path.exists():
+            errors.append("Dataset JSON was not written by write_snapshot_bundle")
+        else:
+            dataset_payload = json.loads(output_path.read_text(encoding="utf-8"))
+            if dataset_payload.get("metadata", {}).get("record_count_persons") != len(
+                persons_a
+            ):
+                errors.append(
+                    "Dataset metadata person count mismatch between bundle and file"
+                )
+            if dataset_payload.get("metadata", {}).get("record_count_vehicles") != len(
+                vehicles_a
+            ):
+                errors.append(
+                    "Dataset metadata vehicle count mismatch between bundle and file"
+                )
+        if not metadata_path.exists():
+            errors.append("Standalone metadata JSON missing")
+        else:
+            metadata_payload = json.loads(metadata_path.read_text(encoding="utf-8"))
+            if metadata_payload.get("record_count_persons") != len(persons_a):
+                errors.append("Standalone metadata person count mismatch")
+            if metadata_payload.get("record_count_vehicles") != len(vehicles_a):
+                errors.append("Standalone metadata vehicle count mismatch")
 
     summary = {
         "status": "error" if errors else "ok",
@@ -66,5 +114,7 @@ def main() -> int:
     return 0 if not errors else 1
 
 
+# Usage:
+#   python agentic/validators/generator_validator.py
 if __name__ == "__main__":  # pragma: no cover
     raise SystemExit(main())

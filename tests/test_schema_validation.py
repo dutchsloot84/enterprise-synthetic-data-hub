@@ -13,6 +13,11 @@ from agentic.validators import schema_validator
 
 
 SCHEMA_DIR = ROOT / "schemas" / "v0.1"
+SCHEMA_FILES = (
+    "person_schema.yaml",
+    "vehicle_schema.yaml",
+    "dataset_metadata_schema.yaml",
+)
 
 
 def _load_schema(name: str) -> dict:
@@ -20,14 +25,27 @@ def _load_schema(name: str) -> dict:
 
 
 def test_schema_files_have_matching_field_counts():
-    for filename in ("person_schema.yaml", "vehicle_schema.yaml"):
+    for filename in SCHEMA_FILES:
         data = _load_schema(filename)
         assert data["field_count"] == len(data["fields"])
 
 
 def test_schema_validator_finds_no_errors():
     errors = []
-    for filename in ("person_schema.yaml", "vehicle_schema.yaml"):
+    for filename in SCHEMA_FILES:
         path = SCHEMA_DIR / filename
         errors.extend(schema_validator.validate_schema(path))
     assert not errors
+
+
+def test_person_schema_includes_optional_address_line_2():
+    data = _load_schema("person_schema.yaml")
+    optional_fields = [field for field in data["fields"] if field["name"] == "address_line_2"]
+    assert optional_fields, "address_line_2 field missing"
+    assert optional_fields[0]["required"] is False
+
+
+def test_dataset_metadata_schema_tracks_record_counts():
+    data = _load_schema("dataset_metadata_schema.yaml")
+    field_names = {field["name"] for field in data["fields"]}
+    assert {"record_count_persons", "record_count_vehicles"}.issubset(field_names)

@@ -1,0 +1,26 @@
+version: v0.1
+last_updated: 2024-06-02
+field_count: 5
+fields:
+  - name: dataset_version
+    type: string
+    required: true
+    description: Semantic version that ties metadata to generated artifacts.
+  - name: generated_at
+    type: datetime
+    required: true
+    description: ISO-8601 timestamp indicating when the snapshot was created.
+  - name: record_count_persons
+    type: integer
+    required: true
+    minimum: 0
+    description: Number of person records present in the snapshot bundle.
+  - name: record_count_vehicles
+    type: integer
+    required: true
+    minimum: 0
+    description: Number of vehicle records present in the snapshot bundle.
+  - name: notes
+    type: string
+    required: false
+    description: Optional notes for governance context or limitations.

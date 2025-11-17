@@ -29,6 +29,7 @@ generator, validation, and API surfaces.
 ## Required Validators
 - `python agentic/validators/schema_validator.py`
 - `python agentic/validators/generator_validator.py`
+- `python agentic/validators/cli_validator.py`
 - `python agentic/validators/api_validator.py`
 - Additional validators/tests as needed per modifications.
 

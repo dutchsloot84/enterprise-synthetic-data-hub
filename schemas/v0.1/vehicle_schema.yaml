@@ -1,10 +1,11 @@
 version: v0.1
-last_updated: 2024-05-31
-field_count: 10
+last_updated: 2024-06-02
+field_count: 11
 fields:
   - name: vehicle_id
     type: uuid
     required: true
+    description: Unique identifier for the vehicle record.
   - name: person_id
     type: uuid
     required: true
@@ -13,6 +14,7 @@ fields:
     type: string
     required: true
     pattern: "^[A-HJ-NPR-Z0-9]{17}$"
+    description: VIN aligned with ISO 3779 (no I/O/Q letters).
   - name: make
     type: string
     required: true
@@ -27,6 +29,7 @@ fields:
   - name: body_style
     type: string
     required: true
+    enum: [Sedan, SUV, Truck]
   - name: risk_rating
     type: string
     required: true
@@ -38,3 +41,10 @@ fields:
   - name: garaging_state
     type: string
     required: true
+    pattern: "^[A-Z]{2}$"
+  - name: garaging_postal_code
+    type: string
+    required: true
+    min_length: 5
+    max_length: 10
+    description: ZIP where the vehicle is primarily garaged.

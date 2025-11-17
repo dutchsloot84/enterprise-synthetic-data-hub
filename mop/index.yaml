@@ -20,8 +20,8 @@ prompts:
       file: 04_validation_suite.md
       description: Validation, testing, and critic integration
     - id: 05
-      file: 05_data_export.md
-      description: Data export + documentation surfaces
+      file: 05_cli_and_usage_examples.md
+      description: CLI wiring, exports, and usage examples
     - id: 06
       file: 06_api_layer.md
       description: API layer + contract testing

@@ -87,7 +87,7 @@ Use the following slices as needed:
 - `02_schema_design_person_vehicle.md`
 - `03_generator_v0.1.md`
 - `04_validation_suite.md`
-- `05_data_export.md`
+- `05_cli_and_usage_examples.md`
 - `06_api_layer.md`
 - Future prompts live in `prompts/future/`
 - AI-augmentation + dashboards under `prompts/agentic_ai/` and

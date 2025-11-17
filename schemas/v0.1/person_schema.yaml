@@ -1,6 +1,6 @@
 version: v0.1
-last_updated: 2024-05-31
-field_count: 12
+last_updated: 2024-06-02
+field_count: 13
 fields:
   - name: person_id
     type: uuid
@@ -33,16 +33,23 @@ fields:
     type: string
     required: true
     description: Primary street address.
+  - name: address_line_2
+    type: string
+    required: false
+    description: Optional second line for apartment, suite, or unit numbers.
   - name: city
     type: string
     required: true
   - name: state
     type: string
     required: true
+    pattern: "^[A-Z]{2}$"
   - name: postal_code
     type: string
     required: true
-    pattern: "^[0-9]{5}$"
+    min_length: 5
+    max_length: 10
+    description: Postal code supporting 5-digit or ZIP+4 formats.
   - name: country
     type: string
     required: true

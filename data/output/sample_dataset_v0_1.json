@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "dataset_version": "v0.1",
+    "generated_at": "2024-06-01T00:00:00",
+    "record_count_persons": 5,
+    "record_count_vehicles": 5,
+    "notes": "Deterministic snapshot generated from rule-based distributions (seed=404)."
+  },
+  "persons": [
+    {
+      "person_id": "224af27c-552e-478b-1860-f88198c4aa39",
+      "first_name": "Casey",
+      "last_name": "Rivera",
+      "date_of_birth": "2006-05-30",
+      "driver_license_number": "CA1358027",
+      "driver_license_state": "CA",
+      "address_line_1": "100 Main Street",
+      "address_line_2": "Apt 200",
+      "city": "Walnut Creek",
+      "state": "CA",
+      "postal_code": "94861",
+      "country": "US",
+      "lob_type": "Personal"
+    },
+    {
+      "person_id": "4bc4c45e-b3db-72bc-d46b-a07a36ebccff",
+      "first_name": "Alex",
+      "last_name": "Zhou",
+      "date_of_birth": "1984-07-21",
+      "driver_license_number": "WA9769516",
+      "driver_license_state": "WA",
+      "address_line_1": "101 Main Street",
+      "address_line_2": null,
+      "city": "Tacoma",
+      "state": "WA",
+      "postal_code": "98113",
+      "country": "US",
+      "lob_type": "Personal"
+    },
+    {
+      "person_id": "a6d0aa01-485b-80f0-6fe1-b4dd91979c36",
+      "first_name": "Jordan",
+      "last_name": "Garcia",
+      "date_of_birth": "2001-06-16",
+      "driver_license_number": "WA1291717",
+      "driver_license_state": "WA",
+      "address_line_1": "102 Main Street",
+      "address_line_2": null,
+      "city": "Seattle",
+      "state": "WA",
+      "postal_code": "98279",
+      "country": "US",
+      "lob_type": "Personal"
+    },
+    {
+      "person_id": "775cbac3-90ae-7883-bf8e-5bc91e7f07f5",
+      "first_name": "Avery",
+      "last_name": "Zhou",
+      "date_of_birth": "1982-06-09",
+      "driver_license_number": "OR8884036",
+      "driver_license_state": "OR",
+      "address_line_1": "103 Main Street",
+      "address_line_2": "Apt 203",
+      "city": "Eugene",
+      "state": "OR",
+      "postal_code": "97113",
+      "country": "US",
+      "lob_type": "Personal"
+    },
+    {
+      "person_id": "244f9ffb-e24f-8f9d-08d3-7fb69516a43d",
+      "first_name": "Alex",
+      "last_name": "Nguyen",
+      "date_of_birth": "2022-07-13",
+      "driver_license_number": "WA2810882",
+      "driver_license_state": "WA",
+      "address_line_1": "104 Main Street",
+      "address_line_2": null,
+      "city": "Seattle",
+      "state": "WA",
+      "postal_code": "98080",
+      "country": "US",
+      "lob_type": "Commercial"
+    }
+  ],
+  "vehicles": [
+    {
+      "vehicle_id": "fe136803-95ea-eb7a-a8d6-36d82dd87205",
+      "person_id": "224af27c-552e-478b-1860-f88198c4aa39",
+      "vin": "MNK9JW3UCUYPEDUG4",
+      "make": "Subaru",
+      "model": "Outback",
+      "model_year": 2008,
+      "body_style": "SUV",
+      "risk_rating": "Medium",
+      "lob_type": "Personal",
+      "garaging_state": "CA",
+      "garaging_postal_code": "94861"
+    },
+    {
+      "vehicle_id": "fc1737ce-6b22-2bf3-326b-57cfaf909e5d",
+      "person_id": "4bc4c45e-b3db-72bc-d46b-a07a36ebccff",
+      "vin": "P6S4TT9WNCKZE6A74",
+      "make": "Honda",
+      "model": "CR-V",
+      "model_year": 2016,
+      "body_style": "Sedan",
+      "risk_rating": "Low",
+      "lob_type": "Personal",
+      "garaging_state": "WA",
+      "garaging_postal_code": "98113"
+    },
+    {
+      "vehicle_id": "fb1cf743-173e-4ba9-8d32-bce19ed27b19",
+      "person_id": "a6d0aa01-485b-80f0-6fe1-b4dd91979c36",
+      "vin": "T4GTH3JRL3NT7P3EG",
+      "make": "Ford",
+      "model": "Maverick",
+      "model_year": 2010,
+      "body_style": "Sedan",
+      "risk_rating": "Low",
+      "lob_type": "Personal",
+      "garaging_state": "WA",
+      "garaging_postal_code": "98279"
+    },
+    {
+      "vehicle_id": "6c7cba74-7b95-04b2-abf1-1ebe867b3880",
+      "person_id": "775cbac3-90ae-7883-bf8e-5bc91e7f07f5",
+      "vin": "U0F5009GC409CKC8A",
+      "make": "Subaru",
+      "model": "Forester",
+      "model_year": 2014,
+      "body_style": "Sedan",
+      "risk_rating": "Medium",
+      "lob_type": "Personal",
+      "garaging_state": "OR",
+      "garaging_postal_code": "97113"
+    },
+    {
+      "vehicle_id": "6d10ef26-7d48-cd54-a09c-d7f71f8b6932",
+      "person_id": "244f9ffb-e24f-8f9d-08d3-7fb69516a43d",
+      "vin": "8SAA8A6PR62BTK7TF",
+      "make": "Ford",
+      "model": "Escape",
+      "model_year": 2009,
+      "body_style": "Truck",
+      "risk_rating": "High",
+      "lob_type": "Commercial",
+      "garaging_state": "WA",
+      "garaging_postal_code": "98080"
+    }
+  ]
+}

@@ -10,10 +10,11 @@ def build_vehicle_rules() -> List[str]:
     """Describe high-level rules used to generate Vehicle records."""
 
     return [
-        "Each Person must have at least one associated Vehicle.",
-        "VINs must be 17 characters and exclude I/O/Q.",
-        "model_year should fall between 2000 and the upcoming calendar year.",
-        "lob_type should align with the owning Person's lob_type.",
+        "Each Person receives one vehicle in v0.1 to guarantee referential integrity.",
+        "VINs are composed of governed characters (17 chars, excluding I/O/Q).",
+        "Model years range from 2008 through 2024 to reflect late-model fleets.",
+        "Body style + risk rating distributions change with the owning Person's lob_type.",
+        "Garaging state/postal code mirror the owning Person's address to keep datasets coherent.",
     ]
 
 

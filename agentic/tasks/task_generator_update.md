@@ -8,14 +8,14 @@ maintaining determinism and schema alignment.
 
 ## Workflow
 1. **Analyze**
-   - Repo scan focusing on `/src/generator` and related package modules.
+   - Repo scan focusing on `/src/enterprise_synthetic_data_hub/generation` (plus `/src/generator` shim).
    - Inspect `/data/output` for current artifacts.
 2. **Plan**
    - Document rule changes, seeds, and affected schemas/tests.
    - Identify validator + critic coverage.
 3. **Execute**
    - Update generator code, metadata, and docs.
-   - Regenerate sample output if necessary.
+   - Regenerate sample output + metadata JSON under `data/output/` if necessary.
 4. **Validate**
    - `python agentic/validators/generator_validator.py`
    - `pytest tests/test_generator.py`

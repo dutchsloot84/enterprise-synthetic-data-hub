@@ -1,33 +1,55 @@
 from __future__ import annotations
 
 import json
-import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-SRC_DIR = ROOT / "src"
-if str(SRC_DIR) not in sys.path:
-    sys.path.insert(0, str(SRC_DIR))
-
-from generator.synthetic_generator_v01 import (
-    SCHEMA_VERSION,
-    generate_person_vehicle_dataset,
-    write_dataset_snapshot,
+from enterprise_synthetic_data_hub.config.settings import settings
+from enterprise_synthetic_data_hub.generation.generator import (
+    SnapshotBundle,
+    generate_snapshot_bundle,
+    write_snapshot_bundle,
 )
 
 
-def test_generator_returns_matching_counts():
-    persons, vehicles = generate_person_vehicle_dataset(num_records=3, seed=7)
-    assert len(persons) == 3
-    assert len(vehicles) == 3
-    assert persons[0]["person_id"]
-    assert vehicles[0]["person_id"] == persons[0]["person_id"]
+def test_generate_snapshot_bundle_deterministic():
+    bundle_a = generate_snapshot_bundle(num_records=3, seed=7)
+    bundle_b = generate_snapshot_bundle(num_records=3, seed=7)
+
+    assert bundle_a.persons == bundle_b.persons
+    assert bundle_a.vehicles == bundle_b.vehicles
+    assert bundle_a.metadata.record_count_persons == 3
+    assert bundle_a.metadata.record_count_vehicles == 3
+    assert bundle_a.vehicles[0]["lob_type"] == bundle_a.persons[0]["lob_type"]
+    assert bundle_a.vehicles[0]["garaging_postal_code"] == bundle_a.persons[0]["postal_code"]
+    assert bundle_a.persons[0]["address_line_2"] is not None
 
 
-def test_snapshot_writer_persists_json(tmp_path):
-    persons, vehicles = generate_person_vehicle_dataset(num_records=2, seed=9)
-    path = write_dataset_snapshot(persons, vehicles, tmp_path)
-    payload = json.loads(path.read_text())
-    assert payload["version"] == SCHEMA_VERSION
-    assert payload["person_count"] == 2
-    assert payload["vehicle_count"] == 2
+def test_generate_snapshot_bundle_rejects_invalid_count():
+    try:
+        generate_snapshot_bundle(num_records=0)
+    except ValueError as exc:
+        assert "positive" in str(exc)
+    else:  # pragma: no cover
+        raise AssertionError("generate_snapshot_bundle should reject non-positive counts")
+
+
+def test_write_snapshot_bundle_persists_json(tmp_path):
+    bundle = generate_snapshot_bundle(num_records=2, seed=9)
+    path = write_snapshot_bundle(bundle, tmp_path)
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    assert payload["metadata"]["dataset_version"] == settings.dataset_version
+    assert payload["metadata"]["record_count_persons"] == 2
+    assert payload["metadata"]["record_count_vehicles"] == 2
+    assert len(payload["persons"]) == 2
+    assert len(payload["vehicles"]) == 2
+
+    metadata_file = path.with_name(path.name.replace("dataset_", "metadata_"))
+    metadata_payload = json.loads(metadata_file.read_text(encoding="utf-8"))
+    assert metadata_payload["record_count_persons"] == 2
+    assert metadata_payload["notes"].startswith("Deterministic snapshot")
+
+
+def test_snapshot_bundle_type_annotations():
+    bundle = generate_snapshot_bundle(num_records=1, seed=1)
+    assert isinstance(bundle, SnapshotBundle)
+    assert bundle.metadata.dataset_version == settings.dataset_version
