@@ -1,0 +1,3 @@
+# Minimal runtime dependencies for the local Flask API layer
+flask>=3.0
+pandas>=2.2
