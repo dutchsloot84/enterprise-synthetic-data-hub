@@ -1,0 +1,34 @@
+version: 0.2.0
+name: mobilitas-enterprise-synthetic-data-hub
+mop: master_orchestrator_prompt.md
+prompts:
+  base_dir: ../prompts/sub-prompts
+  slices:
+    - id: 00
+      file: 00_restructure_for_agentic_workflow.md
+      description: Repository restructure and governance alignment for GPT-5.1 agentic mode
+    - id: 01
+      file: 01_pipeline_scaffold.md
+      description: Pipeline scaffolding and dependency alignment
+    - id: 02
+      file: 02_schema_design_person_vehicle.md
+      description: Schema evolution for person + vehicle data models
+    - id: 03
+      file: 03_generator_v0.1.md
+      description: Deterministic generator design for version 0.1 dataset
+    - id: 04
+      file: 04_validation_suite.md
+      description: Validation, testing, and critic integration
+    - id: 05
+      file: 05_data_export.md
+      description: Data export + documentation surfaces
+    - id: 06
+      file: 06_api_layer.md
+      description: API layer + contract testing
+agentic:
+  tasks_dir: ../agentic/tasks
+  critics_dir: ../agentic/critic
+  validators_dir: ../agentic/validators
+  workflows:
+    - task: task_full_pipeline.md
+      description: Plan → Implement → Validate → Document end-to-end workflow

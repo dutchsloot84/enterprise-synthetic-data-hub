@@ -1,27 +1,30 @@
-# Local API Layer (v0.1)
+# API Layer – v0.1
 
-The v0.1 Synthetic Data POC now exposes a lightweight Flask server that reads the
-static snapshot stored under `data/snapshots/v0.1/`. The API provides read-only
-access to the person dataset and is intended for local use only.
+The v0.1 Synthetic Data POC exposes a lightweight Flask server defined in
+`src/api/api_server.py`. The server reads the static snapshot stored under
+`data/snapshots/v0.1/` when available and falls back to the deterministic
+generator to guarantee local usability. The API provides read-only access to the
+person dataset and is intended for local use only.
 
 ## Prerequisites
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -e .
-# or install only the API deps
 pip install -r requirements.txt
 ```
 
 ## Run the server
 
 ```bash
+python src/api/api_server.py
+# or use the legacy shim
 python api_server.py
 ```
 
-The app starts in debug mode and logs whether the CSV snapshot was validated
-successfully. Hot reload is provided by Flask's debug server.
+The app starts in debug mode and logs whether the CSV snapshot was validated.
+If the snapshot is missing, it automatically populates an in-memory dataset via
+`generator.synthetic_generator_v01`.
 
 ## Endpoints
 
@@ -35,15 +38,18 @@ successfully. Hot reload is provided by Flask's debug server.
   - `age_max` (integer)
   - `risk_rating` (Low, Medium, High)
 - Applies filters and returns up to the first 10 matches.
-- Returns an empty list when no records match.
+- Returns HTTP 503 if the snapshot fallback failed to load.
 
 ### `GET /v0.1/validator`
-- Returns the validation result for the currently loaded CSV snapshot,
-  including file path and record counts. Useful for local smoke tests and to
-  confirm the dataset was located properly.
+- Returns the validation result for the currently loaded CSV snapshot or fallback
+  dataset, including file path and record counts.
 
-## Data contract
+## Data Contract
 
-The API reads from `data/snapshots/v0.1/persons_v0_1.csv`.
-Required columns: `Global_ID`, `First_Name`, `Last_Name`, `Age`, `Risk_Rating`,
-`LOB_Type`, `City`, `State`, `Postal_Code`.
+- Primary CSV path: `data/snapshots/v0.1/persons_v0_1.csv`
+- Fallback source: `src/generator/synthetic_generator_v01.py`
+- Required columns: `Global_ID`, `First_Name`, `Last_Name`, `Age`,
+  `Risk_Rating`, `LOB_Type`
+
+Refer to `prompts/sub-prompts/06_api_layer.md` for the agentic instructions that
+must be followed when editing the API layer.

@@ -1,0 +1,54 @@
+version: v0.1
+last_updated: 2024-05-31
+field_count: 12
+fields:
+  - name: person_id
+    type: uuid
+    required: true
+    description: Unique identifier for the synthetic person record.
+  - name: first_name
+    type: string
+    required: true
+    description: Given name used for personalization scenarios.
+  - name: last_name
+    type: string
+    required: true
+    description: Family name paired with `first_name`.
+  - name: date_of_birth
+    type: date
+    required: true
+    format: YYYY-MM-DD
+    description: Birth date used for derived age calculations.
+  - name: driver_license_number
+    type: string
+    required: true
+    pattern: "^[A-Z0-9-]{5,16}$"
+    description: Privacy-safe DL number.
+  - name: driver_license_state
+    type: string
+    required: true
+    enum: [CA, AZ, NV, OR, WA]
+    description: Issuing state for the driver's license.
+  - name: address_line_1
+    type: string
+    required: true
+    description: Primary street address.
+  - name: city
+    type: string
+    required: true
+  - name: state
+    type: string
+    required: true
+  - name: postal_code
+    type: string
+    required: true
+    pattern: "^[0-9]{5}$"
+  - name: country
+    type: string
+    required: true
+    default: US
+  - name: lob_type
+    type: string
+    required: true
+    enum: [Personal, Commercial]
+    description: Line-of-business classification.
