@@ -9,28 +9,28 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 import pytest
-from api.api_server import API_VERSION, app
+from enterprise_synthetic_data_hub.api.app import create_app
 
 
-def test_validator_endpoint_returns_status():
-    client = app.test_client()
-    response = client.get(f"/{API_VERSION}/validator")
-    assert response.status_code in (200, 503)
+@pytest.fixture()
+def client():
+    application = create_app()
+    application.testing = True
+    with application.test_client() as client:
+        yield client
+
+
+def test_healthz_exposes_version(client):
+    response = client.get("/healthz")
+    assert response.status_code == 200
     payload = response.get_json()
-    assert payload["version"] == API_VERSION
+    assert payload["status"] == "ok"
+    assert payload["dataset_version"]
 
 
-def test_search_endpoint_handles_params():
-    client = app.test_client()
-    response = client.get(f"/{API_VERSION}/person/search?age_min=10&age_max=90")
-    assert response.status_code in (200, 503)
-
-
-def test_search_endpoint_rejects_invalid_age():
-    client = app.test_client()
-    response = client.get(f"/{API_VERSION}/person/search?age_min=invalid")
-    if response.status_code == 503:
-        pytest.skip("Snapshot unavailable; invalid query branch not executed")
-    assert response.status_code == 400
+def test_generate_person_endpoint(client):
+    response = client.post("/generate/person", json={"records": 2, "randomize": True})
+    assert response.status_code == 200
     payload = response.get_json()
-    assert "age_min" in payload["error"]
+    assert len(payload["persons"]) == 2
+    assert payload["metadata"]["record_count_persons"] == 2

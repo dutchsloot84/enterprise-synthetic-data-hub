@@ -1,54 +1,46 @@
-# API Layer – v0.1
+# Demo API – Generator-backed Flask App
+Version: 0.1.1
+Last Updated: 2024-06-09
 
-The v0.1 Synthetic Data POC exposes a lightweight Flask server defined in
-`src/api/api_server.py`. The server still expects the legacy CSV layout under
-`data/snapshots/v0.1/` and falls back to the deterministic generator if the
-governed exports (Persons/Vehicles CSVs) are not converted yet. Slice 06 will
-align the API contracts with the new CLI/exporter outputs.
-
-## Prerequisites
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+The demo API now lives in `src/enterprise_synthetic_data_hub/api/app.py` and exposes
+the governed generator directly. It no longer depends on CSV fallbacks and instead
+produces JSON payloads aligned with the Person, Vehicle, Profile, and metadata
+schemas.
 
 ## Run the server
-
 ```bash
-python src/api/api_server.py
-# or use the legacy shim
-python api_server.py
+export FLASK_APP=enterprise_synthetic_data_hub.api.app:app
+flask run  # defaults to http://127.0.0.1:5000
 ```
 
-The app starts in debug mode and logs whether the CSV snapshot was validated.
-If the snapshot is missing, it automatically populates an in-memory dataset via
-`enterprise_synthetic_data_hub.generation.generator.generate_snapshot_bundle` (or the shim in `src/generator/`).
+Set `PYTHONPATH=src` if you are running outside of `make demo`. The factory
+function `create_app()` is used by the CLI tests, `scripts/demo_start_api.sh`, and
+`make demo` so the API stays lightweight.
 
 ## Endpoints
+- `GET /healthz`
+  - Returns dataset version, default seed, target record count, and the current generation plan.
+- `POST /generate/person`
+- `POST /generate/vehicle`
+- `POST /generate/profile`
+  - Body (optional): `{"records": <int>, "seed": <int>, "randomize": <bool>}`
+  - Defaults: 5 records, deterministic seed from settings.
+  - Returns metadata + the requested entity array and reports the effective seed.
+- `POST /generate/bundle`
+  - Returns metadata plus persons, vehicles, and profiles in one payload.
 
-### `GET /v0.1/person/<global_id>`
-- Looks up a single person record by `Global_ID`.
-- Returns HTTP 404 if the ID is not present.
+All endpoints share the same validation rules: `records` must be positive and
+`seed` must be an integer or the string `"random"`. When `randomize` (or
+`seed="random"`) is provided, the server generates a random seed but still
+reports it in the response for reproducibility.
 
-### `GET /v0.1/person/search`
-- Optional query parameters:
-  - `age_min` (integer)
-  - `age_max` (integer)
-  - `risk_rating` (Low, Medium, High)
-- Applies filters and returns up to the first 10 matches.
-- Returns HTTP 503 if the snapshot fallback failed to load.
+## Demo Automation
+Running `make demo` automatically launches the Flask API via
+`scripts/demo_start_api.sh`, performs a `/healthz` check, hits
+`/generate/person`, and then triggers the colorful CLI preview that calls
+`/generate/bundle`. Review that script if you need to adapt the workflow for CI.
 
-### `GET /v0.1/validator`
-- Returns the validation result for the currently loaded CSV snapshot or fallback
-  dataset, including file path and record counts.
-
-## Data Contract
-
-- Primary governed exports: `data/snapshots/v0.1/persons_v0_1.csv` and `vehicles_v0_1.csv` (from the CLI)
-- Current API dependency: legacy `persons_v0_1.csv` layout (`Global_ID`, `First_Name`, `Age`, etc.) until Slice 06 updates the server
-- Fallback source: `enterprise_synthetic_data_hub.generation.generator`
-
-Refer to `prompts/sub-prompts/06_api_layer.md` for the agentic instructions that
-must be followed when editing the API layer.
+## Testing
+`tests/api/test_demo_api.py` exercises `/healthz`, `/generate/person`, and
+`/generate/bundle` using Flask’s test client. Additional smoke coverage lives in
+`tests/smoke/test_demo_flow.py`.

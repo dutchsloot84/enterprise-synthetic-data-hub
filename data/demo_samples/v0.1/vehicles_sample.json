@@ -1,0 +1,67 @@
+[
+  {
+    "vehicle_id": "58db8af6-efbb-f6f1-b6a8-68bf96ffbc83",
+    "person_id": "bf6e52b3-c3d2-bf52-5c6f-2a002a8ec4aa",
+    "vin": "YNXD07Y7BLATX6YDY",
+    "make": "Ford",
+    "model": "Focus",
+    "model_year": 2017,
+    "body_style": "Sedan",
+    "risk_rating": "Medium",
+    "lob_type": "Personal",
+    "garaging_state": "NV",
+    "garaging_postal_code": "89131"
+  },
+  {
+    "vehicle_id": "0c6fc194-fb47-f683-8006-a8c593675d17",
+    "person_id": "e98e5cec-c06a-bb54-6dd0-4975ef19feda",
+    "vin": "TELCW02NXBTHK378M",
+    "make": "Toyota",
+    "model": "Prius",
+    "model_year": 2014,
+    "body_style": "SUV",
+    "risk_rating": "Low",
+    "lob_type": "Personal",
+    "garaging_state": "CA",
+    "garaging_postal_code": "94802"
+  },
+  {
+    "vehicle_id": "a3af5458-51dc-e809-2517-935a637fc54f",
+    "person_id": "51706c4f-3afb-beaa-7bfd-0a242dcbeb00",
+    "vin": "4CYRRK5L8AXD4NTR9",
+    "make": "Chevrolet",
+    "model": "Trax",
+    "model_year": 2018,
+    "body_style": "SUV",
+    "risk_rating": "Medium",
+    "lob_type": "Personal",
+    "garaging_state": "WA",
+    "garaging_postal_code": "98001"
+  },
+  {
+    "vehicle_id": "1ffb1947-75c1-7d50-74b1-2926a76270da",
+    "person_id": "a9fdd287-c2c4-51ec-1f00-06c6506db2c8",
+    "vin": "NXJGBUSSD45TNJGP2",
+    "make": "Toyota",
+    "model": "Camry",
+    "model_year": 2009,
+    "body_style": "SUV",
+    "risk_rating": "High",
+    "lob_type": "Commercial",
+    "garaging_state": "WA",
+    "garaging_postal_code": "98165"
+  },
+  {
+    "vehicle_id": "06e48761-dbba-c6f9-735d-ebb41579ef38",
+    "person_id": "6ee1598e-e971-5a5e-9a55-29657d619aec",
+    "vin": "SMMCL0D7YE6BL1RZ9",
+    "make": "Subaru",
+    "model": "Forester",
+    "model_year": 2024,
+    "body_style": "Truck",
+    "risk_rating": "Medium",
+    "lob_type": "Commercial",
+    "garaging_state": "AZ",
+    "garaging_postal_code": "85163"
+  }
+]

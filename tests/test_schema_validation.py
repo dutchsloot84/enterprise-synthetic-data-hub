@@ -17,6 +17,7 @@ SCHEMA_FILES = (
     "person_schema.yaml",
     "vehicle_schema.yaml",
     "dataset_metadata_schema.yaml",
+    "profile_schema.yaml",
 )
 
 
@@ -48,4 +49,4 @@ def test_person_schema_includes_optional_address_line_2():
 def test_dataset_metadata_schema_tracks_record_counts():
     data = _load_schema("dataset_metadata_schema.yaml")
     field_names = {field["name"] for field in data["fields"]}
-    assert {"record_count_persons", "record_count_vehicles"}.issubset(field_names)
+    assert {"record_count_persons", "record_count_vehicles", "record_count_profiles"}.issubset(field_names)

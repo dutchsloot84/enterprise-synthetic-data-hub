@@ -14,6 +14,7 @@ class DatasetMetadata(BaseModel):
     generated_at: datetime
     record_count_persons: int = Field(..., ge=0)
     record_count_vehicles: int = Field(..., ge=0)
+    record_count_profiles: int = Field(..., ge=0)
     notes: Optional[str] = None
 
     model_config = ConfigDict(frozen=True)

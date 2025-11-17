@@ -1,0 +1,52 @@
+version: v0.1
+last_updated: 2024-06-09
+field_count: 12
+fields:
+  - name: profile_id
+    type: string
+    required: true
+    description: Deterministic UUID derived from the person + vehicle identifiers.
+  - name: person_id
+    type: string
+    required: true
+    description: Foreign key to the governed Person record.
+  - name: vehicle_id
+    type: string
+    required: true
+    description: Foreign key to the governed Vehicle record.
+  - name: full_name
+    type: string
+    required: true
+    description: Convenience field for demo output combining first and last name.
+  - name: lob_type
+    type: string
+    required: true
+    description: Line of business classification inherited from the Person record.
+  - name: residence_state
+    type: string
+    required: true
+    description: Two-letter state for the primary residence.
+  - name: city
+    type: string
+    required: true
+    description: City from the Person record to show geographic distribution.
+  - name: postal_code
+    type: string
+    required: true
+    description: Postal code from the Person record for downstream segmentation.
+  - name: garaging_state
+    type: string
+    required: true
+    description: Two-letter state representing where the vehicle is garaged.
+  - name: primary_vehicle_vin
+    type: string
+    required: true
+    description: VIN of the vehicle linked to the person.
+  - name: vehicle_summary
+    type: string
+    required: true
+    description: Human readable summary of the linked vehicle (year make model).
+  - name: risk_rating
+    type: string
+    required: true
+    description: Risk rating carried over from the governed Vehicle entity.

@@ -79,6 +79,7 @@ def export_snapshot_bundle(bundle: SnapshotBundle, output_dir: Path | None = Non
         "record_counts": {
             "persons": len(bundle.persons),
             "vehicles": len(bundle.vehicles),
+            "profiles": len(bundle.profiles),
         },
         "files": {
             "persons_csv": persons_path.name,

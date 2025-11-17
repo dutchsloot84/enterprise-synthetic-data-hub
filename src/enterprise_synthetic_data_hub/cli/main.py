@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import secrets
 from pathlib import Path
 
 from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_bundle
@@ -33,6 +34,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Override the default deterministic seed.",
     )
+    snapshot_parser.add_argument(
+        "--randomize",
+        action="store_true",
+        help="Use a random seed for exploratory sample generation.",
+    )
     return parser
 
 
@@ -41,11 +47,21 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "generate-snapshot":
-        bundle = generate_snapshot_bundle(num_records=args.records, seed=args.seed)
+        seed = args.seed
+        if args.randomize:
+            seed = secrets.randbelow(1_000_000_000)
+        bundle = generate_snapshot_bundle(num_records=args.records, seed=seed)
         artifacts = export_snapshot_bundle(bundle, args.output_dir)
         print("Snapshot generation completed. Files written:")
         for label, path in artifacts.items():
             print(f"- {label}: {path}")
+        print(
+            "Record counts — persons: {persons} vehicles: {vehicles} profiles: {profiles}".format(
+                persons=bundle.metadata.record_count_persons,
+                vehicles=bundle.metadata.record_count_vehicles,
+                profiles=bundle.metadata.record_count_profiles,
+            )
+        )
         return 0
 
     parser.print_help()

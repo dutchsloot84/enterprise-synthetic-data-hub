@@ -17,10 +17,12 @@ def test_cli_parser_supports_generate_snapshot():
         "10",
         "--seed",
         "123",
+        "--randomize",
     ])
     assert args.command == "generate-snapshot"
     assert args.records == 10
     assert args.seed == 123
+    assert args.randomize is True
 
 
 def test_cli_main_writes_snapshot(tmp_path):
@@ -42,6 +44,7 @@ def test_cli_main_writes_snapshot(tmp_path):
     payload = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert payload["record_counts"]["persons"] == 5
     assert payload["record_counts"]["vehicles"] == 5
+    assert payload["record_counts"]["profiles"] == 5
     persons_csv = tmp_path / f"persons_{version_slug}.csv"
     vehicles_csv = tmp_path / f"vehicles_{version_slug}.csv"
     assert persons_csv.exists()

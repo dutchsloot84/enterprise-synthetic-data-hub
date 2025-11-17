@@ -1,7 +1,7 @@
 # Enterprise Synthetic Data Hub (POC)
 
 ## Project Overview
-The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobilitas. It delivers an enterprise-aligned foundation for generating privacy-safe synthetic data that represents Persons and Vehicles. The focus is on scaffolding, governance, and prompt-driven collaboration so future human and LLM contributors can extend the solution quickly.
+The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobilitas. It delivers an enterprise-aligned foundation for generating privacy-safe synthetic data that represents Persons, Vehicles, and derived Profiles. The focus is on scaffolding, governance, and prompt-driven collaboration so future human and LLM contributors can extend the solution quickly.
 
 ## POC Scope
 - Generate a **single snapshot dataset** with a few hundred coherent Person + Vehicle records.
@@ -21,20 +21,20 @@ The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobi
 - **Improved auditability and repeatability (versioned snapshots, schema + tests).**
 
 ## Current Limitations
-- CLI exports governed CSV + JSON bundles, but downstream API consumers still rely on the older CSV layout until Slice 06.
-- No public API or external storage layers.
-- Schema coverage currently limited to v0.1 Person, Vehicle, and dataset metadata definitions.
+- Local Flask API is designed for demo use only (no auth, not production hardened).
+- Distribution targets (S3/Snowflake) remain future scope.
+- Schema coverage currently limited to v0.1 Person, Vehicle, Profile, and dataset metadata definitions.
 
 ## High-Level Architecture
 ```
 src/enterprise_synthetic_data_hub/
   config/          # Settings, dataset size, seeds, versioning hints
   models/          # Pydantic schemas for Person, Vehicle, dataset metadata
-  generation/      # Rule definitions and snapshot orchestration (stubs)
+  generation/      # Rule definitions, snapshot orchestration, profile builder
   validation/      # Schema + structural validation utilities
   io/              # Export helpers (CSV/JSON writers + manifest)
-  cli/             # CLI entrypoint for governed snapshot exports
-  api/             # Placeholder notes for a future API layer
+  cli/             # Snapshot CLI + demo preview helpers
+  api/             # Flask app exposing /healthz and /generate/* endpoints
 
 data/snapshots/    # Versioned, stable dataset artifacts (POC uses v0.1)
 tests/             # Pytest suite for schema + metadata validation
@@ -62,7 +62,19 @@ future/            # Stubs for agentic AI and Power BI extensions
    ```
    _Optional flags_: `--seed` overrides the deterministic seed and `--records` sets the record count.
 
-4. **Run validators**
+4. **Preview demo data**
+   ```bash
+   python scripts/demo_data.py --records 5 --preview 2
+   python scripts/demo_data.py --use-api --api-url http://127.0.0.1:5000 --records 3
+   ```
+
+5. **Run the local Flask API**
+   ```bash
+   export FLASK_APP=enterprise_synthetic_data_hub.api.app:app
+   flask run
+   ```
+
+6. **Run validators**
    ```bash
    python agentic/validators/schema_validator.py
    python agentic/validators/generator_validator.py
@@ -73,12 +85,12 @@ future/            # Stubs for agentic AI and Power BI extensions
 ## Snapshot Outputs
 - `data/snapshots/v0.1/persons_v0_1.csv` – governed Persons CSV exported via the CLI.
 - `data/snapshots/v0.1/vehicles_v0_1.csv` – governed Vehicles CSV.
-- `data/snapshots/v0.1/dataset_v0_1.json` – combined JSON payload (metadata + records).
-- `data/snapshots/v0.1/metadata_v0_1.json` – standalone metadata JSON.
+- `data/snapshots/v0.1/dataset_v0_1.json` – combined JSON payload (metadata + persons + vehicles + profiles).
+- `data/snapshots/v0.1/metadata_v0_1.json` – standalone metadata JSON (includes `record_count_profiles`).
 - `data/snapshots/v0.1/snapshot_manifest_v0_1.json` – manifest enumerating file names + record counts.
-- `data/output/sample_dataset_v0_1.json` – small, developer-focused JSON sample (unchanged).
+- `data/demo_samples/v0.1/*.json` – curated bundles for docs/slides.
 
-## CLI Usage Example
+## CLI Usage Examples
 ```bash
 # small sample with deterministic seed
 python -m enterprise_synthetic_data_hub.cli.main generate-snapshot \
@@ -86,11 +98,18 @@ python -m enterprise_synthetic_data_hub.cli.main generate-snapshot \
 
 # default settings (records pulled from DatasetSettings)
 python -m enterprise_synthetic_data_hub.cli.main generate-snapshot
+
+# colorful demo preview
+python scripts/demo_data.py --records 3 --preview 2 --randomize
 ```
 
 The command prints the exported file paths so QA engineers can copy/paste them
 into validators, API configs, or notebooks.
 
+## Demo Runbook & Automation
+- Run `make demo` to orchestrate snapshot generation, a generator preview, and an automated API + CLI walk-through.
+- Follow `docs/demo/06-runbook.md` for the narrated, copy/paste friendly playbook used in the live demo.
+
 ## Next Steps
-- Align the Flask API with the governed CSV layout so it serves the same schema as the CLI exports.
 - Add distribution mechanisms (S3/Snowflake) after the API layer stabilizes.
+- Introduce Policy/Claim schemas and cross-entity validation flows.

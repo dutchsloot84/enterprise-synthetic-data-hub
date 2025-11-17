@@ -11,6 +11,7 @@ from typing import Dict, List
 
 from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.generation import rules_person, rules_vehicle
+from enterprise_synthetic_data_hub.generation.profiles import build_profiles
 from enterprise_synthetic_data_hub.models.dataset_metadata import DatasetMetadata
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -54,6 +55,7 @@ class SnapshotBundle:
     metadata: DatasetMetadata
     persons: List[dict]
     vehicles: List[dict]
+    profiles: List[dict]
 
 
 def describe_generation_plan() -> List[str]:
@@ -160,6 +162,7 @@ def _generate_vehicle(rng: random.Random, person: dict) -> dict:
 def generate_snapshot_bundle(
     num_records: int | None = None,
     seed: int | None = None,
+    include_profiles: bool = True,
 ) -> SnapshotBundle:
     """Generate deterministic snapshot bundle used across the pipeline."""
 
@@ -176,17 +179,25 @@ def generate_snapshot_bundle(
         vehicle = _generate_vehicle(rng, person)
         vehicles.append(vehicle)
 
+    profiles = build_profiles(persons, vehicles) if include_profiles else []
+
     metadata = DatasetMetadata(
         dataset_version=settings.dataset_version,
         generated_at=settings.generation_timestamp,
         record_count_persons=len(persons),
         record_count_vehicles=len(vehicles),
+        record_count_profiles=len(profiles),
         notes=(
             "Deterministic snapshot generated from rule-based distributions "
             f"(seed={seed or settings.random_seed})."
         ),
     )
-    return SnapshotBundle(metadata=metadata, persons=persons, vehicles=vehicles)
+    return SnapshotBundle(
+        metadata=metadata,
+        persons=persons,
+        vehicles=vehicles,
+        profiles=profiles,
+    )
 
 
 def write_snapshot_bundle(bundle: SnapshotBundle, output_dir: Path | None = None) -> Path:
@@ -199,6 +210,7 @@ def write_snapshot_bundle(bundle: SnapshotBundle, output_dir: Path | None = None
         "metadata": metadata_payload,
         "persons": bundle.persons,
         "vehicles": bundle.vehicles,
+        "profiles": bundle.profiles,
     }
     version_slug = bundle.metadata.dataset_version.replace(".", "_")
     snapshot_name = f"dataset_{version_slug}.json"

@@ -1,6 +1,6 @@
 version: v0.1
 last_updated: 2024-06-02
-field_count: 5
+field_count: 6
 fields:
   - name: dataset_version
     type: string
@@ -20,6 +20,11 @@ fields:
     required: true
     minimum: 0
     description: Number of vehicle records present in the snapshot bundle.
+  - name: record_count_profiles
+    type: integer
+    required: true
+    minimum: 0
+    description: Number of derived profile records present in the snapshot bundle.
   - name: notes
     type: string
     required: false

@@ -1,30 +1,30 @@
-version: 0.2.0
-name: mobilitas-enterprise-synthetic-data-hub
+version: 0.3.0
+name: mobilitas-enterprise-synthetic-data-hub-demo-v2
 mop: master_orchestrator_prompt.md
 prompts:
   base_dir: ../prompts/sub-prompts
   slices:
-    - id: 00
-      file: 00_restructure_for_agentic_workflow.md
-      description: Repository restructure and governance alignment for GPT-5.1 agentic mode
-    - id: 01
-      file: 01_pipeline_scaffold.md
-      description: Pipeline scaffolding and dependency alignment
-    - id: 02
-      file: 02_schema_design_person_vehicle.md
-      description: Schema evolution for person + vehicle data models
-    - id: 03
-      file: 03_generator_v0.1.md
-      description: Deterministic generator design for version 0.1 dataset
-    - id: 04
-      file: 04_validation_suite.md
-      description: Validation, testing, and critic integration
-    - id: 05
-      file: 05_cli_and_usage_examples.md
-      description: CLI wiring, exports, and usage examples
-    - id: 06
-      file: 06_api_layer.md
-      description: API layer + contract testing
+    - id: 08
+      file: 08_generator_profiles.md
+      description: Generator upgrades (profiles + samples)
+    - id: 09
+      file: 09_flask_api.md
+      description: Demo Flask API endpoints
+    - id: 10
+      file: 10_demo_cli.md
+      description: Colorized demo CLI + API calls
+    - id: 11
+      file: 11_make_demo.md
+      description: Makefile automation + helper scripts
+    - id: 12
+      file: 12_demo_runbook.md
+      description: Demo runbook + documentation refresh
+    - id: 13
+      file: 13_smoke_tests.md
+      description: Smoke test suites and pytest markers
+    - id: 14
+      file: 14_prompt_archive.md
+      description: Prompt archival + regeneration workflow
 agentic:
   tasks_dir: ../agentic/tasks
   critics_dir: ../agentic/critic

@@ -16,7 +16,9 @@ dependencies = [
   "pydantic>=2.7",
   "pytest>=7.4",
   "flask>=3.0",
-  "pandas>=2.2"
+  "pandas>=2.2",
+  "requests>=2.31",
+  "rich>=13.7"
 ]
 
 [project.optional-dependencies]
@@ -26,3 +28,6 @@ dev = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = [
+  "smoke: demo smoke tests that hit the API + CLI"
+]
