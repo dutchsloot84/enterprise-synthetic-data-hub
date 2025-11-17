@@ -55,6 +55,13 @@ future/            # Stubs for agentic AI and Power BI extensions
    ```bash
    pytest
    ```
+3. **Run validators**
+   ```bash
+   python agentic/validators/schema_validator.py
+   python agentic/validators/generator_validator.py
+   python agentic/validators/cli_validator.py
+   python agentic/validators/api_validator.py
+   ```
 
 ## Generator Outputs
 - `data/output/sample_dataset_v0_1.json` – example payload with metadata, Persons, and Vehicles.
@@ -63,4 +70,4 @@ future/            # Stubs for agentic AI and Power BI extensions
 
 ## Next Steps
 - Add exporters that materialize the v0.1 snapshot under `data/snapshots/v0.1/`.
-- Expand validation + CLI once generation exists.
+- Replace the CLI/export placeholder with governed CSV/JSON writers once Slice 05 lands.

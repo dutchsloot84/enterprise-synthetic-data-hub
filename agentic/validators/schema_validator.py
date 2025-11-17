@@ -71,5 +71,7 @@ def main() -> int:
     return 0 if not overall_errors else 1
 
 
+# Usage:
+#   python agentic/validators/schema_validator.py
 if __name__ == "__main__":  # pragma: no cover
     raise SystemExit(main())

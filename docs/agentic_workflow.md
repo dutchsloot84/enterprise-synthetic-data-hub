@@ -30,6 +30,11 @@ Located in `agentic/tasks/` and versioned individually. Each task lists:
 
 ## Validators & Critics
 - Validators live in `agentic/validators` and are runnable via `python <file>`.
+- Current validator entry points:
+  - `python agentic/validators/schema_validator.py`
+  - `python agentic/validators/generator_validator.py`
+  - `python agentic/validators/cli_validator.py`
+  - `python agentic/validators/api_validator.py`
 - Critics are markdown checklists (`agentic/critic/*.md`) referenced in PRs.
 
 ## Version Rules

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import sys
+import tempfile
 from pathlib import Path
 
 import yaml
@@ -28,7 +29,10 @@ VEHICLE_FIELDS = {
 
 
 def main() -> int:
-    from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_bundle
+    from enterprise_synthetic_data_hub.generation.generator import (
+        generate_snapshot_bundle,
+        write_snapshot_bundle,
+    )
 
     bundle_a = generate_snapshot_bundle(num_records=5, seed=123)
     bundle_b = generate_snapshot_bundle(num_records=5, seed=123)
@@ -70,6 +74,36 @@ def main() -> int:
     if not any(person.get("address_line_2") for person in persons_a):
         errors.append("Expected at least one Person with address_line_2 populated")
 
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        output_path = write_snapshot_bundle(bundle_a, Path(tmp_dir))
+        metadata_path = output_path.with_name(
+            output_path.name.replace("dataset_", "metadata_")
+        )
+        if not output_path.exists():
+            errors.append("Dataset JSON was not written by write_snapshot_bundle")
+        else:
+            dataset_payload = json.loads(output_path.read_text(encoding="utf-8"))
+            if dataset_payload.get("metadata", {}).get("record_count_persons") != len(
+                persons_a
+            ):
+                errors.append(
+                    "Dataset metadata person count mismatch between bundle and file"
+                )
+            if dataset_payload.get("metadata", {}).get("record_count_vehicles") != len(
+                vehicles_a
+            ):
+                errors.append(
+                    "Dataset metadata vehicle count mismatch between bundle and file"
+                )
+        if not metadata_path.exists():
+            errors.append("Standalone metadata JSON missing")
+        else:
+            metadata_payload = json.loads(metadata_path.read_text(encoding="utf-8"))
+            if metadata_payload.get("record_count_persons") != len(persons_a):
+                errors.append("Standalone metadata person count mismatch")
+            if metadata_payload.get("record_count_vehicles") != len(vehicles_a):
+                errors.append("Standalone metadata vehicle count mismatch")
+
     summary = {
         "status": "error" if errors else "ok",
         "person_count": len(persons_a),
@@ -80,5 +114,7 @@ def main() -> int:
     return 0 if not errors else 1
 
 
+# Usage:
+#   python agentic/validators/generator_validator.py
 if __name__ == "__main__":  # pragma: no cover
     raise SystemExit(main())
