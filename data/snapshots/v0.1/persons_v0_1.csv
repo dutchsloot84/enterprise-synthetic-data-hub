@@ -1,0 +1,11 @@
+Global_ID,First_Name,Last_Name,Age,City,State,Postal_Code,LOB_Type,Risk_Rating
+PERS-0001,Ava,Rivera,36,Sacramento,CA,95814,Personal,Low
+PERS-0002,Liam,Nguyen,42,San Francisco,CA,94103,Commercial,Medium
+PERS-0003,Mia,Gonzalez,29,Portland,OR,97201,Personal,Low
+PERS-0004,Ethan,Patel,51,Seattle,WA,98104,Commercial,High
+PERS-0005,Noah,Kim,34,Las Vegas,NV,89101,Other,Medium
+PERS-0006,Isabella,Smith,47,Phoenix,AZ,85004,Personal,High
+PERS-0007,Lucas,Brown,39,Denver,CO,80202,Commercial,Low
+PERS-0008,Charlotte,Lee,31,Austin,TX,73301,Personal,Medium
+PERS-0009,Amelia,Garcia,45,Miami,FL,33101,Other,High
+PERS-0010,Oliver,Wilson,27,Chicago,IL,60601,Personal,Low
