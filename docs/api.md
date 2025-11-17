@@ -1,10 +1,10 @@
 # API Layer – v0.1
 
 The v0.1 Synthetic Data POC exposes a lightweight Flask server defined in
-`src/api/api_server.py`. The server reads the static snapshot stored under
-`data/snapshots/v0.1/` when available and falls back to the deterministic
-generator to guarantee local usability. The API provides read-only access to the
-person dataset and is intended for local use only.
+`src/api/api_server.py`. The server still expects the legacy CSV layout under
+`data/snapshots/v0.1/` and falls back to the deterministic generator if the
+governed exports (Persons/Vehicles CSVs) are not converted yet. Slice 06 will
+align the API contracts with the new CLI/exporter outputs.
 
 ## Prerequisites
 
@@ -46,10 +46,9 @@ If the snapshot is missing, it automatically populates an in-memory dataset via
 
 ## Data Contract
 
-- Primary CSV path: `data/snapshots/v0.1/persons_v0_1.csv`
+- Primary governed exports: `data/snapshots/v0.1/persons_v0_1.csv` and `vehicles_v0_1.csv` (from the CLI)
+- Current API dependency: legacy `persons_v0_1.csv` layout (`Global_ID`, `First_Name`, `Age`, etc.) until Slice 06 updates the server
 - Fallback source: `enterprise_synthetic_data_hub.generation.generator`
-- Required columns: `Global_ID`, `First_Name`, `Last_Name`, `Age`,
-  `Risk_Rating`, `LOB_Type`
 
 Refer to `prompts/sub-prompts/06_api_layer.md` for the agentic instructions that
 must be followed when editing the API layer.

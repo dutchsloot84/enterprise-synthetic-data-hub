@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_bundle
-from enterprise_synthetic_data_hub.io.exporters import export_snapshot_stub
+from enterprise_synthetic_data_hub.io.exporters import export_snapshot_bundle
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -13,13 +13,25 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     snapshot_parser = subparsers.add_parser(
-        "generate-snapshot", help="Generate the deterministic POC snapshot (stub)."
+        "generate-snapshot", help="Generate the deterministic POC snapshot artifacts."
     )
     snapshot_parser.add_argument(
         "--output-dir",
         type=Path,
         default=Path("data/snapshots/v0.1"),
         help="Directory where the snapshot should be written.",
+    )
+    snapshot_parser.add_argument(
+        "--records",
+        type=int,
+        default=None,
+        help="Override default person/vehicle record count.",
+    )
+    snapshot_parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Override the default deterministic seed.",
     )
     return parser
 
@@ -29,9 +41,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "generate-snapshot":
-        bundle = generate_snapshot_bundle()
-        export_snapshot_stub(args.output_dir, bundle.persons, bundle.vehicles)
-        print("Snapshot generation stub executed. Check output directory for notes.")
+        bundle = generate_snapshot_bundle(num_records=args.records, seed=args.seed)
+        artifacts = export_snapshot_bundle(bundle, args.output_dir)
+        print("Snapshot generation completed. Files written:")
+        for label, path in artifacts.items():
+            print(f"- {label}: {path}")
         return 0
 
     parser.print_help()

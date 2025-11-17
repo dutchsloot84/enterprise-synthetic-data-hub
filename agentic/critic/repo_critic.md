@@ -15,5 +15,5 @@ Version: 0.1.0
    - [x] Schemas + generator + API share consistent version strings.
    - [x] Docs mention latest version + workflow.
 5. **Findings**
-   - Summary: Added CLI validator + pytest coverage for CLI/API ensuring query validation and placeholder exports stay wired into generator bundle; docs/tasks updated with validator commands.
-   - Required follow-ups: Replace exporter stub during Slice 05 so validators can assert governed CSV/JSON outputs instead of README placeholders.
+   - Summary: Slice 05 replaced the CLI/exporter stub with governed CSV/JSON outputs, updated validators/tests/docs, and added a CLI usage prompt so contributors can reproduce snapshot artifacts consistently.
+   - Required follow-ups: Update the Flask API + data consumers in Slice 06 to ingest the governed CSV columns instead of the legacy placeholder layout.

@@ -13,14 +13,16 @@ Last Updated: 2024-05-31
 - `/src/api/` – Flask API aligned with schema + generator
 - `/tests/` – regression coverage for schema/generator/API
 - `/data/output` – generator outputs (sample dataset + metadata JSON)
+- `/data/snapshots/<version>/` – governed CSV/JSON bundles emitted by the CLI/exporter
 - `/data/static` – reserved for seed files or lookup tables
 
 ## Workflow Steps
 1. **Analyze** – run repo scan, read the MOP + applicable prompts, record plan.
 2. **Execute** – implement cohesive multi-file updates scoped to the selected task.
 3. **Validate** – run validator scripts + targeted `pytest` modules.
-4. **Critic** – complete the relevant critic checklist(s) and capture findings.
-5. **Document** – update docs/prompts/tasks and summarize diffs/tests.
+4. **Export** – invoke `python -m enterprise_synthetic_data_hub.cli.main generate-snapshot` when CLI behavior changes to refresh governed artifacts.
+5. **Critic** – complete the relevant critic checklist(s) and capture findings.
+6. **Document** – update docs/prompts/tasks and summarize diffs/tests.
 
 ## Agent Tasks
 Located in `agentic/tasks/` and versioned individually. Each task lists:
