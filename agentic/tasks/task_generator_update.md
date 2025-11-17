@@ -8,7 +8,7 @@ maintaining determinism and schema alignment.
 
 ## Workflow
 1. **Analyze**
-   - Repo scan focusing on `/src/generator` and related package modules.
+   - Repo scan focusing on `/src/enterprise_synthetic_data_hub/generation` (plus `/src/generator` shim).
    - Inspect `/data/output` for current artifacts.
 2. **Plan**
    - Document rule changes, seeds, and affected schemas/tests.

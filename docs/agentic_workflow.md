@@ -7,8 +7,9 @@ Last Updated: 2024-05-31
 - `/mop/` – master orchestrator prompt + index
 - `/prompts/` – slice prompts (sub-prompts, future, agentic_ai, powerbi_dashboards)
 - `/agentic/` – tasks, critic templates, validator scripts
-- `/schemas/v0.1/` – YAML definitions for Person + Vehicle
-- `/src/generator/` – deterministic generator entry point
+- `/schemas/v0.1/` – YAML definitions for Person, Vehicle, and dataset metadata
+- `/src/enterprise_synthetic_data_hub/generation/` – canonical generator orchestration package
+- `/src/generator/` – compatibility shim that re-exports the package generator
 - `/src/api/` – Flask API aligned with schema + generator
 - `/tests/` – regression coverage for schema/generator/API
 - `/data/output` – generator outputs

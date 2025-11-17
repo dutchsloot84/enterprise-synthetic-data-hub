@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_stub
+from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_bundle
 from enterprise_synthetic_data_hub.io.exporters import export_snapshot_stub
 
 
@@ -29,7 +29,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.command == "generate-snapshot":
-        bundle = generate_snapshot_stub()
+        bundle = generate_snapshot_bundle()
         export_snapshot_stub(args.output_dir, bundle.persons, bundle.vehicles)
         print("Snapshot generation stub executed. Check output directory for notes.")
         return 0

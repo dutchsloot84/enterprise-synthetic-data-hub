@@ -3,9 +3,7 @@ from __future__ import annotations
 
 import json
 import sys
-from importlib import import_module
 from pathlib import Path
-from typing import Any
 
 import yaml
 
@@ -29,14 +27,13 @@ VEHICLE_FIELDS = {
 }
 
 
-def _load_generator() -> Any:
-    return import_module("generator.synthetic_generator_v01")
-
-
 def main() -> int:
-    module = _load_generator()
-    persons_a, vehicles_a = module.generate_person_vehicle_dataset(num_records=5, seed=123)
-    persons_b, vehicles_b = module.generate_person_vehicle_dataset(num_records=5, seed=123)
+    from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_bundle
+
+    bundle_a = generate_snapshot_bundle(num_records=5, seed=123)
+    bundle_b = generate_snapshot_bundle(num_records=5, seed=123)
+    persons_a, vehicles_a = bundle_a.persons, bundle_a.vehicles
+    persons_b, vehicles_b = bundle_b.persons, bundle_b.vehicles
 
     errors: list[str] = []
     if persons_a != persons_b or vehicles_a != vehicles_b:

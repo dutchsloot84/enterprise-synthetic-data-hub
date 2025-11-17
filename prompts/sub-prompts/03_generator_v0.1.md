@@ -7,8 +7,8 @@ Design or update the deterministic synthetic data generator for version 0.1 so
 it stays aligned with schema definitions and downstream consumers.
 
 ## Analyze – Repo Awareness
-- Inspect `/src/generator/synthetic_generator_v01.py` plus any package modules it
-  imports.
+- Inspect `/src/enterprise_synthetic_data_hub/generation/` plus the legacy shim
+  in `/src/generator/`.
 - Review `/schemas/v0.1` and `tests/test_generator.py` to understand contracts.
 - Confirm `/data/output` has write permissions for snapshots.
 

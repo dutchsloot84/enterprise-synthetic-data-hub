@@ -24,7 +24,7 @@ python api_server.py
 
 The app starts in debug mode and logs whether the CSV snapshot was validated.
 If the snapshot is missing, it automatically populates an in-memory dataset via
-`generator.synthetic_generator_v01`.
+`enterprise_synthetic_data_hub.generation.generator.generate_snapshot_bundle` (or the shim in `src/generator/`).
 
 ## Endpoints
 
@@ -47,7 +47,7 @@ If the snapshot is missing, it automatically populates an in-memory dataset via
 ## Data Contract
 
 - Primary CSV path: `data/snapshots/v0.1/persons_v0_1.csv`
-- Fallback source: `src/generator/synthetic_generator_v01.py`
+- Fallback source: `enterprise_synthetic_data_hub.generation.generator`
 - Required columns: `Global_ID`, `First_Name`, `Last_Name`, `Age`,
   `Risk_Rating`, `LOB_Type`
 
