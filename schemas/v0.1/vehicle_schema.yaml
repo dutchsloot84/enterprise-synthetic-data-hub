@@ -1,0 +1,40 @@
+version: v0.1
+last_updated: 2024-05-31
+field_count: 10
+fields:
+  - name: vehicle_id
+    type: uuid
+    required: true
+  - name: person_id
+    type: uuid
+    required: true
+    description: Foreign key referencing the owning person.
+  - name: vin
+    type: string
+    required: true
+    pattern: "^[A-HJ-NPR-Z0-9]{17}$"
+  - name: make
+    type: string
+    required: true
+  - name: model
+    type: string
+    required: true
+  - name: model_year
+    type: integer
+    required: true
+    minimum: 2000
+    maximum: 2024
+  - name: body_style
+    type: string
+    required: true
+  - name: risk_rating
+    type: string
+    required: true
+    enum: [Low, Medium, High]
+  - name: lob_type
+    type: string
+    required: true
+    enum: [Personal, Commercial]
+  - name: garaging_state
+    type: string
+    required: true
