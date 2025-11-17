@@ -47,11 +47,28 @@ def main() -> int:
         if missing:
             errors.append(f"Person record missing fields: {sorted(missing)}")
             break
+    person_lookup = {person["person_id"]: person for person in persons_a}
     for vehicle in vehicles_a:
         missing = VEHICLE_FIELDS - vehicle.keys()
         if missing:
             errors.append(f"Vehicle record missing fields: {sorted(missing)}")
             break
+        owner = person_lookup.get(vehicle["person_id"])
+        if owner is None:
+            errors.append("Vehicle references unknown person_id")
+            break
+        if vehicle["lob_type"] != owner["lob_type"]:
+            errors.append("Vehicle lob_type must match owning Person")
+            break
+        if vehicle["garaging_state"] != owner["state"]:
+            errors.append("Garaging state must mirror owning Person")
+            break
+        if vehicle["garaging_postal_code"] != owner["postal_code"]:
+            errors.append("Garaging postal code must mirror owning Person")
+            break
+
+    if not any(person.get("address_line_2") for person in persons_a):
+        errors.append("Expected at least one Person with address_line_2 populated")
 
     summary = {
         "status": "error" if errors else "ok",

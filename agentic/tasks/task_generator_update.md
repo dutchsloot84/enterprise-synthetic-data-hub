@@ -15,7 +15,7 @@ maintaining determinism and schema alignment.
    - Identify validator + critic coverage.
 3. **Execute**
    - Update generator code, metadata, and docs.
-   - Regenerate sample output if necessary.
+   - Regenerate sample output + metadata JSON under `data/output/` if necessary.
 4. **Validate**
    - `python agentic/validators/generator_validator.py`
    - `pytest tests/test_generator.py`

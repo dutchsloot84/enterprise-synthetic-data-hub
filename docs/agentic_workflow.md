@@ -12,7 +12,7 @@ Last Updated: 2024-05-31
 - `/src/generator/` – compatibility shim that re-exports the package generator
 - `/src/api/` – Flask API aligned with schema + generator
 - `/tests/` – regression coverage for schema/generator/API
-- `/data/output` – generator outputs
+- `/data/output` – generator outputs (sample dataset + metadata JSON)
 - `/data/static` – reserved for seed files or lookup tables
 
 ## Workflow Steps

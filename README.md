@@ -21,7 +21,7 @@ The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobi
 - **Improved auditability and repeatability (versioned snapshots, schema + tests).**
 
 ## Current Limitations
-- Package-level generator exists, but exporters still emit placeholder notes (no CSV/JSON yet).
+- Package-level generator emits deterministic JSON + metadata but exporters still emit placeholder notes (no CSV/JSON snapshot bundles yet).
 - Snapshot artifacts committed under `data/snapshots/` remain placeholders until export slice work lands.
 - No public API or external storage layers.
 - Schema coverage currently limited to v0.1 Person, Vehicle, and dataset metadata definitions.
@@ -56,7 +56,11 @@ future/            # Stubs for agentic AI and Power BI extensions
    pytest
    ```
 
+## Generator Outputs
+- `data/output/sample_dataset_v0_1.json` – example payload with metadata, Persons, and Vehicles.
+- `data/output/sample_metadata_v0_1.json` – dataset-level metadata written separately for governance workflows.
+- `write_snapshot_bundle(...)` also emits `dataset_<version>.json` + `metadata_<version>.json` when downstream tools call it directly.
+
 ## Next Steps
-- Implement rule-based generator logic in `src/enterprise_synthetic_data_hub/generation/generator.py` using `prompts/sub-prompts/03_generator_v0.1.md`.
 - Add exporters that materialize the v0.1 snapshot under `data/snapshots/v0.1/`.
 - Expand validation + CLI once generation exists.
