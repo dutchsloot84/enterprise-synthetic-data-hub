@@ -3,6 +3,49 @@
 ## Project Overview
 The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobilitas. It delivers an enterprise-aligned foundation for generating privacy-safe synthetic data that represents Persons, Vehicles, and derived Profiles. The focus is on scaffolding, governance, and prompt-driven collaboration so future human and LLM contributors can extend the solution quickly.
 
+## 🚀 5-Minute Demo (Zero Knowledge Required)
+### Unix / macOS
+1. `git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git`
+2. `cd enterprise-synthetic-data-hub`
+3. `bash scripts/bootstrap_and_demo.sh`
+
+### Windows (PowerShell)
+1. `git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git`
+2. `cd enterprise-synthetic-data-hub`
+3. `./scripts/bootstrap_and_demo.ps1`
+
+### Docker / Devcontainer
+- `docker build -t esdh-demo .`
+- `docker run --rm -p 5000:5000 esdh-demo`
+- (Optional) open the repo in VS Code / Codespaces to reuse `.devcontainer/devcontainer.json` which installs dependencies and runs `make demo-smoke` automatically.
+
+Each bootstrap flow installs dependencies, runs `make demo`, and guides you through:
+- Snapshot generation driven by a demo profile (`config/demo.yaml`).
+- Automated Flask API startup with `/healthz` verification.
+- `scripts/demo_data.py` preview (generator vs. API mode) with Rich formatting.
+- Optional `pytest -m demo` smoke tests to prove the CLI/API contracts still hold.
+
+## Demo Profiles
+- Profiles live in `config/demo.yaml`. The repo ships with:
+  - `baseline` – 30 records, deterministic seed 42.
+  - `heavy` – 200 records, randomized for storytelling.
+- Pick a profile via:
+  - `DEMO_PROFILE=heavy make demo`
+  - `python scripts/demo_data.py --profile heavy --preview 3`
+  - `DEMO_PROFILE=baseline python scripts/demo_validate.py`
+- Override ports for the API bootstrap with `DEMO_API_PORT=5051 make demo` when port 5000 is busy.
+
+## Synthetic Governance
+- Every Person, Vehicle, and Profile now includes `synthetic_source="enterprise-synthetic-data-hub v0.1"` so consumers can prove the data is synthetic.
+- `make demo-validate` (or `python scripts/demo_validate.py`) generates a sample bundle, runs schema validation, and ensures every entity carries the marker.
+- `scripts/run_demo_flow.py` and the README demo commands surface the marker in summary output and docs to reinforce governance optics.
+
+## If Something Breaks
+- **Reset the environment** – `rm -rf .venv && python3 -m venv .venv && source .venv/bin/activate && pip install -e .[dev]`.
+- **Clear demo artifacts** – `rm -rf data/demo_runs` removes prior snapshot outputs.
+- **Stop runaway APIs** – `make demo-stop` (or `bash scripts/demo_stop_api.sh`) removes `.demo_api_pid/.demo_api_port` and kills the background Flask server.
+- **Change ports** – `DEMO_API_PORT=5051 make demo` or edit `config/demo.yaml` if 5000 is unavailable.
+
 ## POC Scope
 - Generate a **single snapshot dataset** with a few hundred coherent Person + Vehicle records.
 - Use rule-based generation only (no real or production data).
@@ -64,8 +107,8 @@ future/            # Stubs for agentic AI and Power BI extensions
 
 4. **Preview demo data**
    ```bash
-   python scripts/demo_data.py --records 5 --preview 2
-   python scripts/demo_data.py --use-api --api-url http://127.0.0.1:5000 --records 3
+   python scripts/demo_data.py --profile baseline --preview 2
+   python scripts/demo_data.py --profile heavy --use-api --api-url http://127.0.0.1:5000 --records 3
    ```
 
 5. **Run the local Flask API**
@@ -74,12 +117,16 @@ future/            # Stubs for agentic AI and Power BI extensions
    flask run
    ```
 
+   _Orchestration shortcut_: `make demo` runs the full snapshot → API → CLI → smoke test sequence using the selected demo profile.
+
 6. **Run validators**
    ```bash
    python agentic/validators/schema_validator.py
    python agentic/validators/generator_validator.py
    python agentic/validators/cli_validator.py
    python agentic/validators/api_validator.py
+   make demo-smoke   # pytest -m demo
+   make demo-validate
    ```
 
 ## Snapshot Outputs
@@ -107,8 +154,16 @@ The command prints the exported file paths so QA engineers can copy/paste them
 into validators, API configs, or notebooks.
 
 ## Demo Runbook & Automation
-- Run `make demo` to orchestrate snapshot generation, a generator preview, and an automated API + CLI walk-through.
+- Run `make demo` (or `DEMO_PROFILE=heavy make demo`) to orchestrate snapshot generation, API bootstrap, CLI preview, and the optional demo smoke suite according to `config/demo.yaml`.
+- Use `make demo-smoke` to run only the tagged demo tests (`pytest -m demo`).
+- Use `make demo-validate` to confirm schema + synthetic marker guardrails on a fresh sample.
 - Follow `docs/demo/06-runbook.md` for the narrated, copy/paste friendly playbook used in the live demo.
+
+## Containerized Demo
+- Build the image once: `docker build -t esdh-demo .`
+- Run the full flow without installing Python locally: `docker run --rm -p 5000:5000 esdh-demo python scripts/run_demo_flow.py --skip-smoke`
+- Keep the API running for local tooling: `docker run --rm -p 5000:5000 esdh-demo bash scripts/demo_start_api.sh`
+- VS Code Dev Container / GitHub Codespaces users can open the repo and accept the `.devcontainer/devcontainer.json` prompt to reuse the same Dockerfile, auto-install dependencies, and run `make demo-smoke` after creation.
 
 ## Next Steps
 - Add distribution mechanisms (S3/Snowflake) after the API layer stabilizes.

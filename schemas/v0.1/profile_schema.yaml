@@ -1,6 +1,6 @@
 version: v0.1
 last_updated: 2024-06-09
-field_count: 12
+field_count: 13
 fields:
   - name: profile_id
     type: string
@@ -50,3 +50,7 @@ fields:
     type: string
     required: true
     description: Risk rating carried over from the governed Vehicle entity.
+  - name: synthetic_source
+    type: string
+    required: true
+    description: Marker indicating the governed synthetic origin for demo usage.

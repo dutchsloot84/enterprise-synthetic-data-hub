@@ -9,6 +9,7 @@ def test_build_profiles_matches_generator_counts():
     derived = build_profiles(bundle.persons, bundle.vehicles)
     assert len(derived) == len(bundle.persons) == len(bundle.vehicles)
     assert derived[0]["person_id"] == bundle.persons[0]["person_id"]
+    assert derived[0]["synthetic_source"] == bundle.persons[0]["synthetic_source"]
 
 
 def test_profile_fields_are_deterministic():

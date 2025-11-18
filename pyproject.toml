@@ -29,5 +29,6 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [
-  "smoke: demo smoke tests that hit the API + CLI"
+  "smoke: demo smoke tests that hit the API + CLI",
+  "demo: fast demo verification suite",
 ]

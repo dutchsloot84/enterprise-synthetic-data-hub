@@ -1,6 +1,6 @@
 version: v0.1
 last_updated: 2024-06-02
-field_count: 11
+field_count: 12
 fields:
   - name: vehicle_id
     type: uuid
@@ -48,3 +48,7 @@ fields:
     min_length: 5
     max_length: 10
     description: ZIP where the vehicle is primarily garaged.
+  - name: synthetic_source
+    type: string
+    required: true
+    description: Marker indicating the governed synthetic origin for demo usage.

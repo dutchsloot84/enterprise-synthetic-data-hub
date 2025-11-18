@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from enterprise_synthetic_data_hub.config.settings import settings
+
 
 class Profile(BaseModel):
     """Join-friendly view that powers demo previews and the API."""
@@ -19,6 +21,10 @@ class Profile(BaseModel):
     primary_vehicle_vin: str
     vehicle_summary: str
     risk_rating: str
+    synthetic_source: str = Field(
+        default=settings.synthetic_marker,
+        description="Indicates the governed synthetic origin for demo storytelling.",
+    )
 
     model_config = ConfigDict(frozen=True)
 

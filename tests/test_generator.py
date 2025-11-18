@@ -22,6 +22,9 @@ def test_generate_snapshot_bundle_deterministic():
     assert bundle_a.vehicles[0]["lob_type"] == bundle_a.persons[0]["lob_type"]
     assert bundle_a.vehicles[0]["garaging_postal_code"] == bundle_a.persons[0]["postal_code"]
     assert bundle_a.persons[0]["address_line_2"] is not None
+    assert bundle_a.persons[0]["synthetic_source"] == settings.synthetic_marker
+    assert bundle_a.vehicles[0]["synthetic_source"] == settings.synthetic_marker
+    assert bundle_a.profiles[0]["synthetic_source"] == settings.synthetic_marker
 
 
 def test_generate_snapshot_bundle_rejects_invalid_count():

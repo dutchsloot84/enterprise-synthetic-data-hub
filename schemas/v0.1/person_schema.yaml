@@ -1,6 +1,6 @@
 version: v0.1
 last_updated: 2024-06-02
-field_count: 13
+field_count: 14
 fields:
   - name: person_id
     type: uuid
@@ -59,3 +59,7 @@ fields:
     required: true
     enum: [Personal, Commercial]
     description: Line-of-business classification.
+  - name: synthetic_source
+    type: string
+    required: true
+    description: Marker indicating the governed synthetic origin for demo usage.

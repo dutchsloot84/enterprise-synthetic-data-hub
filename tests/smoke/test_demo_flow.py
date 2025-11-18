@@ -9,6 +9,7 @@ from io import StringIO
 
 
 @pytest.mark.smoke
+@pytest.mark.demo
 def test_api_profile_endpoint_smoke():
     app = create_app()
     app.testing = True
@@ -20,7 +21,8 @@ def test_api_profile_endpoint_smoke():
 
 
 @pytest.mark.smoke
+@pytest.mark.demo
 def test_demo_cli_bundle_preview_smoke():
     console = Console(file=StringIO(), force_terminal=False, color_system=None)
-    exit_code = demo_cli.run_demo(["--records", "2", "--preview", "1"], console=console)
+    exit_code = demo_cli.run_demo(["--profile", "baseline", "--records", "2", "--preview", "1"], console=console)
     assert exit_code == 0

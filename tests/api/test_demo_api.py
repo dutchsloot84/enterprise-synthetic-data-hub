@@ -3,6 +3,7 @@ from __future__ import annotations
 import pytest
 
 from enterprise_synthetic_data_hub.api.app import create_app
+from enterprise_synthetic_data_hub.config.settings import settings
 
 
 @pytest.fixture()
@@ -27,6 +28,7 @@ def test_generate_person_payload(client):
     payload = response.get_json()
     assert len(payload["persons"]) == 3
     assert payload["records_requested"] == 3
+    assert payload["persons"][0]["synthetic_source"] == settings.synthetic_marker
 
 
 def test_generate_bundle_includes_profiles(client):
@@ -35,3 +37,4 @@ def test_generate_bundle_includes_profiles(client):
     payload = response.get_json()
     assert len(payload["profiles"]) == 2
     assert payload["metadata"]["record_count_profiles"] == 2
+    assert payload["profiles"][0]["synthetic_source"] == settings.synthetic_marker

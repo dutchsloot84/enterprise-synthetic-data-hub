@@ -1,25 +1,23 @@
-.PHONY: demo demo-data demo-api demo-smoke
+.PHONY: demo demo-smoke demo-validate demo-stop
 
-PYTHON := python
+PYTHON ?= python3
 PACKAGE := enterprise_synthetic_data_hub
-
 export PYTHONPATH := src
+DEMO_PROFILE ?= baseline
 
-demo-data:
-	@echo "Generating governed snapshot..."
-	$(PYTHON) -m $(PACKAGE).cli.main generate-snapshot --output-dir data/snapshots/v0.1
-
-demo-api:
-	@echo "Starting Flask API (Ctrl+C to stop)..."
-	FLASK_APP=$(PACKAGE).api.app:app flask run
-
+## Primary guided demo flow
 demo:
-	@echo "\n[1/3] Generate governed snapshot"
-	$(PYTHON) -m $(PACKAGE).cli.main generate-snapshot --records 25 --randomize --output-dir data/snapshots/v0.1
-	@echo "\n[2/3] Run generator preview"
-	$(PYTHON) scripts/demo_data.py --records 5 --preview 2
-	@echo "\n[3/3] Launch API + CLI preview"
-	bash scripts/demo_start_api.sh
+@echo "Using demo profile: $(DEMO_PROFILE)"
+@DEMO_PROFILE=$(DEMO_PROFILE) $(PYTHON) scripts/run_demo_flow.py
 
+## Lightweight CLI/API smoke tests used in demo contexts
 demo-smoke:
-	pytest -m smoke
+$(PYTHON) -m pytest -m demo
+
+## Validate snapshot schemas + synthetic marker guardrails
+demo-validate:
+@DEMO_PROFILE=$(DEMO_PROFILE) $(PYTHON) scripts/demo_validate.py
+
+## Explicit stop hook if an API process remains
+demo-stop:
+@bash scripts/demo_stop_api.sh

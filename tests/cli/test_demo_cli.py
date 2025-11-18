@@ -10,7 +10,7 @@ from enterprise_synthetic_data_hub.cli import demo as demo_cli
 def test_demo_cli_parser_defaults():
     parser = demo_cli.build_parser()
     args = parser.parse_args([])
-    assert args.records == 5
+    assert args.records is None
     assert args.preview == 2
     assert args.use_api is False
 

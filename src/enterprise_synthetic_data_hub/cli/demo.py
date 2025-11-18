@@ -3,27 +3,65 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import secrets
+from dataclasses import dataclass
 from typing import Any
 
 import requests
 from rich.console import Console
 from rich.panel import Panel
 
+from enterprise_synthetic_data_hub.config.demo_profiles import (
+    DemoAPISettings,
+    DemoConfigError,
+    DemoProfile,
+    get_api_settings,
+    get_demo_profile,
+)
 from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.generation.generator import generate_snapshot_bundle
 
-DEFAULT_API_URL = "http://127.0.0.1:5000"
+
+@dataclass(frozen=True)
+class ResolvedDemoArgs:
+    """Container for CLI arguments after applying profile defaults."""
+
+    profile: DemoProfile
+    api: DemoAPISettings
+    records: int
+    seed: int | None
+    randomize: bool
+    preview: int
+    use_api: bool
+    api_url: str
+    endpoint: str
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Demo data preview CLI")
-    parser.add_argument("--records", type=int, default=5, help="Number of records to generate")
-    parser.add_argument("--seed", type=int, default=None, help="Seed override for deterministic runs")
+    parser.add_argument(
+        "--profile",
+        default=None,
+        help="Demo profile name from config/demo.yaml (default: $DEMO_PROFILE or baseline)",
+    )
+    parser.add_argument(
+        "--records",
+        type=int,
+        default=None,
+        help="Number of records to generate (defaults to the profile's person count)",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Seed override for deterministic runs (falls back to the profile seed)",
+    )
     parser.add_argument(
         "--randomize",
-        action="store_true",
-        help="Use a random seed instead of the governed default",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="Toggle random seed behavior (defaults to the profile setting)",
     )
     parser.add_argument(
         "--preview",
@@ -38,8 +76,8 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--api-url",
-        default=DEFAULT_API_URL,
-        help="Base URL for the local Flask API (used when --use-api is set)",
+        default=None,
+        help="Base URL for the local Flask API (defaults to config/demo.yaml)",
     )
     parser.add_argument(
         "--endpoint",
@@ -50,10 +88,43 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _resolve_seed(seed: int | None, randomize: bool) -> int | None:
+def _resolve_seed(seed: int | None, randomize: bool, profile_seed: int | None) -> int | None:
     if randomize:
         return secrets.randbelow(1_000_000_000)
-    return seed
+    if seed is not None:
+        return seed
+    if profile_seed is not None:
+        return profile_seed
+    return settings.random_seed
+
+
+def _resolve_runtime_args(parser: argparse.ArgumentParser, args: argparse.Namespace) -> ResolvedDemoArgs:
+    try:
+        profile = get_demo_profile(args.profile)
+        api_settings = get_api_settings()
+    except DemoConfigError as exc:  # pragma: no cover - exercised via CLI parsing
+        parser.error(str(exc))
+    randomize = profile.randomize if args.randomize is None else args.randomize
+    records = args.records if args.records is not None else profile.records_person
+    if records <= 0:
+        parser.error("--records must be positive")
+    preview = args.preview
+    if preview <= 0:
+        parser.error("--preview must be positive")
+    seed = args.seed if args.seed is not None else profile.seed
+    api_port_override = os.environ.get("DEMO_API_PORT")
+    api_url = args.api_url or f"http://{api_settings.host}:{api_port_override or api_settings.port}"
+    return ResolvedDemoArgs(
+        profile=profile,
+        api=api_settings,
+        records=records,
+        seed=seed,
+        randomize=randomize,
+        preview=preview,
+        use_api=bool(args.use_api),
+        api_url=api_url,
+        endpoint=args.endpoint,
+    )
 
 
 def _render_json(console: Console, title: str, payload: Any) -> None:
@@ -62,43 +133,46 @@ def _render_json(console: Console, title: str, payload: Any) -> None:
     console.print_json(data=json.loads(json.dumps(serializable)))
 
 
-def _preview_bundle(console: Console, args: argparse.Namespace) -> None:
-    seed = _resolve_seed(args.seed, args.randomize)
-    bundle = generate_snapshot_bundle(num_records=args.records, seed=seed)
+def _preview_bundle(console: Console, resolved: ResolvedDemoArgs) -> None:
+    seed = _resolve_seed(resolved.seed, resolved.randomize, resolved.profile.seed)
+    bundle = generate_snapshot_bundle(num_records=resolved.records, seed=seed)
     console.print(
         Panel.fit(
-            f"Generator preview — records={args.records} seed={seed or settings.random_seed}",
+            f"Generator preview — profile={resolved.profile.name} records={resolved.records} seed={seed}",
             title="Generator",
         )
     )
     metadata = bundle.metadata.model_dump(mode="json")
     _render_json(console, "Metadata", metadata)
-    _render_json(console, "Persons", bundle.persons[: args.preview])
-    _render_json(console, "Vehicles", bundle.vehicles[: args.preview])
-    _render_json(console, "Profiles", bundle.profiles[: args.preview])
+    _render_json(console, "Persons", bundle.persons[: resolved.preview])
+    _render_json(console, "Vehicles", bundle.vehicles[: resolved.preview])
+    _render_json(console, "Profiles", bundle.profiles[: resolved.preview])
 
 
-def _call_api(api_url: str, endpoint: str, args: argparse.Namespace) -> dict[str, Any]:
+def _call_api(api_url: str, endpoint: str, resolved: ResolvedDemoArgs) -> dict[str, Any]:
+    seed = _resolve_seed(resolved.seed, resolved.randomize, resolved.profile.seed)
     url = f"{api_url.rstrip('/')}/generate/{'bundle' if endpoint == 'bundle' else endpoint}"
     payload = {
-        "records": args.records,
-        "seed": args.seed,
-        "randomize": args.randomize,
+        "records": resolved.records,
+        "seed": seed,
+        "randomize": resolved.randomize,
     }
     response = requests.post(url, json=payload, timeout=30)
     response.raise_for_status()
-    return response.json()
+    payload = response.json()
+    payload.setdefault("metadata", {}).setdefault("synthetic_source", settings.synthetic_marker)
+    return payload
 
 
-def _preview_api(console: Console, args: argparse.Namespace) -> None:
+def _preview_api(console: Console, resolved: ResolvedDemoArgs) -> None:
     try:
-        payload = _call_api(args.api_url, args.endpoint, args)
+        payload = _call_api(resolved.api_url, resolved.endpoint, resolved)
     except requests.RequestException as exc:  # pragma: no cover - network failure
         console.print(f"[red]API request failed:[/red] {exc}")
         raise SystemExit(2) from exc
     console.print(
         Panel.fit(
-            f"API preview — endpoint={args.endpoint} records={args.records}",
+            f"API preview — endpoint={resolved.endpoint} profile={resolved.profile.name} records={resolved.records}",
             title="Flask API",
         )
     )
@@ -108,25 +182,24 @@ def _preview_api(console: Console, args: argparse.Namespace) -> None:
         "vehicle": "vehicles",
         "profile": "profiles",
         "bundle": "profiles",
-    }.get(args.endpoint, "persons")
-    if args.endpoint == "bundle":
-        _render_json(console, "Persons", payload.get("persons", [])[: args.preview])
-        _render_json(console, "Vehicles", payload.get("vehicles", [])[: args.preview])
-        _render_json(console, "Profiles", payload.get("profiles", [])[: args.preview])
+    }.get(resolved.endpoint, "persons")
+    if resolved.endpoint == "bundle":
+        _render_json(console, "Persons", payload.get("persons", [])[: resolved.preview])
+        _render_json(console, "Vehicles", payload.get("vehicles", [])[: resolved.preview])
+        _render_json(console, "Profiles", payload.get("profiles", [])[: resolved.preview])
     else:
-        _render_json(console, key.title(), payload.get(key, [])[: args.preview])
+        _render_json(console, key.title(), payload.get(key, [])[: resolved.preview])
 
 
 def run_demo(argv: list[str] | None = None, console: Console | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    if args.records <= 0:
-        parser.error("--records must be positive")
+    resolved = _resolve_runtime_args(parser, args)
     console = console or Console()
-    if args.use_api:
-        _preview_api(console, args)
+    if resolved.use_api:
+        _preview_api(console, resolved)
     else:
-        _preview_bundle(console, args)
+        _preview_bundle(console, resolved)
     return 0
 
 

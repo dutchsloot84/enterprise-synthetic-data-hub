@@ -9,6 +9,7 @@ from enterprise_synthetic_data_hub.cli import demo as demo_cli
 
 
 @pytest.mark.smoke
+@pytest.mark.demo
 def test_demo_cli_smoke_preview():
     console = Console(file=StringIO(), force_terminal=False, color_system=None)
     exit_code = demo_cli.run_demo(["--records", "1", "--preview", "1"], console=console)
