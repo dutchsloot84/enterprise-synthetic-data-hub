@@ -27,6 +27,7 @@ PERSON_COLUMNS: Sequence[str] = (
     "postal_code",
     "country",
     "lob_type",
+    "synthetic_source",
 )
 VEHICLE_COLUMNS: Sequence[str] = (
     "vehicle_id",
@@ -40,6 +41,7 @@ VEHICLE_COLUMNS: Sequence[str] = (
     "lob_type",
     "garaging_state",
     "garaging_postal_code",
+    "synthetic_source",
 )
 
 
@@ -79,6 +81,7 @@ def export_snapshot_bundle(bundle: SnapshotBundle, output_dir: Path | None = Non
         "record_counts": {
             "persons": len(bundle.persons),
             "vehicles": len(bundle.vehicles),
+            "profiles": len(bundle.profiles),
         },
         "files": {
             "persons_csv": persons_path.name,

@@ -10,6 +10,7 @@ from enterprise_synthetic_data_hub.generation.generator import (
     generate_snapshot_bundle,
     write_snapshot_bundle,
 )
+from enterprise_synthetic_data_hub.generation.profiles import build_profiles
 from enterprise_synthetic_data_hub.models.dataset_metadata import DatasetMetadata
 
 SCHEMA_VERSION = settings.dataset_version
@@ -31,14 +32,21 @@ def write_dataset_snapshot(
 ) -> Path:
     """Write dataset snapshot using the shared snapshot bundle helper."""
 
+    profiles = build_profiles(persons, vehicles)
     metadata = DatasetMetadata(
         dataset_version=settings.dataset_version,
         generated_at=settings.generation_timestamp,
         record_count_persons=len(persons),
         record_count_vehicles=len(vehicles),
+        record_count_profiles=len(profiles),
         notes="Legacy shim dataset snapshot.",
     )
-    bundle = SnapshotBundle(metadata=metadata, persons=persons, vehicles=vehicles)
+    bundle = SnapshotBundle(
+        metadata=metadata,
+        persons=persons,
+        vehicles=vehicles,
+        profiles=profiles,
+    )
     return write_snapshot_bundle(bundle, output_dir)
 
 

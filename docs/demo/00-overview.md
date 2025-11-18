@@ -5,8 +5,8 @@ Last Updated: 2024-06-03
 ## Executive Narrative
 CSAA / Mobilitas QA teams asked for a privacy-safe way to exercise insurance workflows without juggling brittle spreadsheets.
 Over two focused weeks we stood up the Enterprise Synthetic Data Hub: a governed, deterministic generator that produces a single
-snapshot of Persons and Vehicles stored under `data/snapshots/v0.1`. The POC codifies schemas, prompts, and validator hooks so
-future engineers—or LLM copilots—can extend it without relearning the domain.
+snapshot of Persons, Vehicles, and derived Profiles stored under `data/snapshots/v0.1`. The POC codifies schemas, prompts, and
+validator hooks so future engineers—or LLM copilots—can extend it without relearning the domain.
 
 The demo showcases how the repository’s scaffolding, prompts, and tests work together. The generator in
 `src/enterprise_synthetic_data_hub/generation/` uses rule-based logic plus deterministic seeds so QA can reproduce every
@@ -14,20 +14,22 @@ record. CLI exports and manifest writers produce governed CSV + JSON bundles tha
 `schemas/v0.1`. Validators under `agentic/validators/` keep the data trustworthy, while the Master Operating Prompt
 orchestrates Analyze → Execute → Validate loops for human + agent contributors.
 
-With the foundations in place, we are ready to expose the dataset through the Flask API stubs, harden validators, and deliver
-Power BI insights without re-architecting. Funding Phase 2 unlocks multi-snapshot support, automated distribution, and agentic
-extensions that reuse today’s governance guardrails.
+With the foundations in place, the repo now ships a runnable demo: a local Flask API (`/healthz`, `/generate/*`), a colorful
+CLI (`scripts/demo_data.py`), curated JSON samples under `data/demo_samples/v0.1/`, and automation (`make demo`) plus a runbook
+to narrate the flow. Funding Phase 2 unlocks multi-snapshot support, automated distribution, and agentic extensions that reuse
+today’s governance guardrails.
 
 ## Audience & Use Cases
 - QA and UAT engineers who need consistent, governed Person + Vehicle records.
 - Data platform stakeholders evaluating Synthetic Data as a Service.
 - Engineering leadership reviewing A-E-V agentic workflows for future slices.
 
-## Success Indicators (Slice 01–07)
+## Success Indicators (Slices 01–14)
 - ✅ Stable repo scaffolding with prompts, governance, schemas, and validators.
-- ✅ Deterministic generator v0.1 producing ~200 linked Person/Vehicle pairs.
-- ✅ CLI exports and manifest writers aligned with schema definitions.
-- ✅ Agentic prompts + critics ready for human/LLM collaboration.
+- ✅ Generator v0.1 producing linked Person/Vehicle/Profile bundles + sample JSON exports.
+- ✅ CLI exports, demo CLI previews, and manifest writers aligned with schema definitions.
+- ✅ Local Flask API + smoke tests verifying `/generate/*` endpoints.
+- ✅ Agentic prompts + critics (v2) ready for human/LLM collaboration.
 
 ## Demo Assets
 | Artifact | Path |
@@ -37,5 +39,7 @@ extensions that reuse today’s governance guardrails.
 | Generator deep dive | `docs/demo/03-generator-v0.1.md` |
 | A-E-V workflow explainer | `docs/demo/04-aev-explainer.md` |
 | Roadmap | `docs/demo/05-roadmap.md` |
+| Demo runbook | `docs/demo/06-runbook.md` |
+| API reference | `docs/api.md` |
 | Slide deck | `docs/demo/slides/deck.md` |
 | Presenter script | `docs/demo/talking-points/presenter_script.md` |

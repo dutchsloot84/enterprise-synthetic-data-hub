@@ -18,9 +18,13 @@ def test_generate_snapshot_bundle_deterministic():
     assert bundle_a.vehicles == bundle_b.vehicles
     assert bundle_a.metadata.record_count_persons == 3
     assert bundle_a.metadata.record_count_vehicles == 3
+    assert bundle_a.metadata.record_count_profiles == 3
     assert bundle_a.vehicles[0]["lob_type"] == bundle_a.persons[0]["lob_type"]
     assert bundle_a.vehicles[0]["garaging_postal_code"] == bundle_a.persons[0]["postal_code"]
     assert bundle_a.persons[0]["address_line_2"] is not None
+    assert bundle_a.persons[0]["synthetic_source"] == settings.synthetic_marker
+    assert bundle_a.vehicles[0]["synthetic_source"] == settings.synthetic_marker
+    assert bundle_a.profiles[0]["synthetic_source"] == settings.synthetic_marker
 
 
 def test_generate_snapshot_bundle_rejects_invalid_count():
@@ -42,6 +46,7 @@ def test_write_snapshot_bundle_persists_json(tmp_path):
     assert payload["metadata"]["record_count_vehicles"] == 2
     assert len(payload["persons"]) == 2
     assert len(payload["vehicles"]) == 2
+    assert len(payload["profiles"]) == 2
 
     metadata_file = path.with_name(path.name.replace("dataset_", "metadata_"))
     metadata_payload = json.loads(metadata_file.read_text(encoding="utf-8"))
@@ -53,3 +58,4 @@ def test_snapshot_bundle_type_annotations():
     bundle = generate_snapshot_bundle(num_records=1, seed=1)
     assert isinstance(bundle, SnapshotBundle)
     assert bundle.metadata.dataset_version == settings.dataset_version
+    assert bundle.profiles

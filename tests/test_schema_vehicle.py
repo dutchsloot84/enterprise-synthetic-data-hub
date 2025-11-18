@@ -16,8 +16,12 @@ def test_vehicle_schema_fields():
         make="Honda",
         model="Accord",
         model_year=2022,
+        body_style="SUV",
+        risk_rating="Low",
         garaging_postal_code="95112",
+        garaging_state="CA",
         lob_type="Personal",
+        synthetic_source="enterprise-synthetic-data-hub v0.1",
     )
 
     assert UUID_PATTERN.match(vehicle.vehicle_id)

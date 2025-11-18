@@ -18,6 +18,7 @@ class DatasetSettings:
     target_person_records: int = 200
     random_seed: int = 20240601
     generation_timestamp: datetime = datetime(2024, 6, 1, 0, 0, 0)
+    synthetic_marker: str = "enterprise-synthetic-data-hub v0.1"
 
 
 settings = DatasetSettings()

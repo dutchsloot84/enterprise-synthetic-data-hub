@@ -6,6 +6,8 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from enterprise_synthetic_data_hub.config.settings import settings
+
 
 class Person(BaseModel):
     """Minimal representation of a person for Mobilitas / CSAA QA needs."""
@@ -23,6 +25,10 @@ class Person(BaseModel):
     postal_code: str = Field(..., min_length=5, max_length=10)
     country: str = "US"
     lob_type: str = Field(..., description="Line of business classification (Personal, Commercial, Other)")
+    synthetic_source: str = Field(
+        default=settings.synthetic_marker,
+        description="Indicates the governed synthetic origin for demo storytelling.",
+    )
 
     model_config = ConfigDict(
         frozen=True,
