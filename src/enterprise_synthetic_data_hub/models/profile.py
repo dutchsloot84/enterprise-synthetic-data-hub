@@ -1,4 +1,3 @@
-"""Profile schema derived from governed Person and Vehicle entities."""
 from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -22,11 +21,32 @@ class Profile(BaseModel):
     vehicle_summary: str
     risk_rating: str
     synthetic_source: str = Field(
-        default=settings.synthetic_marker,
+        ...,
         description="Indicates the governed synthetic origin for demo storytelling.",
     )
 
-    model_config = ConfigDict(frozen=True)
+    model_config = ConfigDict(
+        frozen=True,
+        json_schema_extra={
+            "examples": [
+                {
+                    "profile_id": "8dc78f6a-b2d9-5ad4-845d-e2166d4ad8ea",
+                    "person_id": "c0f7be59-0eb5-4c6f-9f24-ffe236c05c77",
+                    "vehicle_id": "d4d43008-76d3-4a44-9972-5e6a9b2fd3a8",
+                    "full_name": "Ava Rivera",
+                    "lob_type": "Personal",
+                    "residence_state": "CA",
+                    "city": "Sacramento",
+                    "postal_code": "95814",
+                    "garaging_state": "CA",
+                    "primary_vehicle_vin": "1HGBH41JXMN109186",
+                    "vehicle_summary": "2021 Toyota Camry",
+                    "risk_rating": "Low",
+                    "synthetic_source": settings.synthetic_marker,
+                }
+            ]
+        },
+    )
 
 
 __all__ = ["Profile"]

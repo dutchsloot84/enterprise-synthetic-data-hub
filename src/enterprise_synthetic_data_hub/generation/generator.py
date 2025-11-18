@@ -130,7 +130,7 @@ def _generate_person(rng: random.Random, index: int) -> dict:
         "postal_code": postal_code,
         "country": "US",
         "lob_type": lob_type,
-        "synthetic_source": SYNTHETIC_MARKER,
+        "synthetic_source": settings.synthetic_marker,
     }
 
 
@@ -157,7 +157,7 @@ def _generate_vehicle(rng: random.Random, person: dict) -> dict:
         "lob_type": lob_type,
         "garaging_state": person["state"],
         "garaging_postal_code": person["postal_code"],
-        "synthetic_source": SYNTHETIC_MARKER,
+        "synthetic_source": settings.synthetic_marker,
     }
 
 
@@ -182,7 +182,7 @@ def generate_snapshot_bundle(
         vehicles.append(vehicle)
 
     profiles = (
-        build_profiles(persons, vehicles, synthetic_source=SYNTHETIC_MARKER)
+        build_profiles(persons, vehicles, synthetic_source=settings.synthetic_marker)
         if include_profiles
         else []
     )
@@ -234,5 +234,4 @@ __all__ = [
     "generate_snapshot_bundle",
     "write_snapshot_bundle",
 ]
-SYNTHETIC_MARKER = settings.synthetic_marker
 

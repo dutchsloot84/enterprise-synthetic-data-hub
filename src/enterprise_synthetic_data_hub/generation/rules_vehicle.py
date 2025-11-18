@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import List
 
+from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.models.vehicle import Vehicle
 
 
@@ -28,6 +29,10 @@ def generate_vehicle_placeholder(person_id: str) -> Vehicle:
         make="Placeholder",
         model="Sedan",
         model_year=2020,
+        body_style="Sedan",
+        risk_rating="Low",
         garaging_postal_code="94105",
         lob_type="Personal",
+        garaging_state="CA",
+        synthetic_source=settings.synthetic_marker,
     )
