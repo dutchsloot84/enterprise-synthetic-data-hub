@@ -50,7 +50,8 @@ api = data.get("api") or {}
 print(api.get("health_endpoint", "/healthz"))
 PY
 )
-PORT="${DEMO_API_PORT:-${DEFAULT_PORT}}"
+
+BASE_PORT="${DEMO_API_PORT:-${DEFAULT_PORT}}"
 
 port_in_use() {
     python - "$HOST" "$1" <<'PY'
@@ -64,23 +65,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
 PY
 }
 
-pick_port() {
-    local candidate="$1"
-    local max_attempts=10
-    for ((i=0; i<max_attempts; i++)); do
+select_port() {
+    local base="$1"
+    for offset in 0 1 2 3 4; do
+        local candidate=$((base + offset))
         if port_in_use "$candidate"; then
             log "Port ${candidate} busy. Trying next port."
-            candidate=$((candidate + 1))
             continue
         fi
         echo "$candidate"
         return 0
     done
-    log "Unable to find open port after ${max_attempts} attempts."
+    log "Unable to find open port between ${base} and $((base + 4))."
     exit 1
 }
 
-SELECTED_PORT=$(pick_port "$PORT")
+SELECTED_PORT=$(select_port "$BASE_PORT")
 BASE_URL="http://${HOST}:${SELECTED_PORT}"
 
 log "Starting Flask demo API on ${BASE_URL} (profile=${PROFILE_NAME})"

@@ -4,151 +4,115 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
-import subprocess
-import sys
-from pathlib import Path
-
-import requests
+import platform
+import time
 
 from enterprise_synthetic_data_hub.config import demo_profiles
 from enterprise_synthetic_data_hub.config.settings import settings
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT_ROOT = REPO_ROOT / "data" / "demo_runs"
-MANIFEST_TEMPLATE = "snapshot_manifest_{slug}.json"
+from demo_flow import DemoRunState
+from demo_flow import api as api_flow
+from demo_flow import preview, snapshot, steps, validation
 
 
-def _step(label: str) -> None:
-    print(f"[ {label} ]")
+def _measure(state: DemoRunState, metric_name: str, func):
+    start = time.perf_counter()
+    result = func()
+    state.record_timing(metric_name, time.perf_counter() - start)
+    return result
 
 
-def _run(cmd: list[str], **kwargs) -> None:
-    print(f"$ {' '.join(cmd)}")
-    subprocess.run(cmd, check=True, **kwargs)
-
-
-def _generate_snapshot(profile: demo_profiles.DemoProfile) -> tuple[Path, dict]:
-    SNAPSHOT_ROOT.mkdir(parents=True, exist_ok=True)
-    output_dir = SNAPSHOT_ROOT / profile.name
-    output_dir.mkdir(parents=True, exist_ok=True)
-    cmd = [
-        sys.executable,
-        "-m",
-        "enterprise_synthetic_data_hub.cli.main",
-        "generate-snapshot",
-        "--output-dir",
-        str(output_dir),
-        "--records",
-        str(profile.records_person),
-    ]
-    if profile.randomize:
-        cmd.append("--randomize")
-    elif profile.seed is not None:
-        cmd.extend(["--seed", str(profile.seed)])
-    _run(cmd, cwd=REPO_ROOT)
-    version_slug = settings.dataset_version.replace(".", "_")
-    manifest_path = output_dir / MANIFEST_TEMPLATE.format(slug=version_slug)
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    return output_dir, manifest
-
-
-def _start_api(profile: demo_profiles.DemoProfile) -> tuple[str, Path]:
-    env = os.environ.copy()
-    env.setdefault("DEMO_PROFILE", profile.name)
-    _run(["bash", str(REPO_ROOT / "scripts" / "demo_start_api.sh")], env=env)
-    port_file = REPO_ROOT / ".demo_api_port"
-    if not port_file.exists():
-        raise RuntimeError("demo_start_api.sh did not record the port")
-    port = port_file.read_text(encoding="utf-8").strip()
-    api_settings = demo_profiles.get_api_settings()
-    host = api_settings.host
-    base_url = f"http://{host}:{port}"
-    return base_url, port_file
-
-
-def _call_health(base_url: str, endpoint: str) -> dict:
-    response = requests.get(f"{base_url.rstrip('/')}{endpoint}", timeout=10)
-    response.raise_for_status()
-    return response.json()
-
-
-def _preview_profiles_via_api(base_url: str, profile: demo_profiles.DemoProfile) -> list[dict]:
-    payload = {
-        "records": profile.records_profile,
-        "seed": profile.seed,
-        "randomize": profile.randomize,
-    }
-    response = requests.post(f"{base_url.rstrip('/')}/generate/profile", json=payload, timeout=10)
-    response.raise_for_status()
-    return response.json().get("profiles", [])
-
-
-def _cli_preview(base_url: str, profile: demo_profiles.DemoProfile) -> None:
-    cmd = [
-        sys.executable,
-        str(REPO_ROOT / "scripts" / "demo_data.py"),
-        "--profile",
-        profile.name,
-        "--use-api",
-        "--api-url",
-        base_url,
-        "--records",
-        str(profile.records_profile),
-        "--preview",
-        "1",
-    ]
-    _run(cmd, cwd=REPO_ROOT)
-
-
-def _run_smoke_tests() -> None:
-    _run(["pytest", "-m", "demo"], cwd=REPO_ROOT)
-
-
-def orchestrate(profile_name: str, skip_smoke: bool) -> None:
-    profile = demo_profiles.get_demo_profile(profile_name)
+def orchestrate(state: DemoRunState, stepper: steps.StepManager, skip_smoke: bool) -> None:
     api_settings = demo_profiles.get_api_settings()
     try:
-        _step("STEP 1/5 Generate governed snapshot")
-        snapshot_dir, manifest = _generate_snapshot(profile)
-        _step("STEP 2/5 Start Flask API")
-        base_url, port_file = _start_api(profile)
-        _step("STEP 3/5 Health check")
-        health = _call_health(base_url, api_settings.health_endpoint)
-        print(json.dumps(health, indent=2))
-        _step("STEP 4/5 Preview data via API + CLI")
-        profiles = _preview_profiles_via_api(base_url, profile)
-        print(json.dumps(profiles[:1], indent=2))
-        _cli_preview(base_url, profile)
-        if not skip_smoke:
-            _step("STEP 5/5 Demo smoke tests")
-            _run_smoke_tests()
-        else:
-            _step("STEP 5/5 Demo smoke tests (skipped)")
-        print("\n===== Demo Summary =====")
-        print(f"Profile: {profile.name}")
-        print(f"Snapshot location: {snapshot_dir}")
-        print(f"API URL: {base_url}")
-        counts = manifest.get("record_counts", {})
-        print(
-            "Counts — persons: {p} vehicles: {v} profiles: {r}".format(
-                p=counts.get("persons"),
-                v=counts.get("vehicles"),
-                r=counts.get("profiles"),
-            )
+        state.snapshot_dir, state.manifest = stepper.run(
+            "STEP 1/5 Generate governed snapshot",
+            lambda: _measure(state, "snapshot_seconds", lambda: snapshot.generate_snapshot(state.profile)),
         )
-        print("Curated demo bundles: data/demo_samples/v0.1/")
-        print(f"Synthetic marker: {settings.synthetic_marker}")
+        state.base_url, state.api_port = stepper.run(
+            "STEP 2/5 Start Flask API",
+            lambda: _measure(state, "api_start_seconds", lambda: api_flow.start_api(state.profile)),
+        )
+        health = stepper.run(
+            "STEP 3/5 Health check",
+            lambda: preview.call_health(state.base_url or "", api_settings.health_endpoint),
+        )
+        print(json.dumps(health, indent=2))
+
+        def preview_block() -> list[dict]:
+            profiles_payload = preview.preview_profiles_via_api(state.base_url or "", state.profile)
+            print(json.dumps(profiles_payload[:1], indent=2))
+            _measure(state, "cli_preview_seconds", lambda: preview.cli_preview(state.base_url or "", state.profile))
+            return profiles_payload
+
+        stepper.run("STEP 4/5 Preview data via API + CLI", preview_block)
+        if not skip_smoke:
+            stepper.run("STEP 5/5 Demo smoke tests", validation.run_smoke_tests)
+        else:
+            stepper.run(
+                "STEP 5/5 Demo smoke tests (skipped)",
+                lambda: print("Smoke tests skipped via --skip-smoke flag."),
+            )
+        _print_summary(state)
     finally:
-        _run(["bash", str(REPO_ROOT / "scripts" / "demo_stop_api.sh")], cwd=REPO_ROOT)
+        api_flow.stop_api()
+
+
+def _print_summary(state: DemoRunState) -> None:
+    print("\n===== Demo Summary =====")
+    print(f"Profile: {state.profile.name}")
+    if state.snapshot_dir:
+        print(f"Snapshot location: {state.snapshot_dir}")
+    print(f"Latest demo symlink: {snapshot.LATEST_DEMO_LINK}")
+    if state.base_url:
+        print(f"API URL: {state.base_url}")
+    counts = (state.manifest or {}).get("record_counts", {})
+    print(
+        "Counts — persons: {p} vehicles: {v} profiles: {r}".format(
+            p=counts.get("persons"),
+            v=counts.get("vehicles"),
+            r=counts.get("profiles"),
+        )
+    )
+    print("Curated demo bundles: data/demo_samples/v0.1/")
+    print(f"Synthetic marker: {settings.synthetic_marker}")
+    if state.timings:
+        print("Timing metrics (seconds):")
+        for key in sorted(state.timings):
+            print(f"  {key}: {state.timings[key]:.2f}")
+
+
+def _print_failure_diagnostics(exc: Exception, state: DemoRunState, stepper: steps.StepManager, args: argparse.Namespace) -> None:
+    port = state.api_port
+    if port is None and api_flow.PORT_FILE.exists():
+        port = api_flow.PORT_FILE.read_text(encoding="utf-8").strip()
+    diagnostics = {
+        "error": str(exc),
+        "python_version": platform.python_version(),
+        "profile": state.profile.name,
+        "interactive": args.interactive,
+        "skip_smoke": args.skip_smoke,
+        "api_port": port,
+        "last_successful_step": stepper.last_successful_step(),
+    }
+    print("\nDemo flow encountered an error. Diagnostics:")
+    print(json.dumps(diagnostics, indent=2))
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="End-to-end demo orchestrator")
     parser.add_argument("--profile", default=None, help="Demo profile name (default: baseline)")
     parser.add_argument("--skip-smoke", action="store_true", help="Skip pytest -m demo")
+    parser.add_argument("--interactive", action="store_true", help="Pause for input after each step")
     args = parser.parse_args()
-    orchestrate(demo_profiles.get_profile_name(args.profile), args.skip_smoke)
+    profile = demo_profiles.get_demo_profile(demo_profiles.get_profile_name(args.profile))
+    state = DemoRunState(profile=profile)
+    stepper = steps.StepManager(interactive=args.interactive)
+    try:
+        orchestrate(state, stepper, args.skip_smoke)
+    except Exception as exc:  # pragma: no cover - orchestration guardrail
+        _print_failure_diagnostics(exc, state, stepper, args)
+        raise
     return 0
 
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import List
 
+from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.models.person import Person
 
 
@@ -38,4 +39,5 @@ def generate_person_placeholder() -> Person:
         postal_code="94105",
         country="US",
         lob_type="Personal",
+        synthetic_source=settings.synthetic_marker,
     )

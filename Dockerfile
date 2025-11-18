@@ -11,4 +11,4 @@ RUN pip install --upgrade pip && \
     pip install -e .[dev]
 
 EXPOSE 5000
-CMD ["python", "scripts/run_demo_flow.py", "--skip-smoke"]
+CMD ["bash"]

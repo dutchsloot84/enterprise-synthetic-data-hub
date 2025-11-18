@@ -8,15 +8,18 @@ The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobi
 1. `git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git`
 2. `cd enterprise-synthetic-data-hub`
 3. `bash scripts/bootstrap_and_demo.sh`
+   - _Zero-setup option_: `curl -sSL https://raw.githubusercontent.com/dutchsloot84/enterprise-synthetic-data-hub/develop/scripts/bootstrap_and_demo.sh | bash`
 
 ### Windows (PowerShell)
 1. `git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git`
 2. `cd enterprise-synthetic-data-hub`
 3. `./scripts/bootstrap_and_demo.ps1`
+   - _One-liner_: `iwr https://raw.githubusercontent.com/dutchsloot84/enterprise-synthetic-data-hub/develop/scripts/bootstrap_and_demo.ps1 | iex`
 
 ### Docker / Devcontainer
 - `docker build -t esdh-demo .`
-- `docker run --rm -p 5000:5000 esdh-demo`
+- `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh`
+- `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh --skip-smoke` (faster dry run)
 - (Optional) open the repo in VS Code / Codespaces to reuse `.devcontainer/devcontainer.json` which installs dependencies and runs `make demo-smoke` automatically.
 
 Each bootstrap flow installs dependencies, runs `make demo`, and guides you through:
@@ -24,6 +27,8 @@ Each bootstrap flow installs dependencies, runs `make demo`, and guides you thro
 - Automated Flask API startup with `/healthz` verification.
 - `scripts/demo_data.py` preview (generator vs. API mode) with Rich formatting.
 - Optional `pytest -m demo` smoke tests to prove the CLI/API contracts still hold.
+
+The `bootstrap_and_demo.*` scripts now detect whether they are being run interactively or via a piped one-liner so they can print safe prompts, validate prerequisites (Python, pip, git, curl/wget/iwr, `config/demo.yaml`), and always use `python -m pip` for deterministic installs.
 
 ## Demo Profiles
 - Profiles live in `config/demo.yaml`. The repo ships with:
@@ -34,17 +39,24 @@ Each bootstrap flow installs dependencies, runs `make demo`, and guides you thro
   - `python scripts/demo_data.py --profile heavy --preview 3`
   - `DEMO_PROFILE=baseline python scripts/demo_validate.py`
 - Override ports for the API bootstrap with `DEMO_API_PORT=5051 make demo` when port 5000 is busy.
+- Inspect the governing settings at any time via `make demo-profile-info` or `python -m enterprise_synthetic_data_hub.cli.profile_info --profile heavy --json` to view record counts, seeds, API defaults, and the payload field list.
 
 ## Synthetic Governance
 - Every Person, Vehicle, and Profile now includes `synthetic_source="enterprise-synthetic-data-hub v0.1"` so consumers can prove the data is synthetic.
 - `make demo-validate` (or `python scripts/demo_validate.py`) generates a sample bundle, runs schema validation, and ensures every entity carries the marker.
 - `scripts/run_demo_flow.py` and the README demo commands surface the marker in summary output and docs to reinforce governance optics.
 
+## Demo Snapshot Retention
+- Each demo run now lands under `data/demo_runs/<timestamp>_<profile>/` and the newest run is symlinked at `data/demo_runs/latest_demo` for quick sharing.
+- Only the five most recent runs are kept; older directories are removed automatically.
+- `make demo-clean` (or `python -m enterprise_synthetic_data_hub.cli.profile_info` to inspect profiles beforehand) removes `.demo_api_pid/.demo_api_port` and clears `data/demo_runs/` so you can rerun the story from scratch.
+
 ## If Something Breaks
 - **Reset the environment** – `rm -rf .venv && python3 -m venv .venv && source .venv/bin/activate && pip install -e .[dev]`.
 - **Clear demo artifacts** – `rm -rf data/demo_runs` removes prior snapshot outputs.
 - **Stop runaway APIs** – `make demo-stop` (or `bash scripts/demo_stop_api.sh`) removes `.demo_api_pid/.demo_api_port` and kills the background Flask server.
 - **Change ports** – `DEMO_API_PORT=5051 make demo` or edit `config/demo.yaml` if 5000 is unavailable.
+- **Nuke everything safely** – `make demo-clean` wipes `.demo_api_pid/.demo_api_port` and the timestamped `data/demo_runs/` directories before re-running the flow.
 
 ## POC Scope
 - Generate a **single snapshot dataset** with a few hundred coherent Person + Vehicle records.
@@ -84,6 +96,32 @@ tests/             # Pytest suite for schema + metadata validation
 governance/        # Roles, decision log, data stewardship rules
 prompts/           # Master Operating Prompt + sub-prompts for AEV work
 future/            # Stubs for agentic AI and Power BI extensions
+```
+
+### Demo Architecture (Mermaid)
+```mermaid
+flowchart LR
+    A[Profiles config] --> B[Generator]
+    B --> C[Snapshot + Manifest]
+    C --> D[demo_runs/latest_demo]
+    D --> E[Flask API]
+    E --> F[demo_data CLI]
+    F --> G[Pytest demo validators]
+```
+
+### API Request Flow (Mermaid)
+```mermaid
+sequenceDiagram
+    participant CLI as demo_data.py
+    participant API as Flask API
+    participant Gen as Generator
+    participant Profiles as Profiles Builder
+    CLI->>API: POST /generate/profile
+    API->>Gen: generate_snapshot_bundle()
+    Gen->>Profiles: build_profiles()
+    Profiles-->>Gen: governed profiles
+    Gen-->>API: bundle payload
+    API-->>CLI: JSON response with synthetic_source
 ```
 
 ## Quickstart
@@ -148,6 +186,10 @@ python -m enterprise_synthetic_data_hub.cli.main generate-snapshot
 
 # colorful demo preview
 python scripts/demo_data.py --records 3 --preview 2 --randomize
+
+# inspect governed profile metadata
+python -m enterprise_synthetic_data_hub.cli.profile_info --profile baseline
+make demo-profile-info
 ```
 
 The command prints the exported file paths so QA engineers can copy/paste them
@@ -158,6 +200,7 @@ into validators, API configs, or notebooks.
 - Use `make demo-smoke` to run only the tagged demo tests (`pytest -m demo`).
 - Use `make demo-validate` to confirm schema + synthetic marker guardrails on a fresh sample.
 - Follow `docs/demo/06-runbook.md` for the narrated, copy/paste friendly playbook used in the live demo.
+- `python scripts/run_demo_flow.py --interactive` pauses after each step, records snapshot/API/CLI timing metrics, and surfaces a diagnostics block (Python version, selected profile, fallback port, last successful step) whenever something fails.
 
 ## Containerized Demo
 - Build the image once: `docker build -t esdh-demo .`

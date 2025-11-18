@@ -1,4 +1,3 @@
-"""Vehicle schema definition for the synthetic dataset POC."""
 from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -21,7 +20,7 @@ class Vehicle(BaseModel):
     garaging_state: str = Field(..., min_length=2, max_length=2)
     garaging_postal_code: str = Field(..., min_length=5, max_length=10)
     synthetic_source: str = Field(
-        default=settings.synthetic_marker,
+        ...,
         description="Indicates the governed synthetic origin for demo storytelling.",
     )
 
