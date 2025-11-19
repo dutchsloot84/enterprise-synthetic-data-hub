@@ -5,6 +5,18 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BOOTSTRAP_SH="$REPO_ROOT/scripts/bootstrap_and_demo.sh"
 BOOTSTRAP_PS1="$REPO_ROOT/scripts/bootstrap_and_demo.ps1"
 STAGING_DIR="$REPO_ROOT/dist/bootstrap"
+GH_TOKEN="${GH_TOKEN:-${GITHUB_TOKEN:-}}"
+export GH_TOKEN
+
+if ! command -v gh >/dev/null 2>&1; then
+  echo "GitHub CLI (gh) is required. Install it from https://cli.github.com/ and ensure GH_TOKEN/GITHUB_TOKEN is set." >&2
+  exit 1
+fi
+
+if [[ -z "$GH_TOKEN" ]]; then
+  echo "GH_TOKEN or GITHUB_TOKEN must be set for non-interactive uploads." >&2
+  exit 1
+fi
 
 for file in "$BOOTSTRAP_SH" "$BOOTSTRAP_PS1"; do
   if [ ! -f "$file" ]; then

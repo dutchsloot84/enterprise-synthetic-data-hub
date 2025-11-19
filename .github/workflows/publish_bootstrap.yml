@@ -6,9 +6,20 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install GitHub CLI
+        run: |
+          set -euo pipefail
+          if ! command -v gh >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y gh
+          fi
+          gh --version
 
       - name: Ensure bootstrap scripts exist
         run: |
@@ -22,8 +33,6 @@ jobs:
 
       - name: Resolve latest release tag
         id: release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           tag=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' || true)
@@ -34,8 +43,6 @@ jobs:
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
       - name: Upload bootstrap scripts to latest release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           gh release upload "${{ steps.release.outputs.tag }}" scripts/bootstrap_and_demo.sh scripts/bootstrap_and_demo.ps1 --clobber

@@ -22,6 +22,11 @@ One-liner (Recommended):
 
 iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/latest/download/bootstrap_and_demo.ps1" | iex
 
+### Refreshing the bootstrap distribution
+- Ensure a GitHub release exists (v0.1.0+). The assets are published to `releases/latest/download/*`.
+- With the GitHub CLI available and `GH_TOKEN`/`GITHUB_TOKEN` set, run `bash scripts/publish_bootstrap_assets.sh` (or `./scripts/publish_bootstrap_assets.ps1` on Windows) to upload the latest installers.
+- Alternatively, trigger the **Publish Bootstrap Assets** workflow in GitHub Actions.
+
 ### Docker / Devcontainer
 - `docker build -t esdh-demo .`
 - `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh`

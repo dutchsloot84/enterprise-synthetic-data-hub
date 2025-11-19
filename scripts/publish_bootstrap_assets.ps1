@@ -5,6 +5,18 @@ $repoRoot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $bootstrapSh = Join-Path $repoRoot "scripts/bootstrap_and_demo.sh"
 $bootstrapPs1 = Join-Path $repoRoot "scripts/bootstrap_and_demo.ps1"
 $stagingDir = Join-Path $repoRoot "dist/bootstrap"
+$ghToken = if ($env:GH_TOKEN) { $env:GH_TOKEN } elseif ($env:GITHUB_TOKEN) { $env:GITHUB_TOKEN } else { "" }
+
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    Write-Error "GitHub CLI (gh) is required. Install it from https://cli.github.com/ and set GH_TOKEN or GITHUB_TOKEN."
+    exit 1
+}
+
+if ([string]::IsNullOrWhiteSpace($ghToken)) {
+    Write-Error "GH_TOKEN or GITHUB_TOKEN must be set for non-interactive uploads."
+    exit 1
+}
+$env:GH_TOKEN = $ghToken
 
 $required = @($bootstrapSh, $bootstrapPs1)
 foreach ($file in $required) {
