@@ -4,17 +4,28 @@
 The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobilitas. It delivers an enterprise-aligned foundation for generating privacy-safe synthetic data that represents Persons, Vehicles, and derived Profiles. The focus is on scaffolding, governance, and prompt-driven collaboration so future human and LLM contributors can extend the solution quickly.
 
 ## 🚀 5-Minute Demo (Zero Knowledge Required)
-### Unix / macOS
-1. `git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git`
-2. `cd enterprise-synthetic-data-hub`
-3. `bash scripts/bootstrap_and_demo.sh`
-   - _Zero-setup option_: `curl -sSL https://raw.githubusercontent.com/dutchsloot84/enterprise-synthetic-data-hub/develop/scripts/bootstrap_and_demo.sh | bash`
+### Unix/macOS
+git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git
+cd enterprise-synthetic-data-hub
+bash scripts/bootstrap_and_demo.sh
 
-### Windows (PowerShell)
-1. `git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git`
-2. `cd enterprise-synthetic-data-hub`
-3. `./scripts/bootstrap_and_demo.ps1`
-   - _One-liner_: `iwr https://raw.githubusercontent.com/dutchsloot84/enterprise-synthetic-data-hub/develop/scripts/bootstrap_and_demo.ps1 | iex`
+One-liner (Recommended):
+
+curl -sSL https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/latest/download/bootstrap_and_demo.sh | bash
+
+### Windows PowerShell
+git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git
+cd enterprise-synthetic-data-hub
+./scripts/bootstrap_and_demo.ps1
+
+One-liner (Recommended):
+
+iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/latest/download/bootstrap_and_demo.ps1" | iex
+
+### Refreshing the bootstrap distribution
+- Ensure a GitHub release exists (v0.1.0+). The assets are published to `releases/latest/download/*`.
+- With the GitHub CLI available and `GH_TOKEN`/`GITHUB_TOKEN` set, run `bash scripts/publish_bootstrap_assets.sh` (or `./scripts/publish_bootstrap_assets.ps1` on Windows) to upload the latest installers.
+- Alternatively, trigger the **Publish Bootstrap Assets** workflow in GitHub Actions.
 
 ### Docker / Devcontainer
 - `docker build -t esdh-demo .`

@@ -18,7 +18,7 @@ endif
 PACKAGE := enterprise_synthetic_data_hub
 DEMO_PROFILE ?= baseline
 
-.PHONY: demo demo-smoke demo-validate demo-stop demo-profile-info demo-clean check-makefile
+.PHONY: demo demo-smoke demo-validate demo-stop demo-profile-info demo-clean check-makefile publish-bootstrap
 
 ## Primary guided demo flow
 demo:
@@ -51,3 +51,7 @@ demo-clean:
 ## Validate Makefile syntax via local helper script
 check-makefile:
 	$(Q)bash scripts/check_makefile_syntax.sh
+
+## Upload bootstrap installers to the latest GitHub release
+publish-bootstrap:
+	$(Q)bash scripts/publish_bootstrap_assets.sh
