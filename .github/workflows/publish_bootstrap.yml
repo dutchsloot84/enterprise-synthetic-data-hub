@@ -1,0 +1,44 @@
+name: Publish Bootstrap Assets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Ensure bootstrap scripts exist
+        run: |
+          set -euo pipefail
+          for file in scripts/bootstrap_and_demo.sh scripts/bootstrap_and_demo.ps1; do
+            if [ ! -f "$file" ]; then
+              echo "Missing $file"
+              exit 1
+            fi
+          done
+
+      - name: Resolve latest release tag
+        id: release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          tag=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' || true)
+          if [ -z "$tag" ]; then
+            echo "No release found. Please create a release (e.g., v0.1.0) before publishing assets."
+            exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Upload bootstrap scripts to latest release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh release upload "${{ steps.release.outputs.tag }}" scripts/bootstrap_and_demo.sh scripts/bootstrap_and_demo.ps1 --clobber
+          echo "Bootstrap distribution updated:"
+          echo "- bootstrap_and_demo.sh"
+          echo "- bootstrap_and_demo.ps1"
