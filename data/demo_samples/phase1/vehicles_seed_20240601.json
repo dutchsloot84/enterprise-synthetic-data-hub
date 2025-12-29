@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "dataset_version": "v0.1",
+    "generated_at": "2024-06-01T00:00:00",
+    "record_count_persons": 3,
+    "record_count_vehicles": 3,
+    "record_count_profiles": 3,
+    "notes": "Deterministic snapshot generated from rule-based distributions (seed=20240601)."
+  },
+  "vehicles": [
+    {
+      "vehicle_id": "e48f12b9-6a5d-670a-f9a3-638e5b08acc2",
+      "person_id": "3cf3bd58-da60-fb1c-eb7a-79959588532d",
+      "vin": "V9YDJTJ9WE0TC3P6D",
+      "make": "Subaru",
+      "model": "Forester",
+      "model_year": 2010,
+      "body_style": "Truck",
+      "risk_rating": "High",
+      "lob_type": "Commercial",
+      "garaging_state": "CA",
+      "garaging_postal_code": "94839",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "vehicle_id": "6e887807-5043-796d-4061-88231b393204",
+      "person_id": "57810ce8-98f0-1733-d942-b204a30354ef",
+      "vin": "BEPR137NXF4RSU138",
+      "make": "Honda",
+      "model": "Civic",
+      "model_year": 2017,
+      "body_style": "SUV",
+      "risk_rating": "Low",
+      "lob_type": "Personal",
+      "garaging_state": "NV",
+      "garaging_postal_code": "89037",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "vehicle_id": "3a5f9ccd-ad9a-6f2d-2e3d-6a6340ed367e",
+      "person_id": "bb9d2ebe-f476-092f-40fc-275e69b5220d",
+      "vin": "1K6X8F02ND2UY5W6H",
+      "make": "Ford",
+      "model": "Escape",
+      "model_year": 2024,
+      "body_style": "SUV",
+      "risk_rating": "Medium",
+      "lob_type": "Commercial",
+      "garaging_state": "AZ",
+      "garaging_postal_code": "85282",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    }
+  ],
+  "record_count": 3,
+  "seed": 20240601,
+  "records_requested": 3
+}
