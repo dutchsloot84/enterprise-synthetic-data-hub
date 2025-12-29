@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "dataset_version": "v0.1",
+    "generated_at": "2024-06-01T00:00:00",
+    "notes": "Deterministic snapshot generated from rule-based distributions (seed=20240601).",
+    "record_count_persons": 3,
+    "record_count_profiles": 3,
+    "record_count_vehicles": 3
+  },
+  "persons": [
+    {
+      "address_line_1": "100 Main Street",
+      "address_line_2": "Apt 200",
+      "city": "San Mateo",
+      "country": "US",
+      "date_of_birth": "2010-11-11",
+      "driver_license_number": "CA4391040",
+      "driver_license_state": "CA",
+      "first_name": "Casey",
+      "last_name": "Patel",
+      "lob_type": "Commercial",
+      "person_id": "3cf3bd58-da60-fb1c-eb7a-79959588532d",
+      "postal_code": "94839",
+      "state": "CA",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "address_line_1": "101 Main Street",
+      "address_line_2": null,
+      "city": "Las Vegas",
+      "country": "US",
+      "date_of_birth": "1988-05-23",
+      "driver_license_number": "NV7964467",
+      "driver_license_state": "NV",
+      "first_name": "Casey",
+      "last_name": "Rivera",
+      "lob_type": "Personal",
+      "person_id": "57810ce8-98f0-1733-d942-b204a30354ef",
+      "postal_code": "89037",
+      "state": "NV",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "address_line_1": "102 Main Street",
+      "address_line_2": null,
+      "city": "Tempe",
+      "country": "US",
+      "date_of_birth": "1975-11-15",
+      "driver_license_number": "AZ4547743",
+      "driver_license_state": "AZ",
+      "first_name": "Taylor",
+      "last_name": "Thompson",
+      "lob_type": "Commercial",
+      "person_id": "bb9d2ebe-f476-092f-40fc-275e69b5220d",
+      "postal_code": "85282",
+      "state": "AZ",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    }
+  ],
+  "record_count": 3,
+  "records_requested": 3,
+  "seed": 20240601
+}
