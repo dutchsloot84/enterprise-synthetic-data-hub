@@ -1,0 +1,72 @@
+[
+  {
+    "profile_id": "3922ec74-6f3d-5238-b512-b35d6bf15d81",
+    "person_id": "bf6e52b3-c3d2-bf52-5c6f-2a002a8ec4aa",
+    "vehicle_id": "58db8af6-efbb-f6f1-b6a8-68bf96ffbc83",
+    "full_name": "Casey Zhou",
+    "lob_type": "Personal",
+    "residence_state": "NV",
+    "city": "Henderson",
+    "postal_code": "89131",
+    "garaging_state": "NV",
+    "primary_vehicle_vin": "YNXD07Y7BLATX6YDY",
+    "vehicle_summary": "2017 Ford Focus",
+    "risk_rating": "Medium"
+  },
+  {
+    "profile_id": "307dcd54-9fdb-5331-806f-7b8fb3d86623",
+    "person_id": "e98e5cec-c06a-bb54-6dd0-4975ef19feda",
+    "vehicle_id": "0c6fc194-fb47-f683-8006-a8c593675d17",
+    "full_name": "Alex Rivera",
+    "lob_type": "Personal",
+    "residence_state": "CA",
+    "city": "Walnut Creek",
+    "postal_code": "94802",
+    "garaging_state": "CA",
+    "primary_vehicle_vin": "TELCW02NXBTHK378M",
+    "vehicle_summary": "2014 Toyota Prius",
+    "risk_rating": "Low"
+  },
+  {
+    "profile_id": "d18396d2-3cad-5257-b03c-3929b76aeb58",
+    "person_id": "51706c4f-3afb-beaa-7bfd-0a242dcbeb00",
+    "vehicle_id": "a3af5458-51dc-e809-2517-935a637fc54f",
+    "full_name": "Jordan Zhou",
+    "lob_type": "Personal",
+    "residence_state": "WA",
+    "city": "Seattle",
+    "postal_code": "98001",
+    "garaging_state": "WA",
+    "primary_vehicle_vin": "4CYRRK5L8AXD4NTR9",
+    "vehicle_summary": "2018 Chevrolet Trax",
+    "risk_rating": "Medium"
+  },
+  {
+    "profile_id": "3535c892-63b2-5c8c-8a0f-56170a546dcb",
+    "person_id": "a9fdd287-c2c4-51ec-1f00-06c6506db2c8",
+    "vehicle_id": "1ffb1947-75c1-7d50-74b1-2926a76270da",
+    "full_name": "Morgan Smith",
+    "lob_type": "Commercial",
+    "residence_state": "WA",
+    "city": "Seattle",
+    "postal_code": "98165",
+    "garaging_state": "WA",
+    "primary_vehicle_vin": "NXJGBUSSD45TNJGP2",
+    "vehicle_summary": "2009 Toyota Camry",
+    "risk_rating": "High"
+  },
+  {
+    "profile_id": "12a7566b-19df-51c4-9912-22f24845b43e",
+    "person_id": "6ee1598e-e971-5a5e-9a55-29657d619aec",
+    "vehicle_id": "06e48761-dbba-c6f9-735d-ebb41579ef38",
+    "full_name": "Morgan Nguyen",
+    "lob_type": "Commercial",
+    "residence_state": "AZ",
+    "city": "Tempe",
+    "postal_code": "85163",
+    "garaging_state": "AZ",
+    "primary_vehicle_vin": "SMMCL0D7YE6BL1RZ9",
+    "vehicle_summary": "2024 Subaru Forester",
+    "risk_rating": "Medium"
+  }
+]

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import List
 
+from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.models.person import Person
 
 
@@ -14,10 +15,11 @@ def build_person_rules() -> List[str]:
     """
 
     return [
-        "Use deterministic random seed for reproducibility.",
-        "Assign UUIDv4-based person_id values.",
-        "Ensure driver_license_number matches synthetic formats (e.g., 'X000-0000-0000').",
-        "Derive lob_type values from a curated distribution (Personal vs Commercial).",
+        "Use deterministic random seed + UUIDv4 identifiers for each person.",
+        "Select driver_license_state from the governed western region list (CA/AZ/NV/OR/WA).",
+        "Generate postal_code values that stay within curated ranges for each state.",
+        "Populate address_line_2 for every third record to validate optional-field logic.",
+        "Weight lob_type assignments toward Personal (70%) while keeping Commercial coverage.",
     ]
 
 
@@ -37,4 +39,5 @@ def generate_person_placeholder() -> Person:
         postal_code="94105",
         country="US",
         lob_type="Personal",
+        synthetic_source=settings.synthetic_marker,
     )

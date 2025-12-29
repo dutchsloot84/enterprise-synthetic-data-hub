@@ -9,3 +9,7 @@ __pycache__/
 .mypy_cache/
 ruff_cache/
 data/snapshots/**/generated*
+.demo_api_pid
+.demo_api_port
+data/demo_runs/*
+!data/demo_runs/.gitkeep

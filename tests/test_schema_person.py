@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from datetime import date
 
+from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.models.person import Person
 
 UUID_PATTERN = re.compile(r"^[0-9a-fA-F-]{36}$")
@@ -22,6 +23,7 @@ def test_person_schema_fields():
         postal_code="95112",
         country="US",
         lob_type="Personal",
+        synthetic_source=settings.synthetic_marker,
     )
 
     assert UUID_PATTERN.match(person.person_id)

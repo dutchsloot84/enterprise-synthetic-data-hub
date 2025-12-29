@@ -1,0 +1,19 @@
+profiles:
+  baseline:
+    description: "Fast path used during onboarding demos"
+    records_person: 30
+    records_vehicle: 30
+    records_profile: 30
+    seed: 42
+    randomize: false
+  heavy:
+    description: "Larger sample that stresses the CLI/API"
+    records_person: 200
+    records_vehicle: 200
+    records_profile: 200
+    seed: null
+    randomize: true
+api:
+  default_host: "127.0.0.1"
+  default_port: 5000
+  health_endpoint: "/healthz"

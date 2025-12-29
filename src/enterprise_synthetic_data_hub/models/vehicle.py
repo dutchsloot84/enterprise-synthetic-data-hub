@@ -1,7 +1,8 @@
-"""Vehicle schema definition for the synthetic dataset POC."""
 from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Field
+
+from enterprise_synthetic_data_hub.config.settings import settings
 
 
 class Vehicle(BaseModel):
@@ -13,8 +14,15 @@ class Vehicle(BaseModel):
     make: str
     model: str
     model_year: int = Field(..., ge=1980, le=2100)
-    garaging_postal_code: str = Field(..., min_length=5, max_length=10)
+    body_style: str
+    risk_rating: str
     lob_type: str = Field(..., description="Line of business classification (Personal, Commercial, Other)")
+    garaging_state: str = Field(..., min_length=2, max_length=2)
+    garaging_postal_code: str = Field(..., min_length=5, max_length=10)
+    synthetic_source: str = Field(
+        ...,
+        description="Indicates the governed synthetic origin for demo storytelling.",
+    )
 
     model_config = ConfigDict(
         frozen=True,
@@ -27,8 +35,12 @@ class Vehicle(BaseModel):
                     "make": "Toyota",
                     "model": "Camry",
                     "model_year": 2021,
+                    "body_style": "SUV",
+                    "risk_rating": "Low",
+                    "garaging_state": "CA",
                     "garaging_postal_code": "95814",
                     "lob_type": "Personal",
+                    "synthetic_source": settings.synthetic_marker,
                 }
             ]
         },

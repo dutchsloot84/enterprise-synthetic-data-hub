@@ -1,0 +1,34 @@
+version: 0.3.0
+name: mobilitas-enterprise-synthetic-data-hub-demo-v2
+mop: master_orchestrator_prompt.md
+prompts:
+  base_dir: ../prompts/sub-prompts
+  slices:
+    - id: 08
+      file: 08_generator_profiles.md
+      description: Generator upgrades (profiles + samples)
+    - id: 09
+      file: 09_flask_api.md
+      description: Demo Flask API endpoints
+    - id: 10
+      file: 10_demo_cli.md
+      description: Colorized demo CLI + API calls
+    - id: 11
+      file: 11_make_demo.md
+      description: Makefile automation + helper scripts
+    - id: 12
+      file: 12_demo_runbook.md
+      description: Demo runbook + documentation refresh
+    - id: 13
+      file: 13_smoke_tests.md
+      description: Smoke test suites and pytest markers
+    - id: 14
+      file: 14_prompt_archive.md
+      description: Prompt archival + regeneration workflow
+agentic:
+  tasks_dir: ../agentic/tasks
+  critics_dir: ../agentic/critic
+  validators_dir: ../agentic/validators
+  workflows:
+    - task: task_full_pipeline.md
+      description: Plan → Implement → Validate → Document end-to-end workflow
