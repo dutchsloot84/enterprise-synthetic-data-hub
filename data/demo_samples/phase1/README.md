@@ -64,8 +64,19 @@ for name, payload in payloads.items():
 PY
 ```
 
+**If tests/golden snapshots fail after a schema change, regenerate artifacts using the commands below.**
+
 ## Determinism tripwires
 
 - Keep `DatasetSettings.generation_timestamp` and `DatasetSettings.random_seed` unchanged when regenerating.
 - Endpoints should be called with the explicit `seed` and `records` shown above to avoid any randomness.
 - Timestamps and UUIDs are already seeded/fixed; if an unexpected timestamp appears, regenerate after verifying the seed is set to `20240601`.
+
+## When to regenerate (demo backups + golden snapshots)
+
+- Any schema/contract update (fields added/removed/renamed, required keys/type changes)
+- Relationship logic changes that affect profile/person/vehicle linkages
+- API envelope changes (e.g., `/healthz` metadata shape or error envelope updates)
+- Generator rule tweaks that alter outputs even with the same seed
+
+Regenerating both `data/demo_samples/phase1/*.json` and `tests/golden/*.json` prevents demo drift and keeps golden tests aligned with the governed contract.
