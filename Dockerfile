@@ -23,7 +23,8 @@ RUN set -eux; \
             echo "Corporate CA bundle missing at ${CORP_CA_PATH}. Place it locally before building, or set SKIP_CORP_CA=1 to bypass on personal networks."; \
             exit 1; \
         fi; \
-        cp "${CORP_CA_PATH}" /usr/local/share/ca-certificates/csaa_netskope_combined.crt; \
+        mkdir -p /usr/local/share/ca-certificates/corp; \
+        awk 'BEGIN{c=0} /BEGIN CERTIFICATE/{c++} {print > ("/usr/local/share/ca-certificates/corp/corp-" c ".crt")}' "${CORP_CA_PATH}"; \
         update-ca-certificates; \
     fi
 

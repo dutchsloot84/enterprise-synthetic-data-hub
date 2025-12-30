@@ -40,10 +40,10 @@ iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/late
 
 #### Docker (Enterprise networks with SSL inspection)
 - **When to use:** Only required on corporate networks that intercept TLS (e.g., CSAA Netskope). Personal/home networks typically do _not_ need the corporate certificate.
-- **Certificate placement:** save the combined corporate root/intermediate bundle as `certs/csaa_netskope_combined.pem` (kept out of git). If you need the bundle, export it from your corporate browser trust store or request it from your network/security team.
+- **Certificate placement:** save the combined corporate root/intermediate bundle as `certs/csaa_netskope_combined.pem` (kept out of git). If you need the bundle, export it from your corporate browser trust store or request it from your network/security team. The Docker build will split multi-cert bundles into individual `.crt` files so Debian’s `update-ca-certificates` reliably trusts them before any `pip` calls.
 - **Build & test inside Docker (with the corporate CA available):**
   ```bash
-  docker build -t esdh:develop .
+  docker build --no-cache -t esdh:develop .
   docker run --rm esdh:develop python -m pytest -m demo -q
   docker run --rm -p 5000:5000 esdh:develop python scripts/run_demo_flow.py --skip-smoke
   ```
