@@ -18,12 +18,18 @@ endif
 PACKAGE := enterprise_synthetic_data_hub
 DEMO_PROFILE ?= baseline
 
-.PHONY: demo demo-smoke demo-validate demo-stop demo-profile-info demo-clean check-makefile publish-bootstrap
+.PHONY: demo demo-gate demo-smoke demo-validate demo-stop demo-profile-info demo-clean check-makefile publish-bootstrap
 
 ## Primary guided demo flow
 demo:
 	$(Q)echo "Using demo profile: $(DEMO_PROFILE)"
 	$(Q)DEMO_PROFILE=$(DEMO_PROFILE) $(PYTHON) scripts/run_demo_flow.py
+
+## Validate demo artifacts, run smoke tests, and execute the demo flow without its smoke stage
+demo-gate:
+	$(Q)$(MAKE) demo-validate
+	$(Q)$(MAKE) demo-smoke
+	$(Q)DEMO_PROFILE=$(DEMO_PROFILE) $(PYTHON) scripts/run_demo_flow.py --skip-smoke
 
 ## Lightweight CLI/API smoke tests used in demo contexts
 demo-smoke:
