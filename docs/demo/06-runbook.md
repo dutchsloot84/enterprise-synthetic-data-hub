@@ -7,6 +7,11 @@ Last Updated: 2024-06-09
 - `pip install -e .[dev]`
 - Terminal that supports ANSI colors (for the demo CLI)
 
+## Demo Guardrails
+- The Flask API is intentionally unauthenticated and unthrottled—keep it scoped to local/demo networks only.
+- The flow is not production hardened; deterministic seeds and governed schemas are prioritized over scalability or resilience.
+- If live generation fails, fall back to the canned payloads in `data/demo_samples/phase1/` for slides or quick API stand-ins.
+
 ## Step 1 – Generate the governed snapshot
 ```bash
 python -m enterprise_synthetic_data_hub.cli.main generate-snapshot \

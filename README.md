@@ -3,6 +3,11 @@
 ## Project Overview
 The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobilitas. It delivers an enterprise-aligned foundation for generating privacy-safe synthetic data that represents Persons, Vehicles, and derived Profiles. The focus is on scaffolding, governance, and prompt-driven collaboration so future human and LLM contributors can extend the solution quickly.
 
+## Demo Safety Notice
+- The Flask API is **demo-only**: there is no authentication, authorization, or rate limiting, and it should not be exposed beyond a controlled demo environment.
+- The experience optimizes for determinism (governed seeds, fixed schemas) over scale; it has **not** been hardened for production traffic or data residency requirements.
+- If a live demo environment is unavailable, use the canned payloads under `data/demo_samples/phase1/` as a drop-in backup for walkthroughs and slides.
+
 ## 🚀 5-Minute Demo (Zero Knowledge Required)
 ### Unix/macOS
 git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git
@@ -185,6 +190,7 @@ sequenceDiagram
 - `data/snapshots/v0.1/metadata_v0_1.json` – standalone metadata JSON (includes `record_count_profiles`).
 - `data/snapshots/v0.1/snapshot_manifest_v0_1.json` – manifest enumerating file names + record counts.
 - `data/demo_samples/v0.1/*.json` – curated bundles for docs/slides.
+- `data/demo_samples/phase1/*.json` – deterministic, small-footprint backups for demos when live generation is unavailable.
 
 ## CLI Usage Examples
 ```bash
