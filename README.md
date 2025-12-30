@@ -219,11 +219,21 @@ into validators, API configs, or notebooks.
 - Follow `docs/demo/06-runbook.md` for the narrated, copy/paste friendly playbook used in the live demo.
 - `python scripts/run_demo_flow.py --interactive` pauses after each step, records snapshot/API/CLI timing metrics, and surfaces a diagnostics block (Python version, selected profile, fallback port, last successful step) whenever something fails.
 
-## Containerized Demo
+## Containerized Demo (recommended for cross-platform reliability)
+- Docker is the most reliable way to run the demo flow unchanged on any machine (macOS, Windows, Linux).
 - Build the image once: `docker build -t esdh-demo .`
 - Run the full flow without installing Python locally: `docker run --rm -p 5000:5000 esdh-demo python scripts/run_demo_flow.py --skip-smoke`
 - Keep the API running for local tooling: `docker run --rm -p 5000:5000 esdh-demo bash scripts/demo_start_api.sh`
 - VS Code Dev Container / GitHub Codespaces users can open the repo and accept the `.devcontainer/devcontainer.json` prompt to reuse the same Dockerfile, auto-install dependencies, and run `make demo-smoke` after creation.
+
+## Windows (Git Bash) fallback
+If Git Bash blocks the orchestrated start step, you can run the API manually and verify it before invoking CLI previews:
+
+1. Activate your virtual environment and set the Flask app: `set FLASK_APP=enterprise_synthetic_data_hub.api.app:app`
+2. Start the API without relying on Bash: `python -m flask run --host 127.0.0.1 --port 5000 --no-debugger --no-reload`
+3. Verify health: `curl -fsSL http://127.0.0.1:5000/healthz`
+4. Exercise the API: `python scripts/demo_data.py --profile baseline --use-api --api-url http://127.0.0.1:5000 --records 2`
+5. Stop the API with `Ctrl+C` (or rerun `python scripts/run_demo_flow.py --skip-smoke` once the port is free).
 
 ## Next Steps
 - Add distribution mechanisms (S3/Snowflake) after the API layer stabilizes.
