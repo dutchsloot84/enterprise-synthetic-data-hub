@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Avoid MSYS path/URL rewriting in Git Bash.
+export MSYS2_ARG_CONV_EXCL="*"
+
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 PORT_FILE="${REPO_ROOT}/.demo_api_port"
 PID_FILE="${REPO_ROOT}/.demo_api_pid"

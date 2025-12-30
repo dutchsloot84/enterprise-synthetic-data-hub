@@ -28,11 +28,14 @@ _Mode B hybrid with Mode C fallback; concise checklist for release/demo operator
 - **Docker**
   - Setup: `docker build -t esdh-demo .`
   - Run: `docker run --rm -p 5000:5000 esdh-demo make demo-gate`
-  - Expect: same gate sequence; host port 5000 must be free.
+  - Expect: same gate sequence; host port 5000 must be free. This is the recommended “it works anywhere” path when Windows Git Bash or local shells are temperamental.
 - **Bootstrap (Unix / Windows)**
   - Setup: `bash scripts/bootstrap.sh` (Unix) or `scripts\\bootstrap.bat` (Windows)
   - Run: `make demo-gate`
   - Expect: env + deps installed, then gate run; ensure `PYTHONPATH=src` when invoking scripts directly.
+- **Windows fallback**
+  - If Bash-based orchestration is blocked, start the API via Python directly: `python -m flask run --host 127.0.0.1 --port 5000 --no-debugger --no-reload`
+  - Verify `http://127.0.0.1:5000/healthz` via `curl` before running CLI previews or `python scripts/run_demo_flow.py --skip-smoke`.
 
 ## Canned Artifacts (Demo Fallbacks)
 - **Canonical Mode C set:** `data/demo_samples/phase1/` (`persons_seed_20240601.json`, `vehicles_seed_20240601.json`, `profiles_seed_20240601.json`, `bundle_seed_20240601.json`).
