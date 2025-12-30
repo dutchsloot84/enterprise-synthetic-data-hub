@@ -1,45 +1,50 @@
 # Demo Readiness – Operator Contract
+_Mode B hybrid with Mode C fallback; concise checklist for release/demo operators._
 
 ## Demo Gate
-- **Name:** `make demo-gate`
-- **Sequence:** `make demo-validate` → `make demo-smoke` → `python scripts/run_demo_flow.py --skip-smoke`
-- **Fail-fast:** inherits `SHELLFLAGS := -eu -o pipefail`; the first non-zero command aborts the target and returns non-zero.
-- **PASS means:** validation shows schemas + synthetic markers are intact, demo smoke tests pass, and the orchestrated flow completes (with smoke skipped inside the flow).
+- **Command:** `make demo-gate`
+- **Sequence:** validation → smoke → flow (skips smoke inside the flow)
+  - `make demo-validate`
+  - `make demo-smoke`
+  - `python scripts/run_demo_flow.py --skip-smoke`
+- **PASS means:** schemas + synthetic markers are intact, demo smoke tests pass, and the orchestrated flow completes with smoke skipped internally.
 
 ## Minimum Pass Criteria (Demo Red Lines)
 - `make demo-gate` succeeds end-to-end.
-- Synthetic marker (`settings.synthetic_marker`) present on all persons, vehicles, and profiles.
-- Able to pivot to canned demo artifacts within **60 seconds** if live generation or API is unhealthy.
+- Synthetic marker (`settings.synthetic_marker`) present on all persons, vehicles, and profiles (checked by `make demo-validate`).
+- Can pivot to canned artifacts within **60 seconds**.
+- Negative-path validation exists: `tests/smoke/test_api_contract.py::test_generate_rejects_invalid_records`.
 
 ## Demo Modes
-- **Mode B (Hybrid):** Live `/healthz` + canned artifacts + optional small live generate for freshness.
-- **Mode C (Offline fallback):** Canned artifacts only.
-- **When to switch:** If API health, smoke tests, or live generation stall, drop to Mode B; if API cannot start or time is under 60s, switch to Mode C and narrate from canned assets.
+- **Mode B (Hybrid):** Live `/healthz` + show canned artifacts; optionally trigger a small live generate for freshness.
+- **Mode C (Fallback):** Canned artifacts only; use screenshots if needed.
+- **Switching:** If API health, smoke, or live generation stalls, drop to Mode B; if the API cannot start or time is <60s, switch to Mode C and narrate from the canned set.
 
 ## Rehearsal Matrix
 - **Native Python**
   - Setup: `python -m venv .venv && source .venv/bin/activate && pip install -e .[dev]`
-  - Demo: `make demo-gate`
-  - Friction: missing deps; stale `.demo_api_pid`; port 5000 in use.
+  - Run: `make demo-gate`
+  - Expect: validation + smoke + flow summary; `.demo_api_pid/.demo_api_port` cleared on stop.
 - **Docker**
   - Setup: `docker build -t esdh-demo .`
-  - Demo: `docker run --rm -p 5000:5000 esdh-demo make demo-gate`
-  - Friction: image drift; host port 5000 conflicts.
+  - Run: `docker run --rm -p 5000:5000 esdh-demo make demo-gate`
+  - Expect: same gate sequence; host port 5000 must be free.
 - **Bootstrap (Unix / Windows)**
   - Setup: `bash scripts/bootstrap.sh` (Unix) or `scripts\\bootstrap.bat` (Windows)
-  - Demo: `make demo-gate`
-  - Friction: shell path quoting on Windows; ensure `PYTHONPATH=src` is set if running scripts directly.
+  - Run: `make demo-gate`
+  - Expect: env + deps installed, then gate run; ensure `PYTHONPATH=src` when invoking scripts directly.
 
-## Canned Demo Artifacts
-- **Canonical locations:** `data/demo_samples/v0.1/` (official demo set) and legacy backups in `data/demo_samples/phase1/`.
-- **Regeneration pointer:** see `data/demo_samples/phase1/README.md` for scripted regeneration of canned payloads and golden snapshots.
+## Canned Artifacts (Demo Fallbacks)
+- **Canonical Mode C set:** `data/demo_samples/phase1/` (`persons_seed_20240601.json`, `vehicles_seed_20240601.json`, `profiles_seed_20240601.json`, `bundle_seed_20240601.json`).
+- **Curated reference set:** `data/demo_samples/v0.1/` (use for visuals; not the primary fallback).
+- **Regenerate:** follow `data/demo_samples/README.md` (Flask test client script seeded to `20240601`).
 
-## Runbook Reference
-- Authoritative step-by-step: `docs/demo/06-runbook.md`.
+## Failure Recovery (aim for 60s)
+- **Port 5000 conflict:** free the port (e.g., `lsof -i :5000` to find blocker) then rerun `make demo-gate`.
+- **Stale `.demo_api_pid` / `.demo_api_port`:** `make demo-stop` or `make demo-clean`.
+- **Missing deps/venv:** `python -m venv .venv && source .venv/bin/activate && pip install -e .[dev]`.
+- **Corrupted demo artifacts:** restore from git or regenerate via `data/demo_samples/README.md`.
+- **Outdated Docker image:** `docker build -t esdh-demo .` then rerun container with `make demo-gate`.
 
-## Failure Recovery (aim for 60-second fixes)
-- **Port conflict (5000):** `lsof -i :5000` then stop the blocker; re-run `make demo-gate`.
-- **Stale Flask PID:** `make demo-stop` or `make demo-clean` to clear `.demo_api_pid`/`.demo_api_port`.
-- **Missing venv/deps:** `python -m venv .venv && source .venv/bin/activate && pip install -e .[dev]`.
-- **Corrupted demo artifacts:** restore from git or regenerate via `data/demo_samples/phase1/README.md`.
-- **Outdated Docker image:** `docker build -t esdh-demo .` then rerun the container.
+## Runbook Link
+- Narrated walkthrough: `docs/demo/06-runbook.md`.
