@@ -38,6 +38,18 @@ iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/late
 - `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh --skip-smoke` (faster dry run)
 - (Optional) open the repo in VS Code / Codespaces to reuse `.devcontainer/devcontainer.json` which installs dependencies and runs `make demo-smoke` automatically.
 
+#### Docker (Enterprise networks with SSL inspection)
+- **When to use:** Only required on corporate networks that intercept TLS (e.g., CSAA Netskope). Personal/home networks typically do _not_ need the corporate certificate.
+- **Certificate placement:** save the combined corporate root/intermediate bundle as `certs/csaa_netskope_combined.pem` (kept out of git). If you need the bundle, export it from your corporate browser trust store or request it from your network/security team.
+- **Build & test inside Docker (with the corporate CA available):**
+  ```bash
+  docker build -t esdh:develop .
+  docker run --rm esdh:develop python -m pytest -m demo -q
+  docker run --rm -p 5000:5000 esdh:develop python scripts/run_demo_flow.py --skip-smoke
+  ```
+- **If the cert is missing:** the Docker build fails early with a clear message. On personal networks you can bypass the check with `--build-arg SKIP_CORP_CA=1` (pip uses the public trust store and should succeed without the corporate CA).
+- **Security note:** never commit certificates or private keys. The repo `.gitignore` guards the `certs` folder and the specific `csaa_netskope_combined.pem` path so local trust bundles stay untracked.
+
 Each bootstrap flow installs dependencies, runs `make demo`, and guides you through:
 - Snapshot generation driven by a demo profile (`config/demo.yaml`).
 - Automated Flask API startup with `/healthz` verification.
