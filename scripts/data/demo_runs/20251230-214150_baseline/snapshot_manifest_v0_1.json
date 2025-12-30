@@ -1,0 +1,16 @@
+{
+  "dataset_version": "v0.1",
+  "generated_at": "2024-06-01T00:00:00",
+  "record_counts": {
+    "persons": 30,
+    "vehicles": 30,
+    "profiles": 30
+  },
+  "files": {
+    "persons_csv": "persons_v0_1.csv",
+    "vehicles_csv": "vehicles_v0_1.csv",
+    "dataset_json": "dataset_v0_1.json",
+    "metadata_json": "metadata_v0_1.json"
+  },
+  "notes": "Deterministic snapshot generated from rule-based distributions (seed=42)."
+}

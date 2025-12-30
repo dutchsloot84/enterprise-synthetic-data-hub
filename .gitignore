@@ -13,3 +13,4 @@ data/snapshots/**/generated*
 .demo_api_port
 data/demo_runs/*
 !data/demo_runs/.gitkeep
+certs
