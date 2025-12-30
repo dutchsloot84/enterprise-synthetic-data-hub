@@ -27,6 +27,8 @@ demo:
 
 ## Validate demo artifacts, run smoke tests, and execute the demo flow without its smoke stage
 demo-gate:
+	$(Q)echo "Running demo-gate: validate → smoke → flow (--skip-smoke)"
+	$(Q)[ ! -f .demo_api_pid ] || echo "Warning: .demo_api_pid present; run make demo-stop if needed"
 	$(Q)$(MAKE) demo-validate
 	$(Q)$(MAKE) demo-smoke
 	$(Q)DEMO_PROFILE=$(DEMO_PROFILE) $(PYTHON) scripts/run_demo_flow.py --skip-smoke
