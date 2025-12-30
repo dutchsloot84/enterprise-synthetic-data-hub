@@ -58,6 +58,12 @@ def _generate_subset(entity: str, bundle: SnapshotBundle) -> dict[str, Any]:
 def create_app() -> Flask:
     app = Flask(__name__)
 
+    def _error_response(message: str, *, status: HTTPStatus = HTTPStatus.BAD_REQUEST):
+        return (
+            jsonify({"error": {"code": "invalid_request", "message": message}}),
+            status,
+        )
+
     @app.get("/healthz")
     def healthz():
         return jsonify(
@@ -66,7 +72,9 @@ def create_app() -> Flask:
                 "dataset_version": settings.dataset_version,
                 "default_seed": settings.random_seed,
                 "target_records": settings.target_person_records,
-                "plan": describe_generation_plan(),
+                "version": settings.dataset_version,
+                "seed": settings.random_seed,
+                "plan": {"steps": describe_generation_plan()},
             }
         )
 
@@ -74,7 +82,7 @@ def create_app() -> Flask:
         try:
             records, seed = _parse_request_payload()
         except ValueError as exc:
-            return jsonify({"error": str(exc)}), HTTPStatus.BAD_REQUEST
+            return _error_response(str(exc))
         bundle = generate_snapshot_bundle(num_records=records, seed=seed)
         if entity:
             payload = _generate_subset(entity, bundle)
