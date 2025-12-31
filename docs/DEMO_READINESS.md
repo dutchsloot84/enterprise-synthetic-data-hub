@@ -29,6 +29,7 @@ _Mode B hybrid with Mode C fallback; concise checklist for release/demo operator
   - Setup: `docker build -t esdh-demo .`
   - Run: `docker run --rm -p 5000:5000 esdh-demo make demo-gate`
   - Expect: same gate sequence; host port 5000 must be free. This is the recommended “it works anywhere” path when Windows Git Bash or local shells are temperamental.
+  - Enterprise TLS considerations (CSAA Netskope): follow `docs/DOCKER_ENTERPRISE.md` for the PyPI limitation, workarounds, and Internal PyPI mirror path.
 - **Bootstrap (Unix / Windows)**
   - Setup: `bash scripts/bootstrap.sh` (Unix) or `scripts\\bootstrap.bat` (Windows)
   - Run: `make demo-gate`
