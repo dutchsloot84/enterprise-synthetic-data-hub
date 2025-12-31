@@ -3,9 +3,9 @@
 This guide captures the current Docker experience, the enterprise TLS limitation on CSAA networks, and the path to a sustainable Internal PyPI mirror. All findings below are observed in this repository and should be treated as facts, not assumptions.
 
 ## What works today (non-enterprise networks)
-- Build: `docker build -t esdh:develop .`
-- Run tests: `docker run --rm esdh:develop python -m pytest -m demo -q`
-- Run the demo flow: `docker run --rm -p 5000:5000 esdh:develop ./scripts/docker_run_demo.sh`
+- Build: `docker build -t esdh-demo .`
+- Run tests: `docker run --rm esdh-demo python -m pytest -m demo -q`
+- Run the demo flow: `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh`
 - Pip respects standard environment variables (`PIP_INDEX_URL`, `PIP_EXTRA_INDEX_URL`, `PIP_TRUSTED_HOST`) and an optional pip config copied in via `PIP_CONF_PATH` at build time.
 
 ## Observed enterprise limitation on CSAA networks
@@ -25,7 +25,7 @@ This guide captures the current Docker experience, the enterprise TLS limitation
 
 ## Workarounds until Internal PyPI mirror exists
 - **Workaround A: Use personal/home network where public PyPI is accessible (short-term POC).** Keep this to POC evaluation only; avoid moving data or credentials that require corporate governance.
-- **Workaround B: Prebuild the image on a network that can access PyPI and distribute it internally (POC-only).** Share the built image through an internal registry or tarball. Security note: ensure the image is scanned and avoid embedding secrets.
+- **Workaround B: Prebuild the image on a network that can access PyPI and distribute it internally (POC-only).** Share the built image through an internal registry or tarball using the same `esdh-demo` tag referenced in README commands. Security note: ensure the image is scanned and avoid embedding secrets.
 - **Workaround C: Use an internal index when available (preferred).** Provide `PIP_INDEX_URL`, `PIP_EXTRA_INDEX_URL`, and `PIP_TRUSTED_HOST` at build/run time or mount a pip config (see `config/pip.conf.example`). This keeps TLS trust anchored to enterprise-managed endpoints.
 - **Workaround D (last resort): trusted-host flags / disabling verification only with explicit warning and only for POC demos if approved.** This weakens TLS verification and should be avoided outside of time-boxed demos with risk acceptance.
 
@@ -37,6 +37,22 @@ This guide captures the current Docker experience, the enterprise TLS limitation
   - `PIP_TRUSTED_HOST=<internal-pypi-hostname>`
   - Optional: supply `PIP_CONF_PATH=config/pip.conf` during `docker build` to copy a vetted pip config into `/etc/pip.conf`.
 - Mirror expectations: availability from CI and developer laptops, enterprise-issued certificates, audit logging, and caching to reduce external dependency exposure.
+
+### Enterprise build/run example (mirror)
+- Bash:
+  ```bash
+  docker build -t esdh-demo \
+    --build-arg PIP_INDEX_URL=https://<internal-pypi>/simple \
+    --build-arg PIP_TRUSTED_HOST=<internal-pypi-hostname> .
+  docker run --rm esdh-demo python -m pytest -m demo -q
+  ```
+- PowerShell:
+  ```powershell
+  docker build -t esdh-demo `
+    --build-arg PIP_INDEX_URL=https://<internal-pypi>/simple `
+    --build-arg PIP_TRUSTED_HOST=<internal-pypi-hostname> .
+  docker run --rm esdh-demo python -m pytest -m demo -q
+  ```
 
 ## Pilot+ considerations
 - **Repeatability:** pinned dependencies, deterministic Docker builds, and versioned images for demos.
@@ -53,3 +69,12 @@ This guide captures the current Docker experience, the enterprise TLS limitation
 - On Windows, prefer an elevated PowerShell or WSL shell when Docker commands fail due to permissions.
 - Validate build args: if providing `PIP_CONF_PATH`, ensure the file exists in the build context; otherwise rely on environment variables.
 - If builds stall, test network egress with a simple alpine curl: `docker run --rm curlimages/curl https://example.com`.
+- Verify pip settings when using a mirror: `pip config debug -v | grep -E "index-url|extra-index-url|trusted-host"`.
+
+## Final Sign-off Summary
+- Date: 2025-03-17
+- Environment tested: Windows + Docker Desktop
+- Result: Public PyPI TLS fails on CSAA networks (see curl reproduction).
+- Result: Non-enterprise networks path works with `esdh-demo` tag.
+- Next step: provide an Internal PyPI mirror/proxy with trusted certificates.
+- Workarounds: A (home network), B (prebuilt `esdh-demo` image), C (internal index), D (last-resort trusted-host for POC).

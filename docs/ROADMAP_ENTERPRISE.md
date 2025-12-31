@@ -2,7 +2,7 @@
 
 ## Current state (POC)
 - Demo flows are validated via `make demo-gate` / `python -m pytest -m demo -q` and the scripted runner `scripts/run_demo_flow.py --skip-smoke`.
-- Docker builds succeed on open networks using `docker build -t esdh:develop .` followed by containerized demo/test runs.
+- Docker builds succeed on open networks using `docker build -t esdh-demo .` followed by containerized demo/test runs.
 - Bootstrap scripts (`scripts/bootstrap_and_demo.*`) remain the primary “happy path” for new users on Unix/macOS and Windows PowerShell.
 
 ## Known gaps

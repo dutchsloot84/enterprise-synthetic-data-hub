@@ -39,6 +39,7 @@ iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/late
 - (Optional) open the repo in VS Code / Codespaces to reuse `.devcontainer/devcontainer.json` which installs dependencies and runs `make demo-smoke` automatically.
 
 For enterprise Docker guidance (CSAA TLS inspection findings, Internal PyPI mirror path, workarounds, and pip configuration hooks), see `docs/DOCKER_ENTERPRISE.md`.
+> CSAA networks: default Docker builds against public PyPI will fail; use an internal PyPI mirror or the workarounds in the enterprise guide.
 
 Each bootstrap flow installs dependencies, runs `make demo`, and guides you through:
 - Snapshot generation driven by a demo profile (`config/demo.yaml`).
