@@ -12,20 +12,26 @@ RUN apt-get update && \
 
 COPY . /app
 
-ARG CORP_CA_PATH=certs/csaa_netskope_combined.pem
-ARG SKIP_CORP_CA=0
+ARG PIP_CONF_PATH=
+ARG PIP_INDEX_URL
+ARG PIP_EXTRA_INDEX_URL
+ARG PIP_TRUSTED_HOST
+
+ENV PIP_INDEX_URL=${PIP_INDEX_URL}
+ENV PIP_EXTRA_INDEX_URL=${PIP_EXTRA_INDEX_URL}
+ENV PIP_TRUSTED_HOST=${PIP_TRUSTED_HOST}
 
 RUN set -eux; \
-    if [ "${SKIP_CORP_CA}" = "1" ]; then \
-        echo "Skipping corporate CA install; assuming public TLS works."; \
-    else \
-        if [ ! -f "${CORP_CA_PATH}" ]; then \
-            echo "Corporate CA bundle missing at ${CORP_CA_PATH}. Place it locally before building, or set SKIP_CORP_CA=1 to bypass on personal networks."; \
+    if [ -n "${PIP_CONF_PATH}" ]; then \
+        if [ -f "${PIP_CONF_PATH}" ]; then \
+            cp "${PIP_CONF_PATH}" /etc/pip.conf; \
+            echo "Using pip config from ${PIP_CONF_PATH}"; \
+        else \
+            echo "PIP_CONF_PATH was provided but no file found at ${PIP_CONF_PATH}"; \
             exit 1; \
         fi; \
-        mkdir -p /usr/local/share/ca-certificates/corp; \
-        awk 'BEGIN{c=0} /BEGIN CERTIFICATE/{c++} {print > ("/usr/local/share/ca-certificates/corp/corp-" c ".crt")}' "${CORP_CA_PATH}"; \
-        update-ca-certificates; \
+    else \
+        echo "No pip.conf provided at build time; relying on defaults and any pip-related env vars."; \
     fi
 
 RUN pip install --upgrade pip && \
