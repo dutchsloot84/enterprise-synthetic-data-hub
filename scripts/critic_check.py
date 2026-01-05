@@ -17,6 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MAKEFILE = ROOT / "Makefile"
 README = ROOT / "README.md"
+DEMO_FLOW_DIR = ROOT / "scripts" / "demo_flow"
+DEMO_DATA = ROOT / "scripts" / "demo_data.py"
 
 
 def fail(message: str) -> None:
@@ -73,6 +75,14 @@ def main() -> int:
         print("PASS: make doctor exited 0")
     else:
         fail("make doctor failed; see output below:\n" + doctor_result.stdout.decode("utf-8", errors="replace"))
+
+    if not DEMO_DATA.exists():
+        fail(f"Demo data script missing: {DEMO_DATA}")
+    for path in DEMO_FLOW_DIR.rglob("*.py"):
+        text = path.read_text(encoding="utf-8")
+        if "scripts/scripts/demo_data.py" in text:
+            fail(f"Found duplicate demo_data path in {path.relative_to(ROOT)}")
+    print("PASS: demo flow references demo_data.py without duplicate scripts/ prefix")
 
     return 0
 

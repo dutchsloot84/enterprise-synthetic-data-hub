@@ -10,7 +10,7 @@ import requests
 
 from enterprise_synthetic_data_hub.config import demo_profiles
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def call_health(base_url: str, endpoint: str) -> dict:
