@@ -27,6 +27,17 @@ One-liner (Recommended):
 
 iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/latest/download/bootstrap_and_demo.ps1" | iex
 
+### Windows (Git Bash) quick start
+If you prefer Git Bash over PowerShell, activate the virtual environment from the repository root and run the guarded demo gate:
+```bash
+python -m venv .venv
+source .venv/Scripts/activate
+pip install -e .[dev]
+make doctor   # quick health check (bash, make, python resolver, demo port)
+make demo-gate
+```
+_Shortcut_: `make demo-validate` runs the validation stage only, while `make demo-gate` executes validate → smoke → flow in one command.
+
 ### Refreshing the bootstrap distribution
 - Ensure a GitHub release exists (v0.1.0+). The assets are published to `releases/latest/download/*`.
 - With the GitHub CLI available and `GH_TOKEN`/`GITHUB_TOKEN` set, run `bash scripts/publish_bootstrap_assets.sh` (or `./scripts/publish_bootstrap_assets.ps1` on Windows) to upload the latest installers.
