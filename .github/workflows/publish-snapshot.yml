@@ -1,0 +1,46 @@
+name: Publish Snapshot
+
+on:
+  push:
+    branches: [ develop ]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: src
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Generate snapshot
+        run: python -m enterprise_synthetic_data_hub.cli.main generate-snapshot --output-dir data/published
+
+      - name: Upload snapshot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshot-${{ github.sha }}
+          path: data/published/**
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: snapshot-${{ github.sha }}
+          name: "Snapshot ${{ github.sha }}"
+          body: |
+            Automated snapshot export from the develop branch.
+            Includes manifest checksums, entity stats, and CSV/JSON artifacts.
+          files: data/published/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

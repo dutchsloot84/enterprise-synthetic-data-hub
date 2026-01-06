@@ -1,11 +1,12 @@
 """Flask application that exposes the governed generator for demo use."""
 from __future__ import annotations
 
+import logging
 from http import HTTPStatus
 import secrets
 from typing import Any, Tuple
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template_string
 
 from enterprise_synthetic_data_hub.config.settings import settings
 from enterprise_synthetic_data_hub.generation.generator import (
@@ -15,6 +16,70 @@ from enterprise_synthetic_data_hub.generation.generator import (
 )
 
 DEFAULT_RECORDS = 5
+logger = logging.getLogger(__name__)
+
+DEMO_TEMPLATE = """
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Enterprise Synthetic Data Hub Demo</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      .panel { border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; }
+      label { display: block; margin-top: 0.5rem; }
+      pre { background: #f7f7f7; padding: 1rem; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    <h1>Enterprise Synthetic Data Hub Demo</h1>
+    <div class="panel">
+      <p>Use this lightweight UI to hit the live API without writing code.</p>
+      <label>Entity
+        <select id="entity">
+          <option value="person">Persons</option>
+          <option value="vehicle">Vehicles</option>
+          <option value="profile">Profiles</option>
+          <option value="bundle">Full Bundle</option>
+        </select>
+      </label>
+      <label>Records <input id="records" type="number" value="3" min="1"></label>
+      <label>Seed <input id="seed" type="text" placeholder="20240601"></label>
+      <label><input id="randomize" type="checkbox"> Randomize seed</label>
+      <label>API Key (optional) <input id="api_key" type="text" placeholder="X-API-Key"></label>
+      <button onclick="callApi()">Generate</button>
+      <button onclick="loadHealth()">Health</button>
+    </div>
+    <div class="panel">
+      <h3>Response</h3>
+      <pre id="response">(waiting)</pre>
+    </div>
+    <script>
+      async function callApi() {
+        const entity = document.getElementById('entity').value;
+        const records = parseInt(document.getElementById('records').value, 10);
+        const seed = document.getElementById('seed').value;
+        const randomize = document.getElementById('randomize').checked;
+        const apiKey = document.getElementById('api_key').value;
+        const payload = {records: records, seed: seed || undefined, randomize: randomize};
+        const headers = {"Content-Type": "application/json"};
+        if (apiKey) { headers["X-API-Key"] = apiKey; }
+        const resp = await fetch(`/generate/${entity}`, {method: "POST", headers, body: JSON.stringify(payload)});
+        const data = await resp.json();
+        document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+      }
+      async function loadHealth() {
+        const apiKey = document.getElementById('api_key').value;
+        const headers = {};
+        if (apiKey) { headers["X-API-Key"] = apiKey; }
+        const resp = await fetch("/healthz", {headers});
+        const data = await resp.json();
+        document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+      }
+    </script>
+  </body>
+</html>
+"""
 
 
 def _parse_request_payload() -> Tuple[int, int | None]:
@@ -29,6 +94,7 @@ def _parse_request_payload() -> Tuple[int, int | None]:
         randomize = True
         seed = None
     if randomize:
+        logger.warning("API request using randomized seed", extra={"endpoint": request.path})
         return records, secrets.randbelow(1_000_000_000)
     if seed is None:
         return records, None
@@ -63,6 +129,17 @@ def create_app() -> Flask:
             jsonify({"error": {"code": "invalid_request", "message": message}}),
             status,
         )
+
+    @app.before_request
+    def _check_api_key():
+        required_api_key = settings.demo_api_key
+        if not required_api_key:
+            return None
+        provided = request.headers.get("X-API-Key") or request.args.get("api_key")
+        if provided == required_api_key:
+            return None
+        logger.warning("Request rejected due to missing/invalid API key", extra={"path": request.path})
+        return _error_response("API key required for this endpoint", status=HTTPStatus.UNAUTHORIZED)
 
     @app.get("/healthz")
     def healthz():
@@ -107,6 +184,10 @@ def create_app() -> Flask:
     @app.post("/generate/bundle")
     def generate_bundle():
         return _handle_generation(None)
+
+    @app.get("/demo")
+    def demo():
+        return render_template_string(DEMO_TEMPLATE)
 
     return app
 
