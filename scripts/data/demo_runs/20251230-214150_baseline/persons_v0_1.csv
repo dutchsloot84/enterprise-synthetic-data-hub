@@ -1,0 +1,31 @@
+person_id,first_name,last_name,date_of_birth,driver_license_number,driver_license_state,address_line_1,address_line_2,city,state,postal_code,country,lob_type,synthetic_source
+bd9c66b3-ad3c-2d6d-1a3d-1fa7bc8960a9,Morgan,Rivera,1972-03-30,CA8078673,CA,100 Main Street,Apt 200,San Mateo,CA,94721,US,Personal,enterprise-synthetic-data-hub v0.1
+ec1b8ca1-f91e-1d4c-1ff4-9b7889463e85,Casey,Rivera,2024-02-29,NV5918715,NV,101 Main Street,,Henderson,NV,88923,US,Commercial,enterprise-synthetic-data-hub v0.1
+d261a7ab-3aa2-e4f9-0e51-f30dc6a7ee39,Alex,Thompson,1994-03-21,OR6292423,OR,102 Main Street,,Portland,OR,97333,US,Commercial,enterprise-synthetic-data-hub v0.1
+988c24c9-61b1-cd22-6280-1c4510435a10,Casey,Smith,1983-09-18,CA5218028,CA,103 Main Street,Apt 203,Walnut Creek,CA,94944,US,Personal,enterprise-synthetic-data-hub v0.1
+e0f3eab0-5cec-4eb5-edd9-68311ca35cfb,Logan,Thompson,2017-07-31,WA6159230,WA,104 Main Street,,Seattle,WA,98332,US,Personal,enterprise-synthetic-data-hub v0.1
+122c9a56-01d7-4256-3860-2ab696a402f2,Avery,Zhou,2000-05-01,CA1987737,CA,105 Main Street,,Walnut Creek,CA,94897,US,Personal,enterprise-synthetic-data-hub v0.1
+23e2fcb4-72d8-567d-894a-05e430b187ef,Casey,Nguyen,2006-02-14,CA5673212,CA,106 Main Street,Apt 206,San Mateo,CA,94651,US,Personal,enterprise-synthetic-data-hub v0.1
+944528c0-0ef8-c2d6-f7fd-564637bb3eec,Avery,Smith,2019-11-11,OR2022698,OR,107 Main Street,,Eugene,OR,97159,US,Personal,enterprise-synthetic-data-hub v0.1
+12922f83-ef8c-485b-c07a-30f2edd4253b,Alex,Garcia,2005-07-05,NV2677407,NV,108 Main Street,,Las Vegas,NV,89054,US,Personal,enterprise-synthetic-data-hub v0.1
+0d01280f-d89a-40c0-e87d-1c78e7c421c7,Alex,Zhou,1988-04-07,NV8106422,NV,109 Main Street,Apt 209,Henderson,NV,89159,US,Personal,enterprise-synthetic-data-hub v0.1
+bfddc3d9-9ee3-ac2a-f94d-62046808593f,Jordan,Nguyen,1979-03-23,AZ3726327,AZ,110 Main Street,,Tempe,AZ,85287,US,Commercial,enterprise-synthetic-data-hub v0.1
+d7fa2d8d-fb2c-a025-adf4-e62d6651529e,Morgan,Patel,1976-03-24,NV1463060,NV,111 Main Street,,Henderson,NV,89080,US,Personal,enterprise-synthetic-data-hub v0.1
+6703b636-5380-b904-688c-7015aab97e49,Avery,Patel,1998-03-01,WA3135534,WA,112 Main Street,Apt 212,Seattle,WA,98308,US,Personal,enterprise-synthetic-data-hub v0.1
+79a28903-fbe3-3b24-3eae-00320bd4a990,Morgan,Thompson,1997-11-06,AZ2221854,AZ,113 Main Street,,Phoenix,AZ,85102,US,Personal,enterprise-synthetic-data-hub v0.1
+c40c5d91-46fd-e062-a33d-c7afd701410d,Logan,Smith,2012-08-02,AZ9130188,AZ,114 Main Street,,Tempe,AZ,85133,US,Commercial,enterprise-synthetic-data-hub v0.1
+4c71e0fe-5a0c-dd7c-f157-8470018267c4,Logan,Garcia,2022-05-27,OR8030010,OR,115 Main Street,Apt 215,Portland,OR,97590,US,Personal,enterprise-synthetic-data-hub v0.1
+c083b73a-473b-d358-610e-6a64e1301617,Logan,Garcia,1988-12-27,NV5232413,NV,116 Main Street,,Henderson,NV,89068,US,Personal,enterprise-synthetic-data-hub v0.1
+e87466d7-ad66-a1bd-9367-6a024fdc6e1b,Casey,Garcia,1997-11-27,AZ4327421,AZ,117 Main Street,,Phoenix,AZ,85297,US,Personal,enterprise-synthetic-data-hub v0.1
+52828d80-44b5-91f7-97ac-6aa8bb2488a3,Logan,Nguyen,2018-04-13,WA2453962,WA,118 Main Street,Apt 218,Tacoma,WA,98477,US,Personal,enterprise-synthetic-data-hub v0.1
+38ba8abc-4b53-05e5-17d2-582e046a0df5,Casey,Zhou,1991-07-24,WA5081983,WA,119 Main Street,,Tacoma,WA,98503,US,Personal,enterprise-synthetic-data-hub v0.1
+2067bdac-88bd-13d1-b540-b30e039f3a25,Taylor,Rivera,1996-07-30,AZ1914794,AZ,120 Main Street,,Phoenix,AZ,85185,US,Personal,enterprise-synthetic-data-hub v0.1
+989bc4da-9b37-a22b-6a8a-616fc3b290d0,Logan,Smith,1997-04-05,WA4786401,WA,121 Main Street,Apt 221,Seattle,WA,98255,US,Personal,enterprise-synthetic-data-hub v0.1
+c9af18f8-43b9-da13-ec85-6f373bc1a987,Logan,Zhou,1995-11-06,AZ4318855,AZ,122 Main Street,,Tempe,AZ,85233,US,Personal,enterprise-synthetic-data-hub v0.1
+93403fad-dc4a-d56b-d601-6237ac9ed156,Morgan,Rivera,1992-06-18,WA5521644,WA,123 Main Street,,Seattle,WA,98094,US,Personal,enterprise-synthetic-data-hub v0.1
+83bc9478-dd6a-c7b8-6778-043bc5c5b37a,Logan,Rivera,1998-03-21,CA8750676,CA,124 Main Street,Apt 224,San Mateo,CA,94761,US,Personal,enterprise-synthetic-data-hub v0.1
+45ff2c83-b495-db4e-8245-6fb44ab7706e,Casey,Thompson,1980-07-16,OR9094999,OR,125 Main Street,,Portland,OR,97511,US,Commercial,enterprise-synthetic-data-hub v0.1
+0b2c782a-6928-8e92-c68a-152fdb23aa8c,Taylor,Zhou,1986-12-04,NV8935224,NV,126 Main Street,,Las Vegas,NV,89193,US,Personal,enterprise-synthetic-data-hub v0.1
+ff574e2b-4991-ab9b-ebc2-026faf34cf65,Jordan,Zhou,2018-07-16,OR2516313,OR,127 Main Street,Apt 227,Portland,OR,97071,US,Personal,enterprise-synthetic-data-hub v0.1
+771ad655-cdfc-6ee0-e61e-de900267deb3,Taylor,Zhou,2011-05-16,AZ3650391,AZ,128 Main Street,,Tempe,AZ,85236,US,Personal,enterprise-synthetic-data-hub v0.1
+c16d83ed-ad81-f8bd-4029-13ec9ef2b93e,Avery,Thompson,1990-08-24,NV3294774,NV,129 Main Street,,Henderson,NV,89013,US,Personal,enterprise-synthetic-data-hub v0.1

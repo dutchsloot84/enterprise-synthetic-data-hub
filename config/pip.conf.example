@@ -1,0 +1,9 @@
+[global]
+# Primary internal index (recommended)
+index-url = https://<internal-pypi>/simple
+
+# Optional secondary/whitelist (leave blank or remove if unused)
+extra-index-url = https://<optional-secondary>/simple
+
+# Required when the internal index uses TLS inspection or private certificates
+trusted-host = <internal-pypi-hostname>

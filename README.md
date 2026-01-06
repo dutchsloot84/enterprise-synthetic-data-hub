@@ -3,6 +3,11 @@
 ## Project Overview
 The Enterprise Synthetic Data Hub is a two-week proof of concept for CSAA / Mobilitas. It delivers an enterprise-aligned foundation for generating privacy-safe synthetic data that represents Persons, Vehicles, and derived Profiles. The focus is on scaffolding, governance, and prompt-driven collaboration so future human and LLM contributors can extend the solution quickly.
 
+## Demo Safety Notice
+- The Flask API is **demo-only**: there is no authentication, authorization, or rate limiting, and it should not be exposed beyond a controlled demo environment.
+- The experience optimizes for determinism (governed seeds, fixed schemas) over scale; it has **not** been hardened for production traffic or data residency requirements.
+- If a live demo environment is unavailable, use the canned payloads under `data/demo_samples/phase1/` as a drop-in backup for walkthroughs and slides.
+
 ## 🚀 5-Minute Demo (Zero Knowledge Required)
 ### Unix/macOS
 git clone https://github.com/dutchsloot84/enterprise-synthetic-data-hub.git
@@ -22,6 +27,17 @@ One-liner (Recommended):
 
 iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/latest/download/bootstrap_and_demo.ps1" | iex
 
+### Windows (Git Bash) quick start
+If you prefer Git Bash over PowerShell, activate the virtual environment from the repository root and run the guarded demo gate:
+```bash
+python -m venv .venv
+source .venv/Scripts/activate
+pip install -e .[dev]
+make doctor   # quick health check (bash, make, python resolver, demo port)
+make demo-gate
+```
+_Shortcut_: `make demo-validate` runs the validation stage only, while `make demo-gate` executes validate → smoke → flow in one command.
+
 ### Refreshing the bootstrap distribution
 - Ensure a GitHub release exists (v0.1.0+). The assets are published to `releases/latest/download/*`.
 - With the GitHub CLI available and `GH_TOKEN`/`GITHUB_TOKEN` set, run `bash scripts/publish_bootstrap_assets.sh` (or `./scripts/publish_bootstrap_assets.ps1` on Windows) to upload the latest installers.
@@ -32,6 +48,9 @@ iwr "https://github.com/dutchsloot84/enterprise-synthetic-data-hub/releases/late
 - `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh`
 - `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh --skip-smoke` (faster dry run)
 - (Optional) open the repo in VS Code / Codespaces to reuse `.devcontainer/devcontainer.json` which installs dependencies and runs `make demo-smoke` automatically.
+
+For enterprise Docker guidance (CSAA TLS inspection findings, Internal PyPI mirror path, workarounds, and pip configuration hooks), see `docs/DOCKER_ENTERPRISE.md`.
+> CSAA networks: default Docker builds against public PyPI will fail; use an internal PyPI mirror or the workarounds in the enterprise guide.
 
 Each bootstrap flow installs dependencies, runs `make demo`, and guides you through:
 - Snapshot generation driven by a demo profile (`config/demo.yaml`).
@@ -185,6 +204,7 @@ sequenceDiagram
 - `data/snapshots/v0.1/metadata_v0_1.json` – standalone metadata JSON (includes `record_count_profiles`).
 - `data/snapshots/v0.1/snapshot_manifest_v0_1.json` – manifest enumerating file names + record counts.
 - `data/demo_samples/v0.1/*.json` – curated bundles for docs/slides.
+- `data/demo_samples/phase1/*.json` – deterministic, small-footprint backups for demos when live generation is unavailable.
 
 ## CLI Usage Examples
 ```bash
@@ -213,11 +233,21 @@ into validators, API configs, or notebooks.
 - Follow `docs/demo/06-runbook.md` for the narrated, copy/paste friendly playbook used in the live demo.
 - `python scripts/run_demo_flow.py --interactive` pauses after each step, records snapshot/API/CLI timing metrics, and surfaces a diagnostics block (Python version, selected profile, fallback port, last successful step) whenever something fails.
 
-## Containerized Demo
+## Containerized Demo (recommended for cross-platform reliability)
+- Docker is the most reliable way to run the demo flow unchanged on any machine (macOS, Windows, Linux).
 - Build the image once: `docker build -t esdh-demo .`
 - Run the full flow without installing Python locally: `docker run --rm -p 5000:5000 esdh-demo python scripts/run_demo_flow.py --skip-smoke`
 - Keep the API running for local tooling: `docker run --rm -p 5000:5000 esdh-demo bash scripts/demo_start_api.sh`
 - VS Code Dev Container / GitHub Codespaces users can open the repo and accept the `.devcontainer/devcontainer.json` prompt to reuse the same Dockerfile, auto-install dependencies, and run `make demo-smoke` after creation.
+
+## Windows (Git Bash) fallback
+If Git Bash blocks the orchestrated start step, you can run the API manually and verify it before invoking CLI previews:
+
+1. Activate your virtual environment and set the Flask app: `set FLASK_APP=enterprise_synthetic_data_hub.api.app:app`
+2. Start the API without relying on Bash: `python -m flask run --host 127.0.0.1 --port 5000 --no-debugger --no-reload`
+3. Verify health: `curl -fsSL http://127.0.0.1:5000/healthz`
+4. Exercise the API: `python scripts/demo_data.py --profile baseline --use-api --api-url http://127.0.0.1:5000 --records 2`
+5. Stop the API with `Ctrl+C` (or rerun `python scripts/run_demo_flow.py --skip-smoke` once the port is free).
 
 ## Next Steps
 - Add distribution mechanisms (S3/Snowflake) after the API layer stabilizes.
