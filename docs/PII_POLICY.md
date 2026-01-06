@@ -1,12 +1,24 @@
 # Synthetic Data PII + Compliance Guardrails
 
-This proof-of-concept intentionally avoids real PII and includes lightweight governance hooks for demos and QA. Key points:
+## Principles
+- **Synthetic-only generation**: Persons, Vehicles, and Profiles are produced from deterministic rules and curated lookups—no production inputs or user uploads.
+- **Provenance marker**: Every entity carries `synthetic_source="enterprise-synthetic-data-hub v0.1"`; validators assert its presence.
+- **Determinism**: Default seed **20240601** plus manifests with SHA-256 checksums and stats enable tamper detection and reproducibility.
+- **Scoped access**: Demo API supports optional API key protection via the `ESDH_API_KEY` environment variable (header `X-API-Key`). Intended for controlled QA/demo use only.
 
-- **Synthetic-only inputs**: All entities (Persons, Vehicles, Profiles) are created from deterministic rules and curated lookup tables. No production data, user uploads, or external feeds are referenced.
-- **Governance marker**: Every record carries `synthetic_source` (see `config/settings.py`). Validators and smoke tests assert its presence across entities to make provenance explicit.
-- **Anonymization stance**: Although data are fabricated, fields mirror real-world schemas (e.g., names, addresses, VINs). Treat outputs as test fixtures. Do not mingle with production PII or customer data lakes.
-- **Determinism + auditability**: Seeds default to `20240601`; optional `--randomize` is logged. Manifests now include checksums and entity-level statistics (age + VIN distributions) to spot drift or tampering.
-- **API access control**: Demo API supports an optional API key via `ESDH_API_KEY` (header `X-API-Key`). This is not production security, but discourages accidental exposure.
-- **Export hygiene**: CSV/JSON/NDJSON/Parquet outputs stay in repo-relative `data/` paths. Use GitHub Actions release artifacts for controlled sharing rather than emailing files.
+## Handling Rules
+- Treat outputs as governed test fixtures; never merge with production PII or customer data lakes.
+- Keep artifacts under repo-relative `data/` paths or the published GitHub releases to maintain checksum visibility.
+- When using randomized seeds, record the effective seed surfaced in CLI/API output to preserve reproducibility.
+- Do not email raw artifacts; share via release downloads or signed channels that preserve manifests.
+- Retain synthetic markers when downstream systems transform or subset the data.
 
-If you need tighter controls (data retention, DSR handling, or access logs), front the API with standard authentication and rotate seeds/keys per environment.
+## Verification
+- Run `make demo-validate` (or `python scripts/demo_validate.py`) to confirm schema alignment and synthetic markers.
+- Inspect `snapshot_manifest_*.json` for checksums, record counts, and stats before distributing artifacts.
+- For API scenarios, hit `/healthz` to verify default seed and generation plan, then call `/generate/bundle` to confirm markers and counts.
+
+## Escalation & Hardening
+- If tighter controls are required, front the API with standard authentication, rotate seeds per environment, and log access.
+- Apply enterprise container guidance in `docs/DOCKER_ENTERPRISE.md` when TLS inspection or private mirrors are mandated.
+- Avoid long-term retention beyond demo scope; regenerate deterministically as needed.
