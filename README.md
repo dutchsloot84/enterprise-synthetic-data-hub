@@ -200,9 +200,11 @@ sequenceDiagram
 ## Snapshot Outputs
 - `data/snapshots/v0.1/persons_v0_1.csv` – governed Persons CSV exported via the CLI.
 - `data/snapshots/v0.1/vehicles_v0_1.csv` – governed Vehicles CSV.
+- `data/snapshots/v0.1/persons_v0_1.ndjson` / `vehicles_v0_1.ndjson` – NDJSON exports for streaming ingest (opt-in).
+- `data/snapshots/v0.1/persons_v0_1.parquet` / `vehicles_v0_1.parquet` – columnar exports for analytics (opt-in, pyarrow-backed).
 - `data/snapshots/v0.1/dataset_v0_1.json` – combined JSON payload (metadata + persons + vehicles + profiles).
 - `data/snapshots/v0.1/metadata_v0_1.json` – standalone metadata JSON (includes `record_count_profiles`).
-- `data/snapshots/v0.1/snapshot_manifest_v0_1.json` – manifest enumerating file names + record counts.
+- `data/snapshots/v0.1/snapshot_manifest_v0_1.json` – manifest enumerating file names + record counts plus SHA-256 checksums and entity statistics (ages, VIN prefixes, make distribution).
 - `data/demo_samples/v0.1/*.json` – curated bundles for docs/slides.
 - `data/demo_samples/phase1/*.json` – deterministic, small-footprint backups for demos when live generation is unavailable.
 
@@ -215,6 +217,11 @@ python -m enterprise_synthetic_data_hub.cli.main generate-snapshot \
 # default settings (records pulled from DatasetSettings)
 python -m enterprise_synthetic_data_hub.cli.main generate-snapshot
 
+# export only persons + vehicles as NDJSON and CSV for ingestion tools
+python -m enterprise_synthetic_data_hub.cli.main generate-snapshot \
+    --entity-filter persons vehicles \
+    --output-format ndjson csv
+
 # colorful demo preview
 python scripts/demo_data.py --records 3 --preview 2 --randomize
 
@@ -226,12 +233,15 @@ make demo-profile-info
 The command prints the exported file paths so QA engineers can copy/paste them
 into validators, API configs, or notebooks.
 
+The Flask API now ships a lightweight, no-dependency demo UI at `http://127.0.0.1:5000/demo` that wraps `/healthz` and `/generate/*` endpoints for non-technical users. Set `ESDH_API_KEY` to enforce an API key header (`X-API-Key`) when desired.
+
 ## Demo Runbook & Automation
 - Run `make demo` (or `DEMO_PROFILE=heavy make demo`) to orchestrate snapshot generation, API bootstrap, CLI preview, and the optional demo smoke suite according to `config/demo.yaml`.
 - Use `make demo-smoke` to run only the tagged demo tests (`pytest -m demo`).
 - Use `make demo-validate` to confirm schema + synthetic marker guardrails on a fresh sample.
 - Follow `docs/demo/06-runbook.md` for the narrated, copy/paste friendly playbook used in the live demo.
-- `python scripts/run_demo_flow.py --interactive` pauses after each step, records snapshot/API/CLI timing metrics, and surfaces a diagnostics block (Python version, selected profile, fallback port, last successful step) whenever something fails.
+- `python scripts/run_demo_flow.py --interactive` pauses after each step, records snapshot/API/CLI timing metrics, logs structured JSON to `data/demo_runs/demo_flow_log.jsonl`, and surfaces a diagnostics block (Python version, selected profile, fallback port, last successful step) whenever something fails.
+- GitHub Actions now publishes release artifacts (`.github/workflows/publish-snapshot.yml`) from the `develop` branch so teams can download governed snapshots without rerunning the pipeline locally.
 
 ## Containerized Demo (recommended for cross-platform reliability)
 - Docker is the most reliable way to run the demo flow unchanged on any machine (macOS, Windows, Linux).
@@ -252,3 +262,4 @@ If Git Bash blocks the orchestrated start step, you can run the API manually and
 ## Next Steps
 - Add distribution mechanisms (S3/Snowflake) after the API layer stabilizes.
 - Introduce Policy/Claim schemas and cross-entity validation flows.
+- Expand compliance reviews; see `docs/PII_POLICY.md` for the current POC stance on synthetic PII and governance markers.

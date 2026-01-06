@@ -107,3 +107,34 @@ def test_generate_rejects_invalid_records(client):
             "message": "'records' must be a positive integer",
         }
     }
+
+
+@pytest.mark.smoke
+@pytest.mark.demo
+def test_generate_rejects_invalid_seed(client):
+    response = client.post("/generate/person", json={"records": 1, "seed": "bad-seed"})
+    assert response.status_code == 400
+    payload = normalize_json(response.get_json())
+    assert payload == {
+        "error": {
+            "code": "invalid_request",
+            "message": "'seed' must be an integer, 'random', or omitted",
+        }
+    }
+
+
+@pytest.mark.smoke
+@pytest.mark.demo
+def test_api_key_guard(monkeypatch):
+    monkeypatch.setenv("ESDH_API_KEY", "demo-key")
+    app = create_app()
+    app.testing = True
+    with app.test_client() as client:
+        unauthorized = client.post("/generate/person", json={"records": 1})
+        assert unauthorized.status_code == 401
+        authorized = client.post(
+            "/generate/person",
+            json={"records": 1},
+            headers={"X-API-Key": "demo-key"},
+        )
+        assert authorized.status_code == 200

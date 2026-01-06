@@ -23,7 +23,7 @@ Last Updated: 2024-06-03
 
 ## Slide 5 – Generator Spotlight
 - Describe CLI command and deterministic seed flag.
-- Mention `snapshot_manifest_v0_1.json` as the artifact auditors love.
+- Mention `snapshot_manifest_v0_1.json` as the artifact auditors love (now with SHA-256 checksums and entity statistics).
 - Offer optional live demo: run the CLI to show file outputs if time permits.
 
 ## Slide 6 – A-E-V & Governance

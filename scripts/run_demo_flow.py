@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import logging
 import platform
 import time
+from pathlib import Path
 
 from enterprise_synthetic_data_hub.config import demo_profiles
 from enterprise_synthetic_data_hub.config.settings import settings
@@ -14,11 +16,35 @@ from demo_flow import DemoRunState
 from demo_flow import api as api_flow
 from demo_flow import preview, snapshot, steps, validation
 
+LOG_PATH = Path("data/demo_runs/demo_flow_log.jsonl")
+logger = logging.getLogger("demo_flow")
+
+
+def _configure_logging() -> None:
+    if logger.handlers:
+        return
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    handler = logging.FileHandler(LOG_PATH, encoding="utf-8")
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter("%(message)s")
+    handler.setFormatter(formatter)
+    logger.setLevel(logging.INFO)
+    logger.addHandler(handler)
+
+
+def _log_event(event: str, **kwargs) -> None:
+    payload = {"event": event, **kwargs}
+    try:
+        logger.info(json.dumps(payload))
+    except TypeError:
+        logger.info(json.dumps({"event": event, "message": str(kwargs)}))
+
 
 def _measure(state: DemoRunState, metric_name: str, func):
     start = time.perf_counter()
     result = func()
     state.record_timing(metric_name, time.perf_counter() - start)
+    _log_event("timing", metric=metric_name, seconds=state.timings.get(metric_name))
     return result
 
 
@@ -56,6 +82,7 @@ def orchestrate(state: DemoRunState, stepper: steps.StepManager, skip_smoke: boo
         _print_summary(state)
     finally:
         api_flow.stop_api()
+        _log_event("api_stopped", port=state.api_port)
 
 
 def _print_summary(state: DemoRunState) -> None:
@@ -80,6 +107,14 @@ def _print_summary(state: DemoRunState) -> None:
         print("Timing metrics (seconds):")
         for key in sorted(state.timings):
             print(f"  {key}: {state.timings[key]:.2f}")
+    _log_event(
+        "demo_summary",
+        profile=state.profile.name,
+        snapshot_dir=str(state.snapshot_dir) if state.snapshot_dir else None,
+        api_url=state.base_url,
+        counts=counts,
+        timings=state.timings,
+    )
 
 
 def _print_failure_diagnostics(exc: Exception, state: DemoRunState, stepper: steps.StepManager, args: argparse.Namespace) -> None:
@@ -97,9 +132,11 @@ def _print_failure_diagnostics(exc: Exception, state: DemoRunState, stepper: ste
     }
     print("\nDemo flow encountered an error. Diagnostics:")
     print(json.dumps(diagnostics, indent=2))
+    _log_event("demo_error", **diagnostics)
 
 
 def main() -> int:
+    _configure_logging()
     parser = argparse.ArgumentParser(description="End-to-end demo orchestrator")
     parser.add_argument("--profile", default=None, help="Demo profile name (default: baseline)")
     parser.add_argument("--skip-smoke", action="store_true", help="Skip pytest -m demo")
@@ -108,6 +145,7 @@ def main() -> int:
     profile = demo_profiles.get_demo_profile(demo_profiles.get_profile_name(args.profile))
     state = DemoRunState(profile=profile)
     stepper = steps.StepManager(interactive=args.interactive)
+    _log_event("demo_start", profile=profile.name, skip_smoke=args.skip_smoke, interactive=args.interactive)
     try:
         orchestrate(state, stepper, args.skip_smoke)
     except Exception as exc:  # pragma: no cover - orchestration guardrail
