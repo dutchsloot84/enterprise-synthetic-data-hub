@@ -16,8 +16,9 @@ class DatasetSettings:
 
     dataset_version: str = "v0.1"
     target_person_records: int = 200
-    random_seed: int = 20240601
-    generation_timestamp: datetime = datetime(2024, 6, 1, 0, 0, 0)
+    # Changing this value requires regenerating golden snapshots.
+    random_seed: int = 20251101
+    generation_timestamp: datetime = datetime(2025, 11, 1, 0, 0, 0)
     synthetic_marker: str = "enterprise-synthetic-data-hub v0.1"
 
 

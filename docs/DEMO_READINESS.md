@@ -41,9 +41,9 @@ _Mode B hybrid with Mode C fallback; concise checklist for release/demo operator
   - Verify `http://127.0.0.1:5000/healthz` via `curl` before running CLI previews or `python scripts/run_demo_flow.py --skip-smoke`.
 
 ## Canned Artifacts (Demo Fallbacks)
-- **Canonical Mode C set:** `data/demo_samples/phase1/` (`persons_seed_20240601.json`, `vehicles_seed_20240601.json`, `profiles_seed_20240601.json`, `bundle_seed_20240601.json`).
+- **Canonical Mode C set:** `data/demo_samples/phase1/` (`persons_seed_20251101.json`, `vehicles_seed_20251101.json`, `profiles_seed_20251101.json`, `bundle_seed_20251101.json`).
 - **Curated reference set:** `data/demo_samples/v0.1/` (use for visuals; not the primary fallback).
-- **Regenerate:** follow `data/demo_samples/README.md` (Flask test client script seeded to `20240601`).
+- **Regenerate:** follow `data/demo_samples/README.md` (Flask test client script seeded to `20251101`).
 
 ## Failure Recovery (aim for 60s)
 - **Port 5000 conflict:** set `DEMO_API_PORT=5001` or free the port (e.g., `lsof -i :5000`) then rerun `make demo-gate`.
