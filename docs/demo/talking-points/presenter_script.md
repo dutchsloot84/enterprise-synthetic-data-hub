@@ -1,10 +1,10 @@
 # Presenter Script – Synthetic Data POC Demo
-Version: 0.1.0
-Last Updated: 2024-06-03
+Version: 0.1.1
+Last Updated: 2026-01-06
 
 ## Opening (Slide 1)
 - **Timebox: 1 minute.**
-- "Hi everyone, I’m walking you through the Enterprise Synthetic Data Hub, a two-week sprint that now gives Mobilitas and CSAA a governed way to share synthetic Persons and Vehicles."
+- "Hi everyone, I’m walking you through the Enterprise Synthetic Data Hub, a two-week sprint that now gives Mobilitas and CSAA a governed way to share synthetic Persons, Vehicles, and Profiles."
 - Reinforce that the generator, prompts, and validators are production-grade even though this is a POC.
 
 ## Slide 2 – Why Synthetic Data Now
@@ -19,7 +19,7 @@ Last Updated: 2024-06-03
 ## Slide 4 – Slice Journey
 - Spend ~30 seconds per slice theme.
 - Emphasize determinism thread: scaffolding → schemas → generator → validation → CLI → API → demo.
-- Call out that Slice 07 (this work) packages the story for leadership without touching code.
+- Call out that Slice 07 packages the story for leadership without touching code.
 
 ## Slide 5 – Generator Spotlight
 - Describe CLI command and deterministic seed flag.
@@ -29,9 +29,14 @@ Last Updated: 2024-06-03
 ## Slide 6 – A-E-V & Governance
 - Explain how Analyze → Execute → Validate works in practice using prompts and validators.
 - Remind audience of pause-for-approval checkpoints (schemas, generator logic, version bumps).
-- Tie the new demo critic into this story as proof of self-policing documentation.
+- Tie the demo critic into this story as proof of self-policing documentation.
 
-## Slide 7 – Roadmap & CTA
+## Slide 7 – Demo Profiles & Orchestration
+- Demo profiles (`config/demo.yaml`) keep record counts and seeds consistent across CLI, API, and the demo flow.
+- Mention `make demo` and `scripts/run_demo_flow.py` as the repeatable path for live walkthroughs.
+- Highlight that `DEMO_PROFILE=heavy` offers a stress-test path without new code.
+
+## Slide 8 – Roadmap & CTA
 - Outline Phase 2 priorities: API hardening, automated distribution, expanded validators, Power BI dashboards.
 - Phase 3 glimpse: Policy/Claim schemas and multi-version snapshots.
 - Close with ask: sponsorship + dedicated QA/data engineering support to operationalize the hub.
@@ -39,7 +44,7 @@ Last Updated: 2024-06-03
 ## Anticipated Q&A
 1. **How hard is it to add a new entity (e.g., Policy)?** – Update schemas in `schemas/v0.1`, extend Pydantic models, add generator rules, update validators/tests; prompts guide each step.
 2. **Can we trust the data for audits?** – Yes; manifest + metadata JSON capture generation parameters, and validators are part of the PR checklist.
-3. **What about real-time APIs?** – Slice 06 set up the Flask scaffold; Phase 2 funding lets us align responses with governed CSV outputs and add auth/logging.
+3. **What about real-time APIs?** – The Flask app already serves governed data; Phase 2 funding lets us add auth/logging and production-grade deployments.
 
 ## Closing
 - Reiterate that the hardest part—governed scaffolding and deterministic generator—is done.

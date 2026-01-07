@@ -1,21 +1,21 @@
 # Demo API – Generator-backed Flask App
-Version: 0.1.1
-Last Updated: 2024-06-09
+Version: 0.1.2
+Last Updated: 2026-01-06
 
-The demo API now lives in `src/enterprise_synthetic_data_hub/api/app.py` and exposes
-the governed generator directly. It no longer depends on CSV fallbacks and instead
-produces JSON payloads aligned with the Person, Vehicle, Profile, and metadata
-schemas.
+The demo API lives in `src/enterprise_synthetic_data_hub/api/app.py` and exposes
+the governed generator directly. A compatibility shim remains at
+`src/api/api_server.py` for legacy entrypoints. The API returns JSON payloads
+aligned with the Person, Vehicle, Profile, and metadata schemas.
 
 ## Run the server
 ```bash
-export FLASK_APP=enterprise_synthetic_data_hub.api.app:app
-flask run  # defaults to http://127.0.0.1:5000
+export PYTHONPATH=src
+flask --app enterprise_synthetic_data_hub.api.app run --host 127.0.0.1 --port 5000
 ```
 
-Set `PYTHONPATH=src` if you are running outside of `make demo`. The factory
-function `create_app()` is used by the CLI tests, `scripts/demo_start_api.sh`, and
-`make demo` so the API stays lightweight.
+If you are using `make demo` or `scripts/demo_start_api.sh`, the API is started
+for you and defaults to the host/port in `config/demo.yaml` (override the port
+with `DEMO_API_PORT`).
 
 ## Endpoints
 - `GET /healthz`
@@ -23,22 +23,29 @@ function `create_app()` is used by the CLI tests, `scripts/demo_start_api.sh`, a
 - `POST /generate/person`
 - `POST /generate/vehicle`
 - `POST /generate/profile`
-  - Body (optional): `{"records": <int>, "seed": <int>, "randomize": <bool>}`
-  - Defaults: 5 records, deterministic seed from settings.
-  - Returns metadata + the requested entity array and reports the effective seed.
 - `POST /generate/bundle`
-  - Returns metadata plus persons, vehicles, and profiles in one payload.
 
-All endpoints share the same validation rules: `records` must be positive and
-`seed` must be an integer or the string `"random"`. When `randomize` (or
-`seed="random"`) is provided, the server generates a random seed but still
-reports it in the response for reproducibility.
+### Request body (optional)
+```json
+{"records": 10, "seed": 123, "randomize": false}
+```
+- `records` must be a positive integer.
+- `seed` must be an integer, a numeric string, or the string "random".
+- `randomize` forces a random seed regardless of `seed`.
+
+### Response notes
+- All `/generate/*` responses include `metadata`, `records_requested`, and the
+  effective `seed` value used to generate the data.
+- `/generate/person|vehicle|profile` responses include a single entity list plus
+  `record_count`.
+- `/generate/bundle` responses include `persons`, `vehicles`, and `profiles` in
+  one payload.
 
 ## Demo Automation
-Running `make demo` automatically launches the Flask API via
-`scripts/demo_start_api.sh`, performs a `/healthz` check, hits
-`/generate/person`, and then triggers the colorful CLI preview that calls
-`/generate/bundle`. Review that script if you need to adapt the workflow for CI.
+Running `make demo` launches the Flask API via `scripts/demo_start_api.sh`,
+performs a `/healthz` check, hits `/generate/person`, and then triggers the
+colorful CLI preview that calls `/generate/bundle`. The end-to-end
+test orchestration is implemented in `scripts/run_demo_flow.py`.
 
 ## Testing
 `tests/api/test_demo_api.py` exercises `/healthz`, `/generate/person`, and

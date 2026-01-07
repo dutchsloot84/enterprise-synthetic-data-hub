@@ -1,6 +1,6 @@
 # Generator v0.1 Deep Dive
-Version: 0.1.0
-Last Updated: 2024-06-03
+Version: 0.1.1
+Last Updated: 2026-01-06
 
 ## Objective
 Deliver a reproducible Person + Vehicle dataset that reflects governed insurance attributes without referencing production data.

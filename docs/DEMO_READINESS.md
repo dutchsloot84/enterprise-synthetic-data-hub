@@ -7,6 +7,8 @@ _Mode B hybrid with Mode C fallback; concise checklist for release/demo operator
   - `make demo-validate`
   - `make demo-smoke`
   - `python scripts/run_demo_flow.py --skip-smoke`
+- **Demo profile:** set `DEMO_PROFILE` (defaults to `baseline` in `config/demo.yaml`).
+  - Example: `DEMO_PROFILE=heavy make demo-gate`
 - **PASS means:** schemas + synthetic markers are intact, demo smoke tests pass, and the orchestrated flow completes with smoke skipped internally.
 
 ## Minimum Pass Criteria (Demo Red Lines)
@@ -31,11 +33,11 @@ _Mode B hybrid with Mode C fallback; concise checklist for release/demo operator
   - Expect: same gate sequence; host port 5000 must be free. This is the recommended “it works anywhere” path when Windows Git Bash or local shells are temperamental.
   - Enterprise TLS considerations (CSAA Netskope): follow `docs/DOCKER_ENTERPRISE.md` for the PyPI limitation, workarounds, and Internal PyPI mirror path.
 - **Bootstrap (Unix / Windows)**
-  - Setup: `bash scripts/bootstrap.sh` (Unix) or `scripts\\bootstrap.bat` (Windows)
+  - Setup: `bash scripts/bootstrap_and_demo.sh` (Unix) or `powershell -File scripts/bootstrap_and_demo.ps1` (Windows)
   - Run: `make demo-gate`
   - Expect: env + deps installed, then gate run; ensure `PYTHONPATH=src` when invoking scripts directly.
 - **Windows fallback**
-  - If Bash-based orchestration is blocked, start the API via Python directly: `python -m flask run --host 127.0.0.1 --port 5000 --no-debugger --no-reload`
+  - If Bash-based orchestration is blocked, start the API via Python directly: `python -m flask --app enterprise_synthetic_data_hub.api.app run --host 127.0.0.1 --port 5000 --no-debugger --no-reload`
   - Verify `http://127.0.0.1:5000/healthz` via `curl` before running CLI previews or `python scripts/run_demo_flow.py --skip-smoke`.
 
 ## Canned Artifacts (Demo Fallbacks)
@@ -44,11 +46,12 @@ _Mode B hybrid with Mode C fallback; concise checklist for release/demo operator
 - **Regenerate:** follow `data/demo_samples/README.md` (Flask test client script seeded to `20240601`).
 
 ## Failure Recovery (aim for 60s)
-- **Port 5000 conflict:** free the port (e.g., `lsof -i :5000` to find blocker) then rerun `make demo-gate`.
+- **Port 5000 conflict:** set `DEMO_API_PORT=5001` or free the port (e.g., `lsof -i :5000`) then rerun `make demo-gate`.
 - **Stale `.demo_api_pid` / `.demo_api_port`:** `make demo-stop` or `make demo-clean`.
 - **Missing deps/venv:** `python -m venv .venv && source .venv/bin/activate && pip install -e .[dev]`.
 - **Corrupted demo artifacts:** restore from git or regenerate via `data/demo_samples/README.md`.
 - **Outdated Docker image:** `docker build -t esdh-demo .` then rerun container with `make demo-gate`.
+- **Need environment triage:** run `make doctor` for quick diagnostics.
 
 ## Runbook Link
 - Narrated walkthrough: `docs/demo/06-runbook.md`.
