@@ -2,8 +2,10 @@
 
 ## Current state (POC)
 - Demo flows are validated via `make demo-gate` / `python -m pytest -m demo -q` and the scripted runner `scripts/run_demo_flow.py --skip-smoke`.
+- Demo profiles live in `config/demo.yaml` and can be selected with `DEMO_PROFILE=baseline|heavy` (or `--profile` on the demo CLI).
 - Docker builds succeed on open networks using `docker build -t esdh-demo .` followed by containerized demo/test runs.
-- Bootstrap scripts (`scripts/bootstrap_and_demo.*`) remain the primary “happy path” for new users on Unix/macOS and Windows PowerShell.
+- Bootstrap scripts (`scripts/bootstrap_and_demo.sh` / `scripts/bootstrap_and_demo.ps1`) remain the primary “happy path” for new users on Unix/macOS and Windows PowerShell.
+- `make doctor` provides quick diagnostics for demo-day readiness.
 
 ## Known gaps
 - Docker builds on CSAA networks cannot reach public PyPI due to TLS inspection; an Internal PyPI mirror is required.

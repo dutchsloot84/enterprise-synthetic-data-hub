@@ -1,20 +1,23 @@
 # Agentic Workflow Overview
 
-Version: 0.1.0
-Last Updated: 2024-05-31
+Version: 0.1.1
+Last Updated: 2026-01-06
 
 ## Directory Map
 - `/mop/` – master orchestrator prompt + index
 - `/prompts/` – slice prompts (sub-prompts, future, agentic_ai, powerbi_dashboards)
 - `/agentic/` – tasks, critic templates, validator scripts
-- `/schemas/v0.1/` – YAML definitions for Person, Vehicle, and dataset metadata
+- `/schemas/v0.1/` – YAML definitions for Person, Vehicle, Profile, and metadata
 - `/src/enterprise_synthetic_data_hub/generation/` – canonical generator orchestration package
 - `/src/generator/` – compatibility shim that re-exports the package generator
-- `/src/api/` – Flask API aligned with schema + generator
-- `/tests/` – regression coverage for schema/generator/API
-- `/data/output` – generator outputs (sample dataset + metadata JSON)
+- `/src/enterprise_synthetic_data_hub/api/` – Flask API aligned with schema + generator
+- `/src/api/` – compatibility shim for API entrypoints
+- `/tests/` – regression coverage for schema/generator/API/demo flow
+- `/data/output/` – generator outputs (sample dataset + metadata JSON)
 - `/data/snapshots/<version>/` – governed CSV/JSON bundles emitted by the CLI/exporter
-- `/data/static` – reserved for seed files or lookup tables
+- `/data/demo_runs/` – timestamped demo flow artifacts produced by the orchestrator
+- `/data/demo_samples/` – canned demo payloads and regeneration instructions
+- `/data/static/` – reserved for seed files or lookup tables
 
 ## Workflow Steps
 1. **Analyze** – run repo scan, read the MOP + applicable prompts, record plan.
