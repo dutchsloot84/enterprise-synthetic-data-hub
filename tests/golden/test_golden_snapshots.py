@@ -37,7 +37,7 @@ def _compare(endpoint: str, *, request_payload: dict | None, golden_name: str, c
 @pytest.mark.smoke
 @pytest.mark.demo
 def test_healthz_matches_golden(client):
-    _compare("/healthz", request_payload=None, golden_name="healthz_seed20240601.json", client=client)
+    _compare("/healthz", request_payload=None, golden_name="healthz_seed20251101.json", client=client)
 
 
 @pytest.mark.smoke
@@ -45,10 +45,10 @@ def test_healthz_matches_golden(client):
 @pytest.mark.parametrize(
     ("endpoint", "golden_file"),
     [
-        ("/generate/person", "person_seed20240601_count3.json"),
-        ("/generate/vehicle", "vehicle_seed20240601_count3.json"),
-        ("/generate/profile", "profile_seed20240601_count3.json"),
-        ("/generate/bundle", "bundle_seed20240601_count3.json"),
+        ("/generate/person", "person_seed20251101_count3.json"),
+        ("/generate/vehicle", "vehicle_seed20251101_count3.json"),
+        ("/generate/profile", "profile_seed20251101_count3.json"),
+        ("/generate/bundle", "bundle_seed20251101_count3.json"),
     ],
 )
 def test_generate_matches_golden(client, endpoint: str, golden_file: str):

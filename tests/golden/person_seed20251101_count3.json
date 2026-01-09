@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "dataset_version": "v0.1",
+    "generated_at": "2025-11-01T00:00:00",
+    "notes": "Deterministic snapshot generated from rule-based distributions (seed=20251101).",
+    "record_count_persons": 3,
+    "record_count_profiles": 3,
+    "record_count_vehicles": 3
+  },
+  "persons": [
+    {
+      "address_line_1": "100 Main Street",
+      "address_line_2": "Apt 200",
+      "city": "Eugene",
+      "country": "US",
+      "date_of_birth": "2018-07-08",
+      "driver_license_number": "OR9562552",
+      "driver_license_state": "OR",
+      "first_name": "Taylor",
+      "last_name": "Smith",
+      "lob_type": "Personal",
+      "person_id": "38af933f-c4e5-0a39-aaab-c328ad568494",
+      "postal_code": "97381",
+      "state": "OR",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "address_line_1": "101 Main Street",
+      "address_line_2": null,
+      "city": "San Mateo",
+      "country": "US",
+      "date_of_birth": "2019-05-14",
+      "driver_license_number": "CA5418374",
+      "driver_license_state": "CA",
+      "first_name": "Logan",
+      "last_name": "Rivera",
+      "lob_type": "Commercial",
+      "person_id": "ccdd7cef-39be-37a7-82ae-fc6d707056ff",
+      "postal_code": "94781",
+      "state": "CA",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "address_line_1": "102 Main Street",
+      "address_line_2": null,
+      "city": "Henderson",
+      "country": "US",
+      "date_of_birth": "1980-12-07",
+      "driver_license_number": "NV5001211",
+      "driver_license_state": "NV",
+      "first_name": "Jordan",
+      "last_name": "Patel",
+      "lob_type": "Personal",
+      "person_id": "2742c020-f58f-0795-04f3-6d456ca8e125",
+      "postal_code": "88914",
+      "state": "NV",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    }
+  ],
+  "record_count": 3,
+  "records_requested": 3,
+  "seed": 20251101
+}

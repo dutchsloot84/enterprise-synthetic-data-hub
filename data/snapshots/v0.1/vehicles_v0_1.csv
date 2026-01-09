@@ -1,201 +1,201 @@
-vehicle_id,person_id,vin,make,model,model_year,body_style,risk_rating,lob_type,garaging_state,garaging_postal_code
-e48f12b9-6a5d-670a-f9a3-638e5b08acc2,3cf3bd58-da60-fb1c-eb7a-79959588532d,V9YDJTJ9WE0TC3P6D,Subaru,Forester,2010,Truck,High,Commercial,CA,94839
-6e887807-5043-796d-4061-88231b393204,57810ce8-98f0-1733-d942-b204a30354ef,BEPR137NXF4RSU138,Honda,Civic,2017,SUV,Low,Personal,NV,89037
-3a5f9ccd-ad9a-6f2d-2e3d-6a6340ed367e,bb9d2ebe-f476-092f-40fc-275e69b5220d,1K6X8F02ND2UY5W6H,Ford,Escape,2024,SUV,Medium,Commercial,AZ,85282
-a7e567e3-87ed-23b1-fe5d-d6f65d04c969,d04883eb-7464-5968-fac1-9bd781637187,Z0JK1B8H7PZAXXN7F,Ford,Maverick,2022,Sedan,Low,Personal,NV,88924
-f6b8f116-cc81-737b-5b0f-56452c0188bb,5fdd3a16-8a61-89a7-936c-d61319c06515,GCRGLHM1VWR06LXBL,Toyota,Camry,2022,Sedan,Medium,Personal,AZ,85277
-e7c228f1-6a13-ffc1-819a-4670fb12493a,9e1e266c-642b-5dfc-4f2d-1caeed61ef1f,WP85U6XXEKWNLRFYN,Honda,CR-V,2019,SUV,Low,Personal,AZ,85136
-30e7099c-4e16-b9b1-da50-c324af85f504,62de90a9-2d55-e081-b4ba-fea885eb78cd,WF8X9MDV5XGLBJSDY,Subaru,Forester,2017,Truck,High,Commercial,CA,94709
-0a039c7b-f4d6-e10a-e7c8-ef898dde98ea,89ede605-b975-4749-d45b-52d17b3c4b07,C8LVB3RMS491X9S5Z,Subaru,Outback,2018,SUV,Medium,Personal,CA,94880
-cab9424f-6ce9-f461-4c91-e3aa88d0ba54,04bcd9ce-2f9a-dc07-eebf-1d7dba72e694,17LUNWK7EPSYWM502,Honda,CR-V,2024,Sedan,Medium,Personal,OR,97290
-40df6beb-6599-272c-ef1c-14ee0d30dbd6,67afd069-f095-1fd2-8fcd-d013edc4e3ab,FPXTM1VZZG9VM3G4S,Subaru,Forester,2009,Truck,Medium,Commercial,CA,94601
-e8a5c06c-26e0-e6e1-8fdf-e26773cc0f7a,af4ea88f-e75f-9338-99e8-b6130fee94e4,JGXX7UZ3SXD5SNVCU,Chevrolet,Equinox,2012,Sedan,Medium,Personal,AZ,85128
-e856c2b7-a19b-f2d0-80c4-6c295def61d8,631996d9-4431-9a55-e426-ef39af2b8395,2WMUX76GDRBGXNZXE,Toyota,Prius,2020,Sedan,Medium,Personal,OR,97223
-829965db-72b5-f747-6170-98e1b3a89e7e,e277543b-1788-e7b0-cb29-05bd52055596,BH6WN5NUGL1Y79J1M,Honda,Accord,2015,Sedan,Low,Personal,AZ,85039
-14886912-f795-ded4-8c15-f17036aab32a,1ed93c23-6aac-03dd-5d94-6c722dbd56bf,SZZCVJ852DXBNU346,Toyota,Prius,2010,SUV,Medium,Personal,AZ,85216
-4b7debac-8aac-608e-90bd-1413ac92a5ea,23549e0e-a2a9-e13e-f854-90da01ac622f,VR0KVB1JXSB12WHSC,Toyota,RAV4,2017,SUV,Low,Personal,WA,98482
-b91ea05d-e43a-e0c9-680e-d70df4db30c2,dc917d96-04da-15ec-4dd7-4bb35c640d88,GA60V0SJBUXM74EWK,Toyota,RAV4,2014,Truck,Medium,Commercial,NV,88939
-67e200d9-66f3-381b-f88a-caaa958813a9,fe23a0d2-276e-fa3e-56ab-511ad10b2f51,8KFJHC9C112WEZ4MY,Toyota,RAV4,2020,SUV,High,Commercial,CA,94608
-0f86403d-7711-55be-a677-a03757385be4,7b6d2d12-c7d2-805d-a831-013a1dfb0871,ZJZW1ZLA9D89Z9R0X,Honda,Accord,2013,Sedan,Medium,Personal,AZ,85017
-9dbea1b0-62bf-1b92-f0b0-3864fe9f98b8,6e0b7b18-226b-23d0-6813-d4aab701893d,2LZY2E312U54P450H,Toyota,RAV4,2013,SUV,Low,Personal,OR,97166
-a6c0bdf4-1de9-27a2-f65b-7d1259a10b4f,e6cf1f33-99e7-726f-bea4-5f87adfb54a1,DF9UEAE1L15ZKSZYV,Ford,Maverick,2024,SUV,Medium,Commercial,WA,98382
-21ca435b-e4ba-9ab6-a1eb-b10b3a970329,069bf4e7-4e63-b03c-fc74-03cc1e199976,1CY2FKTLU1AVK0A7K,Ford,Focus,2018,SUV,Medium,Commercial,OR,97569
-58660ac2-8ce4-342f-8847-a858f0272f88,b6f307fe-eecd-485d-26a7-407053f5ea5d,1HJB4ZA2HM42U80BY,Honda,Civic,2010,SUV,Low,Personal,AZ,85158
-20ea09b2-940b-2369-3831-fe7b06e1b379,43ae1b41-2995-910f-0dee-ae30cd4143dd,BX2XWWV029PUBRK3M,Honda,Civic,2020,Sedan,Medium,Personal,CA,94630
-58dc673d-4441-67f4-19e7-6c92c3ae0851,b76aa11d-b9ab-c927-86e6-e3ce3e09f38d,9GGNZ4VBM917KJUEG,Honda,Accord,2023,Sedan,Low,Personal,WA,98007
-e191e653-6a20-cff7-a253-910d7791b321,14063e78-b8bf-0041-3cf3-f5d701eee721,WMAP035W6AYUYM85R,Honda,Civic,2009,Sedan,Low,Personal,CA,94909
-82727403-c3df-2d7a-8a1b-3e9d4588c0b9,47a37f1a-b6e6-2156-f30a-0c390389e388,JU9XZWS5BY41WEG4H,Ford,Focus,2008,SUV,Low,Personal,CA,94716
-278ad745-1c3d-31f1-8b0b-38299d6159b5,d5203ee3-be32-fd09-89ed-6cecea8ff10f,RGNFJRW297AHDSHXA,Chevrolet,Trax,2012,Sedan,Medium,Personal,OR,97210
-48d07665-4c1a-b18f-c854-602fe332a2a1,37e1e765-199e-a76c-c7c7-a36e765438f5,MC4E5C507X86VGG5G,Ford,Focus,2014,SUV,Low,Personal,AZ,85195
-6fed93b1-7068-17bb-3c3b-88af660fcc33,f245d89e-ea44-c136-0123-5840578e8b7b,UUCV7WA7GLW40AGR3,Chevrolet,Trax,2020,SUV,Low,Personal,AZ,85055
-e181c3fd-5bf5-b6af-db59-4fba96d15217,dba4daf8-f904-2c88-f19c-1b85d7f966a7,YAVDP9YZ0G0W120Z8,Chevrolet,Trax,2023,Sedan,Low,Personal,NV,89131
-8620a21e-d870-6423-5995-92ffbaca0d79,d871650f-2e6d-be2b-5ba1-8f8b69ce4c27,3F2BY6BCK0K4ZG934,Ford,Focus,2020,SUV,Low,Personal,NV,88968
-5eb1a300-9e82-f37b-8fed-d75719a119dd,a7aa9ca6-b543-012e-f57e-fddce7e152c6,Z7333WABTG12HKYA0,Toyota,RAV4,2015,SUV,High,Commercial,NV,88929
-c199816a-c9b3-d314-1cce-5f9b4f907f50,377938b5-6429-001a-773d-58e60202c3ca,7BX7D955CN94BMMAB,Chevrolet,Equinox,2013,SUV,Medium,Personal,NV,88915
-0f4fc41a-410f-9a9b-caec-a5126413af5f,af063a6c-5222-daa5-af8b-0c7d84d2e5b3,X0A6DVHFX0Y3X5EDF,Ford,Focus,2008,SUV,Medium,Personal,OR,97249
-409f7dd5-4d04-bb0a-ace1-52d1fbc05078,2468f965-cc47-93b4-375f-79c32580d8ad,N5MLYL1FDYEL5E550,Ford,Maverick,2012,SUV,High,Commercial,AZ,85199
-27afc500-220c-50bf-641d-68c43622cbc3,90fc7d59-077e-bad6-8194-7f949299ed6d,1AZ1B3BCS1JAJS5EP,Subaru,Outback,2021,SUV,Medium,Personal,WA,98569
-286a4390-09b9-a224-bbe4-c59f5b784f02,592d2bd1-8893-d8af-5a30-6b3a251c05cc,UFY6X8ZDN3CKGW8LJ,Honda,Civic,2017,Sedan,Low,Personal,AZ,85256
-e2d8b161-10f6-5e0b-e44d-6e079b79ce8c,71cb2fea-b436-d9ea-31ad-e4599bca7af3,1Z6FFUAJVFJX3SYS9,Honda,CR-V,2010,Sedan,Medium,Personal,AZ,85245
-81e917e4-13bf-0389-bde4-0fee110ed94e,db81e906-6f15-f570-7e77-79e3923af488,N2HCZJZSY5P97M0CC,Honda,CR-V,2019,SUV,Low,Personal,WA,98560
-332ff9ce-555e-8af4-1463-6fb9c8692c0f,be3655cf-bbf5-ab88-7df9-0c97f27f622b,V7Z2N5XFN6HD2MZVH,Subaru,Outback,2013,SUV,Low,Personal,CA,94945
-a0a83ef8-4fbd-9644-4d07-ad9923baab23,a3e93cf6-678b-1c9f-3607-f3695b84e935,237RJJYY4NWGNC0B0,Toyota,Prius,2021,Sedan,Medium,Personal,CA,94602
-ab663eee-98b9-2006-b7d5-ba9b8f5c07ad,635dc218-ca53-c04c-4c8b-3915e052b9d2,A2VFBTFTZJVELJU1Y,Subaru,Outback,2008,Sedan,Low,Personal,CA,94822
-11a9a1b2-0d7e-ccd1-4c2e-1a7c923148bb,18dc077b-2a64-20c6-a2b6-3056c11d21f5,448FMR0JWE703C881,Chevrolet,Trax,2017,Sedan,Low,Personal,OR,97038
-e1e3c177-31a0-b9a5-7237-1463fabad28e,d9927117-fe9c-8904-474a-1e52c13ea741,G31N7D53G81ASWJDK,Chevrolet,Equinox,2009,SUV,Low,Personal,OR,97412
-0c868dc9-3f7c-2301-c003-a0fea3c32c43,60500a7c-d206-e828-185a-a302801e1f32,0EJDW9NCWWSRBPMWT,Ford,Focus,2014,SUV,Low,Personal,OR,97563
-1bdb67ef-9559-d9dd-a432-ff064ba4e40a,f543b677-e493-a391-ec14-9ee25f1324e3,5BV4YKA37XYG7K1ES,Subaru,Forester,2022,SUV,Medium,Personal,CA,94734
-ba1f3594-2776-6210-3f68-053539fa6713,661b15a2-e152-57a8-20f0-0627bc09d7cb,ZTBS9D2L38WPWFN5Z,Honda,Accord,2016,SUV,High,Commercial,WA,98218
-065ef5f1-c97c-81fd-87ba-729f59af8da2,bbd5d2c3-6cbe-7641-c293-6c0eb8c15dde,7A498EX2MP92FGBMV,Honda,Accord,2016,Sedan,Low,Personal,AZ,85204
-5b4a6183-e209-4385-9f69-b88acd5d0057,dcdfacb4-6eb8-51ac-9fa4-90f107d9ea29,501KSFSJWX3ENYCPU,Honda,Accord,2011,Sedan,Medium,Personal,NV,88985
-ce470966-e92f-fc6d-9cc2-52b287391df7,4797ad65-a6ef-d81e-fdfc-b2ef7fcff757,7KC3EMT6EMEY63MGN,Toyota,RAV4,2008,Truck,Medium,Commercial,NV,89038
-bd2e292b-f2b0-8344-6b68-7c886d768408,39f1da24-395c-e96f-4f4f-301739737cb2,CN97PKVTHVX445P73,Toyota,RAV4,2023,Truck,High,Commercial,AZ,85207
-0ae7665a-1599-e05d-f366-783918c6d02e,512868f8-1e84-af90-c0f2-0e212d089c99,2CX9ZCHYZF2S3Z3JT,Ford,Maverick,2016,SUV,Medium,Personal,AZ,85285
-6e2b7320-ee0d-9246-2a05-c0b63892d249,35f51b7d-3236-3ef8-ea29-21ceb3a789cd,BY71KA3W6CR65H1J6,Honda,CR-V,2024,Truck,High,Commercial,NV,89058
-b391ba81-00e3-ee53-3a48-2355696dce1c,a708557a-00c1-dff6-94b4-0f62694accac,LVBAT9DABGHJGFS2Z,Ford,Focus,2011,SUV,Low,Personal,CA,94920
-dd21682d-0e56-9454-dfb0-0558c316b000,170e3b83-c71d-9cfe-9516-87bbc93504f6,ZVJEKMG5J85Z9WR8Z,Toyota,RAV4,2024,SUV,Medium,Personal,CA,94861
-9f965228-5594-1959-1ff8-5e6f504851f0,11d27805-255c-887a-ff01-819a5f2d5909,X4LMR5H3DY2LGVL08,Subaru,Outback,2021,Truck,High,Commercial,CA,94845
-69b77677-2a60-34e0-0146-a51555d3a70c,888464e0-592d-b7bf-7304-1a67ed0c679f,4YR8XCKEGJF71JFB3,Chevrolet,Equinox,2009,Sedan,Low,Personal,NV,89118
-9b86b9be-46d7-ee49-caa2-56bb3f59ce97,f9eb109b-077f-7738-ed23-e88bdfd859a8,7WVA0FNYK0EM0JGLN,Ford,Focus,2023,SUV,Medium,Commercial,OR,97269
-6acaa2a7-cd6c-2e74-48f9-ed1c01730499,16fcfdd1-5719-cd56-dca5-c6d0403d30b8,H9ATB8SUMWNXA5F5M,Toyota,Prius,2016,SUV,Medium,Personal,WA,98096
-60f5104f-5a28-f068-f589-d25a913f572b,eee125c6-cbb3-ae0a-26a0-6b352afc4688,ZBKWDZS69LHFUJHSE,Honda,Accord,2010,SUV,Medium,Commercial,OR,97237
-537c0506-9d72-8c9b-0248-efd528c277a3,d792d28f-01c9-c70f-feab-3e77a86580a9,GNTFZL8WNTF2AGHNV,Honda,Civic,2008,SUV,Medium,Personal,OR,97446
-8f7c1de1-4db7-89cf-6852-c0ca37060236,2ee0c3b9-b1a5-8736-0243-8ea527e200b6,ZAHVH8AZTA9FALWDD,Ford,Escape,2022,Sedan,Low,Personal,OR,97069
-b6f2de42-aaec-757a-7520-22b88665337b,3573ba7c-a7a5-1595-79e4-c5d2043db243,278WEF3M2LZ9VBE3L,Subaru,Forester,2021,Truck,Medium,Commercial,OR,97367
-910a7561-0cfd-08ff-ccc6-341dca7efb69,96dd33db-8c2b-8354-7733-f3dc142d5116,764XG131KYMJ4133Y,Ford,Focus,2012,SUV,Low,Personal,CA,94907
-c87a3d35-190b-7420-32e1-711d145814eb,aa45a098-c90d-378d-a797-011bd9c7fc56,P208U03LYX0Z45FWM,Subaru,Forester,2016,SUV,Medium,Personal,NV,89084
-fc5e6a3a-e04b-2f4a-cc09-b6f48587192a,65556f27-5132-a7f3-077e-d8da88d944ec,P0UMR74A6PRDS7N8M,Chevrolet,Equinox,2011,Truck,Medium,Commercial,NV,89142
-d99518ab-e788-716f-fdac-1e9383d40327,28b572e2-ea2a-29e5-458e-cee4db7c50dd,14VMR6LBPXW66RJLG,Chevrolet,Trax,2016,Sedan,Low,Personal,WA,98033
-9afc4e82-9fcd-e814-2e71-6ff4da2b4a83,3500948d-6abd-f8f8-c394-dac4f81d207f,8K0WTL1XAERA0V67H,Chevrolet,Malibu,2016,SUV,High,Commercial,NV,89174
-0aa65745-0c6c-93dc-c9d1-83bcd845162d,4813975a-acdd-3598-b63f-a0b46848b2a4,H8ZHCJ05DGLDGMP5L,Ford,Focus,2013,Sedan,Low,Personal,CA,94756
-246f1136-8737-c047-daa3-48cfbf850ab7,ed2b34e5-93a5-e088-b6bb-b5486055d5c8,8AWPD21Y69B5X1L0Z,Ford,Escape,2023,Sedan,Medium,Personal,OR,97108
-b7bfd5e9-7332-f49c-c5cf-42c0ce054b60,5b35fed1-223d-5bd6-6096-653da347de58,F0S1UJ148MXPYWL95,Subaru,Outback,2022,SUV,Medium,Personal,AZ,85165
-513ffefd-2617-fa91-27a7-60ce156d70a2,00251839-9c4b-55d6-9678-61882e24b690,RYT5XG5ATH85TF691,Ford,Focus,2016,Truck,High,Commercial,AZ,85072
-6fa1b3de-888f-95b5-cbba-fa33e6738318,300c64c5-6fda-27c9-3638-9d71355e12d5,KJN2K01HV1RZCPLVW,Toyota,Prius,2011,SUV,Medium,Personal,AZ,85077
-6f81c6c1-b306-12a4-aed0-7dfd2ff7c834,a9a194e3-bc67-b9d0-a56f-039fcf1375ee,LDAC9WLNCBR2X8YPJ,Subaru,Forester,2022,SUV,Medium,Personal,NV,89043
-973bf421-b456-7119-c368-c088ed03dc15,81a1d8fe-8823-2761-d903-05039c6a4778,P85EAUUKHWHKUJSSD,Subaru,Outback,2016,Sedan,Low,Personal,OR,97295
-04dea3c5-7a13-c301-351d-9b2e7838db84,0c0f6c5d-daa4-e89f-2750-976fd1c0984b,MUMYX0YH37ZZE6L53,Ford,Focus,2021,Truck,High,Commercial,OR,97513
-1044b64a-0633-50f4-741f-4bd6d92aa36e,895cbe57-cd0e-0bb3-b191-bfd35fbfa7f5,5WSZPKTY2DPKV33NR,Toyota,Prius,2010,Sedan,Medium,Personal,OR,97283
-234362a8-b1de-4df4-d269-f684fd320ca2,e96cfc20-2310-7507-5833-f10c13df0283,M7P21899V0N3Y3Y4J,Honda,CR-V,2016,SUV,Medium,Personal,AZ,85205
-bab3eebc-1b7b-160e-1510-5e65671d8478,75a7f669-c060-0960-3ad4-4ed2f9f9da5a,J32AAGUF0XFY979R6,Toyota,Camry,2010,Truck,High,Commercial,WA,98599
-e759dc83-4302-40f5-45fd-a468d1cb148b,9241c6a0-a013-3dad-c4a2-5db5020e2e84,NGVWP73BTE1KHXBHG,Subaru,Outback,2023,SUV,Medium,Personal,CA,94734
-3f7f2b48-ee71-fe12-b695-fd7b01e3ed61,e7d3b260-6c2e-7324-c456-292b76a55b2e,FRCK40RLWL0BV0FU0,Ford,Focus,2013,Sedan,Low,Personal,AZ,85168
-63b0c58c-80bf-25eb-51be-f229772afcc3,037fcd71-09fd-a789-70d8-8e91519ca39a,V7BHVZFK80EULKUTW,Toyota,Camry,2022,Sedan,Medium,Personal,WA,98460
-92ab4376-eade-aa65-4fd8-fa32db310ef4,09d869eb-15ad-c0e6-3774-ddfd10c4efd5,REVE73UMNMMYMRVMV,Toyota,RAV4,2011,SUV,Medium,Personal,NV,89051
-fba68e03-b3af-3f7d-747d-a23c4ed4b5b1,a086771c-4aa9-5631-6ec2-1717310ed78b,9L7BA004MZ96CS4BB,Honda,Accord,2008,Sedan,Low,Personal,AZ,85206
-aae2c075-8a22-ffa3-9fe8-8faa355367e4,22609589-84a7-edf0-e9d7-ce98befd407f,C1VM3B9WCG2VW54DN,Toyota,RAV4,2015,Sedan,Low,Personal,AZ,85278
-7c96cadc-4a67-43cc-dd2c-ff8c32a42a69,b942939d-b426-9211-57ad-77e3f3329ffc,X6F0337PJF9DK8398,Honda,CR-V,2010,Sedan,Low,Personal,AZ,85126
-485fa3a2-af4a-9292-e810-1ee72ab8c046,cad48596-843d-1f21-d357-7e645e248e83,H1ESF8E5CX2SFTXT4,Subaru,Outback,2014,SUV,High,Commercial,WA,98024
-254c68b2-a9c3-e70e-0cec-58eba3c26ae5,b7e4018c-4952-b255-e29f-93f865774705,TGB7KSBTTFGGW29SX,Chevrolet,Trax,2012,Truck,High,Commercial,AZ,85147
-79bf4d13-b408-229a-8e7c-add879b457d4,b5086596-bb09-52fa-2361-c56f3076c144,S66UZ2HZZK1NWDFNH,Chevrolet,Equinox,2010,Truck,Medium,Commercial,CA,94873
-079d220e-903c-3605-0cc3-dfd46099ea35,c1a36935-01bc-a6d6-b92a-1b3f51f66557,D6TKKWFSPGHUCCFGJ,Chevrolet,Equinox,2012,SUV,Medium,Commercial,WA,98384
-99fc71f7-0712-2c88-e313-718d66b87815,18fe7234-2d66-2ae8-34df-1e8e6f253888,BHY12N27A4VB9ZK2W,Honda,CR-V,2012,Sedan,Low,Personal,OR,97397
-4d6f0088-21ad-4433-6539-b0e409f1770b,ce5ad660-935a-b255-cf80-dd27b88e9a72,91Y1LU32H279T5U67,Toyota,Camry,2009,Sedan,Low,Personal,WA,98400
-6724b61a-1548-1d91-1b64-56a3bf7b2333,da5a1dcc-7029-bdfd-f611-39cc54bec7d8,273ZLDGADYZMEGA64,Chevrolet,Equinox,2021,SUV,Low,Personal,WA,98322
-65ccacce-492a-c722-8167-dc5573a7dc00,936811af-3619-df7c-65e0-bcaeeea06d56,1LPBG8YZDVE1UC0UA,Chevrolet,Equinox,2014,SUV,Medium,Commercial,AZ,85180
-16bc7469-1ad1-bec2-55d4-918c5e54f041,c0c762f9-d710-c7ac-d9e9-eebcb36c05e7,HX9D9VD1V21RCFKMD,Honda,CR-V,2014,SUV,High,Commercial,WA,98098
-ff11c833-ce57-2b57-40f3-8a8118f360bd,e5975cc2-623d-700a-08ef-4a184bb574de,JLT59K8HATP36M18J,Toyota,RAV4,2013,SUV,Medium,Personal,CA,94871
-18958d71-ae1f-ed4d-3f82-7237848f16e9,a249476f-2053-2fee-a860-f1bd87322bd5,36SK8ZHWZKHZPAJTY,Chevrolet,Malibu,2012,Sedan,Low,Personal,AZ,85091
-c60aece1-9e83-5e96-1f98-f6934734293d,2306bb72-4ec6-3911-38c8-01b2b09f8885,3NLEWM0BS5Y29F7XJ,Ford,Escape,2013,Sedan,Low,Personal,OR,97187
-c10ffd28-ea59-b7c2-7033-826896b965f4,99cbab8d-ce82-580e-6854-2c225318b815,T38PEWMB3LUBA3EAH,Ford,Escape,2020,SUV,Low,Personal,AZ,85248
-0e4b79d8-7367-a213-2537-3826e9ed179e,a4870486-2542-d1b2-5ae1-8fb4042ed673,S1S3HF7PPHVYSS3BX,Ford,Maverick,2013,Sedan,Medium,Personal,NV,89061
-fbef670c-df70-c61c-7dd6-491bf376cb8e,f7dc9d28-879e-e5c7-f916-6cc6ddd3114d,9WW6RDUB7S00J1PDE,Subaru,Outback,2012,SUV,Medium,Commercial,AZ,85063
-2e0b9b4f-83b8-ce5f-0874-102898a08a96,a64b8951-2ff7-980b-c1da-a962d57532be,XZ3M71DTFMKCTGZ1Z,Honda,Accord,2016,SUV,Low,Personal,AZ,85013
-9ba2e536-0da5-0971-2bd9-85b2045a55c3,c21dd328-95b4-488b-f4b8-78c7e5c83a2a,N4BX1AWB4GXAL3UZJ,Subaru,Forester,2018,Sedan,Medium,Personal,AZ,85277
-c2d1e699-b895-3d4a-bd2e-dcc9fa446ca6,b209440e-834e-02b1-9c05-00ee7ccf436a,LKJ70XTYW35ZWKF6S,Chevrolet,Malibu,2010,SUV,High,Commercial,AZ,85235
-f9ac3a96-c018-88d5-a3d7-fb8b3b02f1ab,78420d80-01b2-3292-77ec-789b84f9fcfe,PH087WY58TY6W7JNF,Toyota,RAV4,2016,SUV,Medium,Personal,NV,88936
-0a6fc968-70c5-4468-361d-9235a8ac330e,f5f344ad-163f-161b-ccd5-963e5907e28a,9SZCJPNRFTFXKL9TZ,Ford,Maverick,2020,Sedan,Medium,Personal,CA,94607
-1f0ad751-dbc3-b953-3529-611ada8e0600,035a6adb-9bcf-cd19-502e-5ff17e91880d,ESG07BUJ72WEYBP5Z,Honda,Accord,2013,Truck,Medium,Commercial,OR,97072
-c3849d08-e32b-3241-432f-13b18af08bb8,04fc9865-6d86-b767-d6cc-4be6ba91a1fd,ZG05A2K3JZXNFC4Z4,Subaru,Forester,2013,SUV,Medium,Personal,WA,98160
-dd86a567-e143-8286-3fda-7819bfff6a86,5b08a484-615a-74b7-3487-928cece25e17,5LLRSSSXMEEC2J925,Ford,Escape,2016,Sedan,Medium,Personal,AZ,85085
-bc067146-7e44-3662-8c66-68549c7fec25,f655d1b4-84ca-0e4e-7f55-ddc092ee1223,18YA3M0TN35D21MJC,Chevrolet,Malibu,2022,SUV,Medium,Personal,OR,97082
-5f1f29c8-5dea-d84e-3424-74370ec5355e,501122a4-1b01-92b2-3ac1-3e3cb772aada,1MGAKWLK8ZK3C91RM,Toyota,Prius,2013,Truck,Medium,Commercial,AZ,85037
-c13960f3-7309-3792-5b7f-cdf1aaa1c89c,7c9e261b-f12f-cc39-8037-c18e0ee7283f,UDFFRSRG37BFRSE0N,Honda,Civic,2012,SUV,Medium,Personal,WA,98087
-c66b3190-9217-5913-3536-ede55614a3fc,4b0fa7f5-6d64-a28d-915a-c92358148d54,9BCGSFCF623EGYBN8,Honda,Accord,2023,Sedan,Medium,Personal,OR,97192
-2ef9fa70-6c7c-5c64-caab-758dc6d7b4a5,8c9f5a22-d991-a193-b5dd-3635f40e2806,A1L2AECEYK8VME8HG,Toyota,Camry,2019,SUV,Low,Personal,CA,94885
-c50f65ab-78eb-e5b8-f706-298a8d4d706e,f6fcedba-c2b8-3e92-c254-44c5257193a9,VJT883246X9ZULYT2,Ford,Focus,2016,SUV,Medium,Personal,NV,89134
-a11abb68-6cbf-0ca2-b00c-37829efbe417,24191e4d-a9a5-3581-d72b-c04761bf048c,4TBSUYEPTD6RH1FS5,Honda,CR-V,2015,SUV,Medium,Personal,CA,94616
-1cf1ae1d-f60d-dc6c-0ab8-f2c9ee3c557e,8c315534-ed35-a7fb-5aad-c090c6816146,N53589FMN6KWDATXR,Subaru,Outback,2024,Sedan,Low,Personal,NV,89077
-d0a17749-69dd-6774-94df-0a53c05578e0,29bc007c-2457-c476-307c-138f1d805dd1,EAMG4JZW5JXSDTUUM,Toyota,Prius,2015,SUV,Medium,Personal,OR,97100
-1556c984-0475-5f81-c8d7-d6f6939db1e0,9f5a18c5-bdaa-97a1-1f17-12f575f0e9c2,6B0HJJKU9HLRZ9RMG,Ford,Maverick,2014,Sedan,Low,Personal,WA,98336
-2db7a1e7-31a8-9607-a6e6-0f212808fbd5,39707c5e-2769-f4e3-ab9e-ae2001ab7943,YS5HMETLLGB4DWXXY,Chevrolet,Malibu,2019,SUV,Medium,Personal,NV,88911
-ac61fbca-83be-9aff-2140-08e0573a4c22,9545cac9-a838-7b06-ccdf-8e3bfab87832,TUCZDAETSYVLT9KYD,Subaru,Forester,2020,Truck,High,Commercial,WA,98427
-134ca96b-acc8-30b5-1944-0a652a759674,a5fcabb7-d812-26eb-6608-d0ae88516cb7,AMSG3WPRNJD783LRY,Ford,Escape,2019,Truck,Medium,Commercial,CA,94701
-ce672220-6a04-52d6-e1b9-eaf01fa91010,ae41b0ad-6f2a-8025-9f4a-356be6b6e3c0,4WD3KBV8DBC8RWDX3,Toyota,Camry,2010,SUV,Medium,Personal,OR,97271
-2f7178bf-3d15-9e22-1f11-9b54ddba508b,75e27906-5ee6-bbc6-d4bc-e81e511a978f,25N8T4MD4WV2SCA0W,Honda,Accord,2010,SUV,Low,Personal,CA,94907
-997f74c4-bb54-a982-1426-067afdebc1c5,ba37f9ef-370c-1e6a-08b3-8b67eb38d108,HB26CPZFREGXPG0M7,Chevrolet,Trax,2024,SUV,Medium,Commercial,WA,98193
-713b982f-0600-4544-ebb0-9ff90e666eed,be271719-9701-094e-8fd4-67f4f25109de,H4L6E08Y0NLUZEDF2,Toyota,Camry,2022,SUV,High,Commercial,OR,97442
-98a6161b-be0a-390f-da9b-7cbdbf3a3cb9,154af4c7-1999-360f-467d-598c0beb32fa,KZ741YWASCE03A729,Ford,Maverick,2012,SUV,Medium,Commercial,NV,89110
-4a8407c2-77da-76d9-c5b2-d4f6bffaf33e,45095bab-f7f5-eecf-01de-b8b8efe4fea1,MH4SN5SYBWPZR9PJM,Chevrolet,Malibu,2022,SUV,Low,Personal,WA,98070
-428216bc-9a92-9ada-8292-a7d922946f60,e05be7c2-511d-f7a1-4096-0d0790e97c72,W41EX7SN1J22RZ626,Subaru,Outback,2009,Truck,Medium,Commercial,AZ,85243
-ecc736e4-072c-b9ff-8b50-cc9d8c470a08,9fae2b7c-9aa1-76f5-8b6c-726e79e7bacd,PPTVX4U9Z0CERCH6X,Honda,Civic,2021,SUV,High,Commercial,CA,94681
-f1fbacce-4b49-a084-11ff-3ce256c59bf4,d7d3197b-7dd8-6892-cd08-807d56d1db71,K8AT67HH2L7Y9EZ8K,Subaru,Forester,2015,SUV,High,Commercial,NV,89050
-dd65ae24-bb84-1ca6-db3e-17a3342643fa,5a4a49ba-2fae-9f67-a982-8f197225434a,LTEEM2YFRXRCV2CP1,Ford,Maverick,2011,Truck,High,Commercial,NV,88912
-9800ba7a-f03e-b139-d2b3-f0cf638d85ee,a7c10978-2802-ea01-9fc3-8c55f40e05c7,18AX88YR0P177HAGB,Ford,Focus,2012,Sedan,Low,Personal,NV,88942
-7c3d80ba-8e67-1dc5-d6aa-1bc04a4e3e5f,9710fa6e-0bca-85a3-c2e9-6b166c71f372,4AC4JEHLX0CVJXXAL,Ford,Focus,2017,Sedan,Low,Personal,CA,94893
-86c9a27e-59a1-97d9-9eeb-ea646891e280,141cc2af-ddc9-f384-3325-c7744d83d811,J6K9T9BXMT5E35EWU,Ford,Focus,2024,SUV,Low,Personal,NV,88993
-f304a4d2-21c7-e863-c675-8d4774dc9a25,a2b35f7a-1705-aee7-2fd0-eb5074ffb4e0,373RRF3HXE56VV3KL,Honda,CR-V,2014,Sedan,Low,Personal,WA,98177
-ded53bc3-f5b6-4c5b-b39f-4c10eb15a205,ef970d63-1aa6-ec0f-c639-95b45a9bb7d8,97T2G02NSF1B6FV50,Ford,Maverick,2016,SUV,Low,Personal,OR,97172
-b4bbc068-89f5-37d1-5e99-1329703caea4,b80f51ac-da08-06b9-241f-eb6bac13e068,ZY09TZV60CB148160,Subaru,Forester,2014,SUV,Medium,Commercial,OR,97403
-36720de1-8f3d-af85-187c-846e74aaa99a,a58a424c-3c99-bff8-8196-56db640b27eb,WBSWS48GWCLDUR3GX,Toyota,Camry,2021,Sedan,Medium,Personal,OR,97389
-2fb808b4-3bc7-aec2-9173-51dd572879ce,81e246ca-20a5-070f-0645-22ca0633558d,W6W0TJTMBBPTU5HSZ,Honda,CR-V,2023,SUV,Medium,Personal,NV,88977
-19236384-1e55-0281-c83b-1e9111f7df9c,fca62a21-1c2d-245f-5c06-001c94260d73,459ZT6EJYK8H6ULC8,Honda,Civic,2009,SUV,Medium,Personal,AZ,85141
-05c97819-d244-14e4-0323-a9adf5192043,528363c8-3f7b-b0d8-0a3f-a581a5772d79,TCYRR5150D0U3HR04,Subaru,Outback,2018,SUV,Medium,Personal,WA,98377
-4d967765-5a2e-c2c9-ad68-49bfb0a60a40,5bf16b34-4cf7-8a30-2388-6cd49ba58eb8,PR6UPSYAEZZ3X2H28,Honda,Accord,2009,SUV,Low,Personal,AZ,85263
-22e71412-609f-a683-d438-1d7bcb245d0f,22ca3718-1cca-d313-6c96-92dd3f4cad5f,6C3YHF2ER9UHGMGSK,Subaru,Outback,2021,Sedan,Low,Personal,AZ,85021
-96f04d3e-2c69-a8bd-529b-d790672d7688,b825e9a0-8fa7-5e6c-97b5-d71c2de58122,8P1K1D1WHYFWGSK5B,Toyota,RAV4,2023,SUV,High,Commercial,CA,94647
-f22dc841-9d7a-deb0-891f-ad802d86fabe,cabd186c-312c-af10-9717-2209625ad656,RTSAP2GTSVEYU9NXW,Honda,CR-V,2015,Sedan,Medium,Personal,AZ,85011
-e47e39fb-e68d-f703-b3b9-cd9a3c6a5f63,a32e3cd4-f9e8-a876-2f62-9309f92dd764,MSZYX5AH9ADTTU87U,Ford,Focus,2009,SUV,Medium,Personal,CA,94795
-f3a554e6-8867-b54c-98cf-65b2fbf79234,31f79210-76ae-5e74-5a7b-ec5653abf447,Z1360A4B5BSVFK3J9,Ford,Maverick,2011,Sedan,Low,Personal,AZ,85238
-3bf3aa9c-0f18-cf1b-1ca9-c11502b5d013,68f086ff-874d-f011-c8bf-e5283f5da188,5FDKF4MYUAGXXCK3G,Toyota,Camry,2011,Truck,High,Commercial,OR,97008
-72388d7e-5bd8-ed23-40b1-70a611ddde17,b0812c3c-25a9-8bab-ae4b-42e170e6e7a1,VZ3BE7FL0UCT1UV5C,Ford,Escape,2008,Sedan,Medium,Personal,AZ,85123
-527dd02b-69bf-e5a1-de63-65367cabc8d7,6b874a85-0cdb-05cf-820f-252b1ac874f2,NMRYREDZ28H35DUF2,Chevrolet,Malibu,2015,SUV,Medium,Commercial,NV,89024
-ac67f535-1614-b774-2e69-5a8a6fe98a93,38629292-593d-7939-cc02-706bddce3c7f,46R1E3A6LYTZW0W4G,Subaru,Forester,2009,Sedan,Medium,Personal,CA,94839
-5e27b0f3-8bd6-c50f-7c4d-8ccec9f6be7c,4ae6dc33-fcf3-f3ff-56b3-d8ae0ddec6b7,7A9RCRS3GL7S5ETVC,Subaru,Outback,2021,Sedan,Medium,Personal,CA,94603
-9a045269-b602-a6ba-a3b6-15c0fb5beb3c,bc40ba17-c564-6388-3846-86dbde6dbd36,1CC4924J3770GPDRE,Subaru,Forester,2017,SUV,Medium,Commercial,AZ,85254
-d6279214-03d6-6bb8-d686-2a15b1e0540d,b713d56e-b09e-b6b5-e3e0-ff3ba1022710,E5DN7336280Z9N9SV,Subaru,Outback,2015,Sedan,Medium,Personal,AZ,85152
-26ec00bc-b19d-87b2-edab-64b25fc3c972,ead62946-1923-4ef2-d516-4f243b80d727,NZFTB6YHFH4RUC14K,Chevrolet,Trax,2020,SUV,Low,Personal,AZ,85091
-9a9ac055-18ae-f332-b823-2ecdc40dd170,58811320-5e0c-d4e0-9003-33a9215caa6c,MS93KYEKWV9Y5PT9A,Ford,Maverick,2016,SUV,Medium,Personal,CA,94777
-13d6e50a-7778-82af-3c5e-2c9db67455e1,e6c69dc0-f28f-c05a-43a7-76b698459790,4JUA5N6TTTP1NA3DG,Subaru,Forester,2017,SUV,High,Commercial,NV,88976
-22592fbf-b6ea-2753-2416-9e9346f6abcf,b8081521-3fa2-80ae-a1bb-d8755927485a,YJWG08F22TNEVRK7H,Ford,Focus,2021,SUV,Medium,Personal,OR,97096
-ca5965c7-907c-05f0-c614-735ef8f838d6,f095e1fd-f90b-de3b-bdd0-6550b34747ed,M2MC8ZR2F4JEVCK4F,Subaru,Outback,2013,Sedan,Low,Personal,OR,97118
-2e3f4695-ba5f-e1f5-8f4e-38d927f28eb9,bbc0b419-fad2-ac7c-f2f9-f0d8226c0a47,SUC9G8JPBRXEPSHEY,Ford,Escape,2014,SUV,Low,Personal,AZ,85239
-74acaedc-0ea2-0b59-5fe1-174f49905260,40fe1bfe-f898-dfb5-5334-28d5252af61d,9V8GHGG9RY2EXRVE6,Toyota,Camry,2009,Sedan,Medium,Personal,CA,94658
-11a5111c-1d73-76bc-a3e6-e8dc19b27aa2,6db8017d-8db3-70c9-3ce7-c71ce7b8a52a,TMU65ZRSEKW2FS51S,Toyota,Camry,2013,SUV,Medium,Personal,NV,88990
-e4ca1ff4-a3bc-8764-89ba-b951198e7e27,bfc7ba57-ab28-b0a2-2405-fae5b01f42db,4MSSJPZLB51D8UH4W,Honda,CR-V,2017,Truck,High,Commercial,AZ,85123
-43de7444-bd8c-ee52-06d3-6409bf4b33a8,b9ff95ef-501e-ffa4-e66e-c584e72e3353,BVTC7B09E6JV7SPPR,Toyota,RAV4,2024,SUV,High,Commercial,WA,98338
-53923741-4f69-8094-4510-4c395fded4d0,cda1421e-4445-71d4-cad7-5cedd0b407aa,001PEPG1UYKY4YVRT,Honda,CR-V,2009,Truck,Medium,Commercial,AZ,85260
-8b13a934-20b6-f823-ed8c-2d091a3f62a3,c64eadb8-6404-1ddd-8fc6-804ede7cf22a,PEBR7UJL42HTXKNZ7,Chevrolet,Trax,2021,Sedan,Low,Personal,NV,89148
-d863d06b-d398-783c-bfb4-cb847b74e1aa,d612049f-d6a8-0a56-3553-a370bb229116,N2FT4C2J5B4CWWWCK,Ford,Maverick,2023,SUV,Medium,Personal,OR,97244
-647dabe5-bc88-be05-beb0-7b8356ad4028,d4d47074-0811-e404-63c7-40b24fefead1,DBWZLGD93GMDRNDTZ,Chevrolet,Trax,2022,Sedan,Low,Personal,NV,89114
-b472e7bd-bfa9-a7ce-6a30-6f11b37af598,3e65bf65-aada-f317-6d78-01b96c5e921a,P91J37XL2TZA8898M,Toyota,Prius,2014,SUV,Medium,Commercial,WA,98232
-db216642-0c5b-f491-61c4-88d2ca12d782,7aff78d4-47a0-e9b5-196f-b2d6db553d54,2N52CTKT0TS0NM9MS,Chevrolet,Malibu,2017,Sedan,Medium,Personal,OR,97113
-f53d125e-690f-e4ed-3367-f86d72c6b3df,3c85cd0e-35e1-f1a8-5b7f-3a9970c58924,WJBMK48A2SH5XE9SB,Toyota,Prius,2022,Sedan,Medium,Personal,WA,98089
-f5696b59-9dcc-2841-d6c1-9860d2825bfc,625a545a-7bca-ded4-ca57-3a13d34b0a54,BHE9ZSWWFK5EM0RAZ,Honda,Accord,2016,Sedan,Low,Personal,WA,98083
-5e8726df-0d83-bd7c-538a-58b45e2396ae,6b761955-cd74-60e3-6193-77a3f513f298,6XU0BHWNSWHH98ZVT,Ford,Maverick,2008,SUV,Low,Personal,CA,94926
-e51c4030-5fa3-1699-140d-543189a07b88,0bffea66-2b40-1922-dc87-532716c77a2d,HLM5F4W0B3P88K7XZ,Toyota,Camry,2019,Sedan,Low,Personal,OR,97064
-c181fc9c-4d97-9798-11c8-c5159d14e82f,316893c9-f185-e281-8da7-f26c040caa7c,YZMCLY5L981JFCZ7R,Chevrolet,Equinox,2009,Truck,High,Commercial,OR,97340
-d9683d97-bfcb-a338-dfa2-4f4e029e4ecb,4cc97c06-8ce2-de59-e654-df926d9432bb,JTCKGEHKVMB5KLRBK,Toyota,RAV4,2024,SUV,High,Commercial,AZ,85162
-7ff4279f-77dd-64da-17ab-509415c1e766,142e20bc-be4f-9b2e-65be-d95901476e6c,84DWM328PM73LVE9K,Ford,Maverick,2014,Sedan,Low,Personal,WA,98398
-e17c9a8b-b470-42b0-e5cc-bac6a3ff64df,4c16034d-1129-e5e7-4ae9-706594897d09,GHNKJW2DGAGCNM0A2,Ford,Escape,2011,Sedan,Low,Personal,CA,94845
-99669f06-30ff-23b9-cf28-4014ee8f1bbd,e7c5fc20-556b-794a-7835-fe404efe7b8e,GGZT32L4A8AP4C1FP,Chevrolet,Malibu,2010,Sedan,Medium,Personal,WA,98259
-f51b74b0-2f05-7f16-4fa4-976a49ddacaa,15e719ec-416d-6002-12cd-e62ce3defe49,G3N0M0SJJHDMM9ZDU,Ford,Maverick,2020,Sedan,Medium,Personal,OR,97316
-49f0b35f-dc40-3f7b-e260-90116697b417,e459a2de-9d3b-3c0f-c7c7-2444413bd432,GD387E2HFRB20YZL2,Honda,Accord,2014,SUV,Medium,Commercial,WA,98336
-137d51ca-8e69-20f7-4c1d-ae57669b764b,8e58a569-853e-5552-2a8f-08ae079e088d,9KALPTDPBZZLN3SPX,Ford,Focus,2023,SUV,Low,Personal,NV,89148
-45ad92b4-b248-98ca-44db-2e6e99b7ecd4,1311453c-ab46-7217-f3a7-c3b94e716c71,Z331JNPVY8M7YPDZS,Ford,Maverick,2022,Sedan,Low,Personal,NV,89188
-ba547040-cb1c-7934-e4ca-f1ec2aa25737,ece89734-450f-fa98-823d-b9cde668a88c,P7UZEXMYGZTGB1UPJ,Honda,Accord,2017,Sedan,Low,Personal,WA,98350
-721f00dd-a8b9-b783-357f-8a2bd629ca77,df84c933-4bcc-6c39-747c-aba361aca006,ZYC6B6VU1BAKZF4R2,Chevrolet,Trax,2011,SUV,Low,Personal,WA,98077
-425ea7f7-559e-cda0-5b20-2ee0a032ee40,2445220b-cc9a-fc7e-22d6-a553beb14016,ED8UYKNEYMDAUTG8J,Chevrolet,Equinox,2022,SUV,High,Commercial,OR,97173
-0ab5e01d-0c3f-f67e-39ad-5cb7291a7816,abf0cfa4-cb39-ff0e-1ad5-fef45c905ab2,DM3J0NV246J9CUP9G,Chevrolet,Equinox,2016,Sedan,Medium,Personal,CA,94673
-0d7e5e0e-203f-0763-c4a4-5c039210bbcf,478fece0-fb2c-b572-6aa4-989ea7e5feea,7AEWVVB7Y7301XMRD,Ford,Escape,2013,Sedan,Medium,Personal,OR,97246
-197120c0-fca8-b882-51ec-7fb4d50d47ef,a4aa978d-cf11-2d96-6dab-711838927203,AU69ZVSK15HTJ7NDB,Ford,Escape,2014,Sedan,Medium,Personal,OR,97112
-e219eef3-a41c-f926-a480-0bf70e584a18,5d2c0b22-0bac-38ef-8114-e551b1db01b5,TVMNRHC1488WRCGZB,Toyota,Prius,2017,SUV,Medium,Personal,WA,98467
-1abc0609-b61e-7763-4c47-3004b24f6bd4,bf65b414-05f2-b67b-ffd3-d46cd1047303,0LY2EAP581RR3CYTG,Subaru,Forester,2013,Sedan,Low,Personal,AZ,85292
-812feeaa-a1c6-9d7a-0638-05a40c5dc10d,b6a35065-115d-2c69-b301-eb60a7347ad8,4A3XJZLSN576KDRBF,Subaru,Outback,2015,Sedan,Low,Personal,NV,89036
-4efe28f7-137a-20fb-c33e-b07703edb5fc,6bdc680d-22a3-8bb1-a379-baf859362fc7,SZ971UAZ34PL133N8,Ford,Focus,2021,Sedan,Low,Personal,WA,98447
-424c93d3-76ed-d2f5-6f8d-41efa6588665,7dd2fb2a-51c5-22b6-73aa-61c31381e690,03P2DV8AJ47J40B47,Toyota,Prius,2022,Sedan,Low,Personal,NV,88992
-dad20dbc-7413-10db-01fa-de08ad862280,0e7bb071-3ef0-b61c-1153-a55958232622,HMZMMB1GL4MXPFFX3,Subaru,Outback,2017,SUV,Low,Personal,CA,94703
-dff5627a-de57-1b99-8b6a-5e814868b36f,d30bee75-727e-dbd0-eca4-a63a53bc3eae,BS6LCWM5FWX3376HH,Chevrolet,Malibu,2020,Truck,Medium,Commercial,WA,98018
-be7fa1dc-6c35-1262-9be4-c5faadd11c81,2c022819-4168-01b9-832c-c0bdeeae5c33,RMVWV5B91LNDCPRWT,Subaru,Forester,2020,SUV,Medium,Commercial,AZ,85126
-eb5425e1-717b-3b79-37a1-a211358946d4,a862fcb3-bba1-55ad-9927-fbc6ccec2096,Y4R6B5HAUCSJPH1KF,Ford,Maverick,2021,SUV,Low,Personal,OR,97337
-622bbb01-176d-cb56-dab7-452c2c199ab1,c3fe704d-1233-1922-d66b-9ec37206081b,AG3WV3LFYUBJZCFDK,Honda,Civic,2021,Sedan,Low,Personal,WA,98591
+vehicle_id,person_id,vin,make,model,model_year,body_style,risk_rating,lob_type,garaging_state,garaging_postal_code,synthetic_source
+34457095-147c-985e-18ba-5d960d72611e,38af933f-c4e5-0a39-aaab-c328ad568494,BD60FX9CCT6GJAYJK,Honda,Accord,2018,Sedan,Low,Personal,OR,97381,enterprise-synthetic-data-hub v0.1
+ecde7ad7-44d5-a07a-a140-8e0eb8ecfb07,ccdd7cef-39be-37a7-82ae-fc6d707056ff,76SBPX6NFBDXJ04JB,Chevrolet,Equinox,2016,SUV,Medium,Commercial,CA,94781,enterprise-synthetic-data-hub v0.1
+95ae0b96-aeae-8054-9f8b-7f4d9bba6abc,2742c020-f58f-0795-04f3-6d456ca8e125,108K5W9NY6GV7HESM,Subaru,Forester,2008,SUV,Low,Personal,NV,88914,enterprise-synthetic-data-hub v0.1
+96c550ff-bc5a-bb50-f384-3c302af14c47,0d31bad7-6bb9-9fd2-876c-441044bfccb7,USUF2HLNSVGND2MHU,Chevrolet,Malibu,2011,SUV,Low,Personal,OR,97040,enterprise-synthetic-data-hub v0.1
+06721140-957d-4fcd-f578-688ca150cf04,88552293-e7d9-3a4e-a7cc-5892ca1144eb,JPHRF4TS56UGDVCAN,Ford,Maverick,2020,Sedan,Low,Personal,WA,98108,enterprise-synthetic-data-hub v0.1
+389a500c-805c-6870-03a1-d8a6725a8456,42a26eb6-4526-434c-9698-f43dd17298d9,YKMB22NKZ3RXJT4E8,Subaru,Forester,2011,Sedan,Medium,Personal,OR,97585,enterprise-synthetic-data-hub v0.1
+5c514c9c-8d09-06a5-4a84-7d22b53d4c71,1415278a-3d86-2741-dbb2-16d437f607f8,Z8YA07NMVSX0EWZDD,Chevrolet,Malibu,2012,Sedan,Medium,Personal,CA,94754,enterprise-synthetic-data-hub v0.1
+f8f39267-e266-db5f-b5a3-176549f4ffbd,0849fc29-537a-86bd-b658-cab80cd274e4,PRDBMW41MYTE7DWH2,Subaru,Outback,2018,SUV,High,Commercial,WA,98118,enterprise-synthetic-data-hub v0.1
+fffcde73-a856-d701-cdc5-ebdb800fc3fa,fc9766fa-8892-4a3e-bcb9-43c7f88d9cc9,FV6ZWF3H43TPJBFVM,Chevrolet,Trax,2023,Sedan,Low,Personal,CA,94926,enterprise-synthetic-data-hub v0.1
+445a6c46-72c3-7a4c-2577-01bb6e5f2744,7cb86cd0-21bf-7863-a630-ab13645c3e68,30GSNJF4KWWK7LZSD,Subaru,Forester,2014,Truck,Medium,Commercial,WA,98439,enterprise-synthetic-data-hub v0.1
+cf2ff722-b054-c5c0-c0d8-cec95d657dc6,804d9fc4-23fe-255c-5bcd-7058a03a33d2,JYSVKVST35FD0JT57,Honda,CR-V,2024,SUV,Low,Personal,OR,97044,enterprise-synthetic-data-hub v0.1
+730511c9-7bef-a37d-35ac-b4a3a8017fed,f0c1c464-86c1-be0d-5a5d-b8cd33fe33e9,Z9P06BNRLW0LL1XUC,Honda,CR-V,2009,Sedan,Low,Personal,AZ,85260,enterprise-synthetic-data-hub v0.1
+191e87d5-6506-3755-927f-90966000ac10,06df9fa9-4252-673b-f952-8f8e55e42313,T2JU9YYPU5NX7SS9K,Subaru,Outback,2015,SUV,High,Commercial,AZ,85175,enterprise-synthetic-data-hub v0.1
+7c4bb460-b3f3-72ed-e619-1914946d636c,c2e5942b-3d1d-9e1f-25b2-2b5802b5ea45,WDH2HSV7RZ5ADE3RD,Subaru,Outback,2015,SUV,Medium,Commercial,WA,98402,enterprise-synthetic-data-hub v0.1
+0e617a18-64a6-8300-028e-bfc2c0e9c2fa,32d61812-6c87-80d6-c69e-aeefdc8f1659,N5H7UADARASVD65RG,Ford,Maverick,2010,Sedan,Medium,Personal,OR,97546,enterprise-synthetic-data-hub v0.1
+4bee312a-e9cf-2ba6-4768-dd9e343fa7d1,d5bf3513-22e9-a3ee-057c-85fafab48752,5XYLTEXNTFN58ATWN,Subaru,Outback,2017,Sedan,Medium,Personal,CA,94757,enterprise-synthetic-data-hub v0.1
+5ed97ca3-4d77-8e7c-7992-4ddc8e6f8ccb,a852f9cb-613c-9345-c8c5-f96be5a69e4c,G2K7TEGX58U2BENMT,Chevrolet,Malibu,2008,Sedan,Low,Personal,CA,94780,enterprise-synthetic-data-hub v0.1
+6176b1a2-9e5e-6f1a-2c5a-de4e84ee27a8,3dafe7ee-7251-eb97-7871-e4bcf27be406,AA2AGH0AM80NBE60S,Honda,Civic,2013,SUV,Medium,Personal,AZ,85163,enterprise-synthetic-data-hub v0.1
+1ff866c0-981b-d6ea-57fd-424d82ac3910,805f1a51-dbf9-1ca3-abc7-0c8063733481,7VFUE6XR74S40T0VD,Honda,Accord,2012,SUV,Medium,Personal,NV,88910,enterprise-synthetic-data-hub v0.1
+12723417-0e14-9622-fedf-62f5c36cbdae,1404d105-b763-0362-2fcc-9217badd8628,BD6T2LUY8E2KR3TU1,Honda,Civic,2024,Sedan,Medium,Personal,CA,94889,enterprise-synthetic-data-hub v0.1
+ad2b58dc-b0ed-b23f-f24a-18c9765f627e,35f6c4e4-2a95-d57f-b116-576a8fc9152e,NJW9H1CRG7V8CGR1C,Chevrolet,Trax,2014,SUV,Low,Personal,AZ,85050,enterprise-synthetic-data-hub v0.1
+93e04733-d015-6492-dc5d-872920248417,e76d30c3-51cb-464a-7e8d-1b97a89dcf03,1MF181B832NF05A5R,Ford,Escape,2021,Sedan,Low,Personal,NV,88935,enterprise-synthetic-data-hub v0.1
+76f54a92-eff3-5874-ba06-e8a0f7385171,7d63a290-966b-f096-f61f-0c2d49e44b59,G4HYS9XRXG71LHUVE,Subaru,Outback,2015,Sedan,Low,Personal,AZ,85162,enterprise-synthetic-data-hub v0.1
+2e815091-abe1-26ee-4059-79f19239f10f,c767fad0-738f-6880-457a-c3702ba13294,7L425X5ZSLXMD7WU3,Subaru,Outback,2023,Truck,Medium,Commercial,NV,89110,enterprise-synthetic-data-hub v0.1
+fd467296-73ff-6184-7b25-e797ab197e2f,348fcd30-8539-d6e1-2321-38443174b862,UMTTSD3UY9GMA6HM5,Honda,CR-V,2020,Truck,Medium,Commercial,CA,94635,enterprise-synthetic-data-hub v0.1
+ff5fb114-950e-d7d1-3fd2-c79cb0a107f2,d6aa4616-1176-5188-999d-1916ff052094,G9GF7T3S7SAMA21GG,Chevrolet,Trax,2014,SUV,High,Commercial,OR,97437,enterprise-synthetic-data-hub v0.1
+dd0a5009-9757-05c1-2a05-d2ce11783646,7e278b09-e267-7c1b-f2a6-501af0ef2fac,2ZC4H4AN91VX8BWT4,Subaru,Outback,2017,SUV,High,Commercial,CA,94621,enterprise-synthetic-data-hub v0.1
+1e02a56b-bb53-73a5-da63-4d7600d69172,fafe8d03-ebcc-24d9-2309-7390ac89d7f7,HBEKG8F3UHC6VSNU5,Honda,CR-V,2021,SUV,Medium,Personal,OR,97183,enterprise-synthetic-data-hub v0.1
+92085746-b998-444d-16c7-fc2a4f7dc9df,7593d345-66fc-ada5-d002-a1e4b75f320a,19PU7MMUXL90KX4VV,Toyota,RAV4,2018,SUV,Medium,Personal,WA,98586,enterprise-synthetic-data-hub v0.1
+b73ab92c-9dc8-96d2-0a7e-c348e47a5b11,ecb64da6-8974-93d8-dbc8-522363db5fea,D6XHVZA0HNGAKW2X1,Chevrolet,Trax,2013,SUV,Medium,Commercial,OR,97404,enterprise-synthetic-data-hub v0.1
+2eba14b6-2b84-a22a-0a7f-019cc5331b31,21eb8e58-3d78-da8f-4e58-994fef959098,UA98EMPZXEH1BLP4R,Chevrolet,Malibu,2013,SUV,Medium,Personal,OR,97078,enterprise-synthetic-data-hub v0.1
+f9e21678-597d-3d8a-6a47-a77fac0e971c,8889bbe2-dac6-a07a-4431-dc264d30f28e,UD1YGB2J0F4NNT3LM,Subaru,Forester,2012,Truck,Medium,Commercial,CA,94823,enterprise-synthetic-data-hub v0.1
+1eba8807-5b04-05b6-253f-c72ad0d438df,d9917491-b423-4cc2-195e-7ddd6bfcbf11,0XP0ENJFMU6M90X99,Chevrolet,Malibu,2011,Sedan,Medium,Personal,WA,98002,enterprise-synthetic-data-hub v0.1
+a0fdf873-ebb9-733f-9539-ac34ec25ac08,43cfe531-13ef-dffa-ad76-cdd50b3fb0cc,ME65G4LA3ASMG93MV,Subaru,Outback,2018,SUV,High,Commercial,WA,98405,enterprise-synthetic-data-hub v0.1
+1a23457c-4bfb-8a01-cb2d-81b3a40693bc,a745a238-2552-44ab-853b-8265279b2f17,SNE3RL14R92WDFF8N,Subaru,Outback,2012,SUV,Medium,Commercial,CA,94881,enterprise-synthetic-data-hub v0.1
+14ec672e-5f5a-4fb9-c0be-534060f9d625,95dbf411-ceb5-cc7b-dfcf-4dca47e5ba8b,EXDMB4USW34MG14PY,Honda,CR-V,2023,SUV,High,Commercial,CA,94919,enterprise-synthetic-data-hub v0.1
+ec127603-9e1d-b9a3-d3c5-ac8a79597d54,dd33fa54-2317-d81f-6084-5b64fd37bae8,J75HTU2K6U5X3R0CF,Chevrolet,Equinox,2016,Sedan,Low,Personal,CA,94948,enterprise-synthetic-data-hub v0.1
+4525a0c4-1420-6538-5056-df58a8983bbd,63486ecb-ca22-8050-6975-7514c5bd6920,029TVN0L21RFTY61V,Ford,Maverick,2014,Truck,High,Commercial,NV,89154,enterprise-synthetic-data-hub v0.1
+16d2f5c2-370e-13b3-9f9b-4169d87d30d3,e195c588-37d7-a954-f3ab-9d3237b219f0,L49A50P2XFCALY4TV,Honda,Accord,2015,Sedan,Low,Personal,WA,98339,enterprise-synthetic-data-hub v0.1
+1a52b9eb-10eb-f05f-9a9c-91c9bd89aaf9,d6db5475-bfac-ffbe-faae-6642024dd514,ZYKV3TD8KRR5EE8VB,Chevrolet,Equinox,2018,Sedan,Medium,Personal,CA,94829,enterprise-synthetic-data-hub v0.1
+c42a1999-3b3d-6a8c-2fd1-06355b3f8a55,16cc5e17-355b-15f7-5bb3-277d4bc5e3f3,ZCJ29VGMP2VD655DM,Honda,CR-V,2021,SUV,Medium,Personal,OR,97033,enterprise-synthetic-data-hub v0.1
+6123285f-0993-996c-50e5-4a8d9d891761,3f082e1a-9c2b-cf86-cba5-466a99cbb021,R4YR4YLUX48HWS92F,Chevrolet,Trax,2016,SUV,High,Commercial,AZ,85098,enterprise-synthetic-data-hub v0.1
+ab67696d-8771-6d18-461a-fa341d531ee4,3897e7db-6366-607d-eca0-f4cab010c50a,BYSPWDAAVDA8MZ6KF,Toyota,Prius,2023,Sedan,Low,Personal,NV,88997,enterprise-synthetic-data-hub v0.1
+d8b50ebb-e8c2-a281-4bc5-a14896a422ff,d5351bd4-7670-53d3-525e-c600b87a32d6,47TTS6AK1VPER9DZS,Toyota,Camry,2020,Sedan,Low,Personal,CA,94825,enterprise-synthetic-data-hub v0.1
+0a6c2a4b-38c5-0816-b5db-718c2700588e,c3f79def-be14-3db3-b744-0b7b22b37e77,V2UHTLR2KPN5LYUTN,Toyota,RAV4,2015,SUV,Medium,Personal,OR,97404,enterprise-synthetic-data-hub v0.1
+c0c5dafa-5a80-df78-e920-5c63f3386125,4d200cd0-fccf-1981-1123-e6509974b87d,6WJ154NH1Y73EY466,Subaru,Forester,2022,SUV,Low,Personal,OR,97413,enterprise-synthetic-data-hub v0.1
+bf57713f-16e7-9f03-9a0c-3b42410442de,d178f78f-b52b-7a73-1c5a-bd59a0d2ead1,274KXCS40B7EMLFWP,Ford,Escape,2016,Sedan,Low,Personal,AZ,85034,enterprise-synthetic-data-hub v0.1
+ae131401-5b94-2ba5-ccca-4cbfce9d4e3b,5e30b846-48de-f84e-9613-51624e54769b,S953NS3E16175RESA,Subaru,Outback,2019,SUV,High,Commercial,NV,89130,enterprise-synthetic-data-hub v0.1
+29e2414a-7a5e-2e7c-cd17-9657d04dbac7,80b7b022-90f5-fdc3-4f91-8165f0ab626c,11S1389K8UNF6MYHW,Honda,Accord,2015,SUV,Low,Personal,AZ,85231,enterprise-synthetic-data-hub v0.1
+d414a2c8-eb26-29ff-163e-bea60d84111e,88629936-4a87-bd7e-7660-9f70758cc7bd,UTS69T3WTN5YWWYXY,Subaru,Forester,2013,SUV,Low,Personal,NV,89185,enterprise-synthetic-data-hub v0.1
+0b5c68e8-a7bf-d613-6976-992252901ebd,8536bc67-c7b3-a23b-2d2f-8d1b2a8e7d9e,MXWDCNSDT7EXR6205,Ford,Focus,2011,Sedan,Medium,Personal,AZ,85130,enterprise-synthetic-data-hub v0.1
+84d00eae-c99c-bf26-531b-34267f59ed8d,3202c04e-8f3c-adde-2cc4-cafff7908ce0,251VSRC0KWWFSZ76T,Honda,Accord,2016,SUV,Medium,Personal,OR,97521,enterprise-synthetic-data-hub v0.1
+b682d09e-bca7-71be-83ad-cf3f80ce319c,b87c997e-e9d3-306e-1f18-7e67d267d73b,DD648PYVB4AN9TK86,Subaru,Forester,2018,Sedan,Low,Personal,OR,97363,enterprise-synthetic-data-hub v0.1
+ef5da862-4859-fabb-e8e0-8ff517a678db,db040ea6-4818-3871-524c-620a4c889e16,BN5DEP2UR5RNP24PF,Honda,Civic,2012,SUV,Medium,Personal,WA,98462,enterprise-synthetic-data-hub v0.1
+63838779-06de-dec8-0573-529d71ed935e,833e57ff-20a9-61c7-db72-f458b3da41ec,NSFWUWDC8XNWD88J8,Chevrolet,Equinox,2020,Truck,High,Commercial,WA,98503,enterprise-synthetic-data-hub v0.1
+2c353002-7fb6-68f0-1c6b-e509a3c003ef,9ff24d32-4f3e-3317-b340-bdff71d12ed9,U9W0K97S2MSXM4C0G,Ford,Escape,2009,Sedan,Medium,Personal,AZ,85249,enterprise-synthetic-data-hub v0.1
+84e778be-a303-4a99-edb4-91016176e1d6,1a3ce021-d2eb-22bb-878d-021e4a550e71,J2U9LHDDJ7H7UF58D,Ford,Escape,2021,Truck,High,Commercial,WA,98289,enterprise-synthetic-data-hub v0.1
+9f149479-0d02-5775-111e-a2da6ba3127a,21aba3c1-bc7a-450d-577f-9e8401c13d06,AW4NNZNCMJB696ZJ6,Chevrolet,Malibu,2020,SUV,Low,Personal,OR,97447,enterprise-synthetic-data-hub v0.1
+ba6060ae-b876-ec4c-022c-a31df9db1f9d,8520c214-ebb2-744c-fd1f-a134af11b886,T887G2ZB3ZA7BLV3P,Toyota,Camry,2016,SUV,Low,Personal,CA,94699,enterprise-synthetic-data-hub v0.1
+03f594b0-3ff5-a7e0-f950-0c215da5bbbc,37587323-bf06-2f2f-e2cc-e3e5d5b26934,V1BBSV01E38YH9HAE,Ford,Escape,2017,Sedan,Medium,Personal,OR,97226,enterprise-synthetic-data-hub v0.1
+d36557f5-ca21-3bed-06e8-e96d919a35b0,144cfb72-456a-35d1-b5d4-0ce58308d2a5,9LTP2V9RPRT609EVF,Ford,Maverick,2022,SUV,Medium,Commercial,AZ,85086,enterprise-synthetic-data-hub v0.1
+13c5522d-24b8-fedd-0337-a5ea535bf765,0160c4e6-ba5e-c307-fac0-a13a99b06764,FPXTHFREPHPZFW3N9,Chevrolet,Equinox,2012,Sedan,Medium,Personal,OR,97294,enterprise-synthetic-data-hub v0.1
+4f3d2d31-0309-a39f-35e1-adeb68c5e901,41cf841f-20c2-b7b5-235f-2cd0621fc4d3,5DPX8U2VCS8X0B0TY,Chevrolet,Trax,2014,SUV,Medium,Personal,CA,94837,enterprise-synthetic-data-hub v0.1
+0970dd06-5b4e-579f-eb09-9783e114b58e,b271a33b-5c6e-d234-d6a7-b8eed1737259,6SEEG1P8RUFVCCM60,Honda,CR-V,2017,Sedan,Medium,Personal,OR,97015,enterprise-synthetic-data-hub v0.1
+55f38f95-e71a-ce6a-9eac-566cf999619b,84dc6072-b5bb-6049-9d18-3e620ed69260,6084T1AJNU085LV6Y,Ford,Focus,2024,Truck,Medium,Commercial,CA,94754,enterprise-synthetic-data-hub v0.1
+de82c43b-17dc-8653-cb5f-76e1237eff6f,7cbf06db-8d3b-d5a1-52c5-7f467b4f1342,VS8X1MZPS3HY6YEVM,Toyota,Camry,2010,SUV,Medium,Commercial,WA,98499,enterprise-synthetic-data-hub v0.1
+749f9a6e-b7b1-2422-17bf-888410d15d2b,267c9c6d-872b-5d48-1abd-8ed422ce611a,2HLRJVEP0TLMRRHE4,Subaru,Outback,2024,Sedan,Medium,Personal,NV,89077,enterprise-synthetic-data-hub v0.1
+0fa2c0dd-60a2-09c5-202d-b3eb7b7d7d55,f0cc268e-4bae-93f1-978f-efc84d75d1a0,EA45JVT6NPPD5Z0UU,Chevrolet,Trax,2012,Sedan,Medium,Personal,NV,89079,enterprise-synthetic-data-hub v0.1
+381f6f4d-6675-0756-9b07-e2fd138fcf90,0daedb98-2d74-93ca-4b68-1b4762a3ffe3,NWVZ7UBZASVBFRNV1,Chevrolet,Equinox,2010,Sedan,Medium,Personal,OR,97515,enterprise-synthetic-data-hub v0.1
+5cc74911-c871-654e-1276-6fb5811a1840,9d512603-a1a9-1752-2af5-2b80ae7c6f0b,N3GUFL88DKX6DFCKG,Ford,Focus,2022,Truck,Medium,Commercial,AZ,85060,enterprise-synthetic-data-hub v0.1
+8443991f-00ba-21b8-9490-64ad993bbfa1,303b89d3-a40d-9c6c-f8b1-d9ce479fd1d7,1PJM7AAH0FX86WYM4,Ford,Maverick,2008,SUV,Medium,Personal,WA,98408,enterprise-synthetic-data-hub v0.1
+c1d9a6cb-52f9-1bbc-060f-59e69eccf293,f4746789-9404-b1d2-37d3-0ab3818f8793,C3S4N7WBAGAFK3CUR,Ford,Escape,2019,SUV,High,Commercial,CA,94693,enterprise-synthetic-data-hub v0.1
+218a78c8-6022-0fa7-4c81-9ca11a256738,d1d69a32-14a7-73a2-31ad-ff27144cf425,1WB3CYWB9KYCURP91,Subaru,Outback,2012,SUV,Low,Personal,AZ,85190,enterprise-synthetic-data-hub v0.1
+88118f7d-10e8-43f2-e4b3-1bb069dbb11a,095e0b91-846a-4f4d-a8f0-7d4324c35f35,432HNYMS4XTGVN2RC,Ford,Escape,2017,SUV,Low,Personal,OR,97195,enterprise-synthetic-data-hub v0.1
+0af37c6a-d5d0-1aa1-3acf-9de3e2c52eb1,a9b563a5-1989-33ac-65dc-896d9e10c708,1SBF8EJ1WSJHGA59F,Subaru,Outback,2008,SUV,Low,Personal,NV,88992,enterprise-synthetic-data-hub v0.1
+34e255e0-5d2c-7804-b4b8-4208a983384d,c0a5c717-c438-c899-51de-dd0496369f54,PUS6BZYK2KT5E3RL5,Chevrolet,Malibu,2019,SUV,Low,Personal,CA,94666,enterprise-synthetic-data-hub v0.1
+fd293c8a-182f-93e0-0a53-4ca4aab657b6,03ddd582-8334-884f-f594-a56569ee0a75,GH263R0WSHF5GSL4W,Subaru,Outback,2023,SUV,Low,Personal,NV,88981,enterprise-synthetic-data-hub v0.1
+3a099730-6d1e-1745-1178-924ab2450401,a370966e-a7a5-b151-3d5e-b15a158b0c1f,2WUW75BLYVWM4GKR9,Subaru,Forester,2012,Sedan,Low,Personal,WA,98314,enterprise-synthetic-data-hub v0.1
+0b704b3c-e180-8d11-62cb-5700071cd1d2,3b697dc0-e232-ba2a-abc4-63045acbd0c6,9EGHUVV83VA8SMK64,Subaru,Outback,2023,Truck,Medium,Commercial,CA,94940,enterprise-synthetic-data-hub v0.1
+f124958a-a125-64cd-2799-55504c339001,07a328e9-0622-29d2-9ee3-7ff4c028534e,FSTY67PPYNG42LEFY,Subaru,Forester,2009,Truck,High,Commercial,AZ,85001,enterprise-synthetic-data-hub v0.1
+26639cb4-d25a-6429-0c2b-7c538bf2a43d,40b5d8e5-8611-a6d7-cd21-fe139d530f2a,TGHHNYCFGVY6S53N9,Toyota,RAV4,2009,Sedan,Low,Personal,CA,94764,enterprise-synthetic-data-hub v0.1
+f3b76e12-3986-0252-84a8-afe72072b6b2,77d4cc12-1cae-4938-49c4-4240d49bc56a,M2KFN6PK1EF8HX7SN,Ford,Focus,2016,SUV,Low,Personal,OR,97035,enterprise-synthetic-data-hub v0.1
+7f90c93b-6b1b-8d55-226d-ad89e221cde8,c4bb6b68-8e90-bddc-ca3c-06498f569854,1LMZC3PL0X1A3CP9R,Toyota,Camry,2023,Sedan,Low,Personal,CA,94889,enterprise-synthetic-data-hub v0.1
+1a73f28d-0f12-62a7-5304-e68f6c679b8e,23aa8f02-6aba-081b-3396-ef7e93010b46,HEGD3G4KWFW3E04P5,Honda,CR-V,2016,SUV,Low,Personal,NV,89176,enterprise-synthetic-data-hub v0.1
+2c6a379f-f225-f097-b1e9-1ced9b90122f,fba6a41a-56be-3ebe-ee26-5419a5e7e88f,N2CD33SURL9MVDN9T,Subaru,Forester,2014,Sedan,Low,Personal,WA,98116,enterprise-synthetic-data-hub v0.1
+0ae22b32-21c7-bdbc-859a-d86f04baf609,19ae30ba-5d1e-10b1-086f-1fa137263650,8TD4PKWRRAFFZ4TUX,Subaru,Outback,2009,Sedan,Medium,Personal,WA,98456,enterprise-synthetic-data-hub v0.1
+d93213f3-232c-c167-ecc1-e42c1a385980,4d47e957-32ef-bfd1-1039-f06e9f4719f8,HXJ0ZCDLJHSSZ327E,Ford,Focus,2023,Truck,Medium,Commercial,CA,94907,enterprise-synthetic-data-hub v0.1
+4cef367a-3c49-34a0-0f0b-f74872b4f52c,a51fffab-8c4d-8c14-6ec5-1be1803d00c1,ESVU87RUB7H4M692K,Chevrolet,Malibu,2017,SUV,Medium,Personal,CA,94796,enterprise-synthetic-data-hub v0.1
+39aaa8e9-4769-8a6c-42a5-05e7724a4b54,f8a7fe90-e321-daf3-39e5-ab283e737013,MHWUP9WPN7V6A1K58,Honda,Accord,2009,Sedan,Medium,Personal,OR,97197,enterprise-synthetic-data-hub v0.1
+893bdc97-bd61-ccfa-0004-3ad49eefbd5c,88096cdb-57c8-f2d4-76f6-74f48ba579bf,6FMRB89JS6KA8Y1DL,Chevrolet,Malibu,2009,Truck,High,Commercial,WA,98592,enterprise-synthetic-data-hub v0.1
+c481e5b7-356c-20a3-df53-a5f5197f7a64,128e8151-249e-a3b8-74c7-c55cb1537404,KCVWSGH8Y6LRUEJYK,Toyota,RAV4,2022,Truck,High,Commercial,CA,94696,enterprise-synthetic-data-hub v0.1
+3fd8a33a-2fb9-3007-6bc6-de499cb6dec8,57237e1d-b76f-6e42-f7ae-a9bd5b4879e2,2V0JV6X8LESZ6B2N0,Subaru,Forester,2023,SUV,Medium,Personal,CA,94703,enterprise-synthetic-data-hub v0.1
+3b395fdc-f625-9563-2baf-4909bf25fff7,9c2b9a10-9561-bb94-7c3b-c00bbe3f3900,FZN2Y9LTNRRZ76AR1,Ford,Focus,2008,Truck,Medium,Commercial,NV,88912,enterprise-synthetic-data-hub v0.1
+c5aab090-4c60-b900-2257-4bf093a9830c,e227cf44-f55a-260f-37ca-783740565712,HP3JC9ZF95P0548CA,Honda,Civic,2012,SUV,Medium,Commercial,WA,98520,enterprise-synthetic-data-hub v0.1
+e57a54f0-d8d7-9efc-d124-600429713a47,9adfd7fd-f63e-8583-a20d-b91daa03a3b5,ULBJSFZFY9E2CE78K,Ford,Escape,2024,SUV,Medium,Commercial,NV,89003,enterprise-synthetic-data-hub v0.1
+bbe60ba6-6d6e-dde4-6391-08cf8958280e,8f9f1d5f-e34f-785e-3177-7fa92b7d602c,VUPVWW7YFW6T8C4FH,Chevrolet,Trax,2014,SUV,Medium,Personal,CA,94723,enterprise-synthetic-data-hub v0.1
+4e1e7c8f-c591-f50e-2dd7-3025fef38819,823538e3-a6a6-2d43-1aac-b03ed52d8b66,ZFMC20CVHJTV5H2UY,Toyota,Prius,2020,Sedan,Low,Personal,AZ,85193,enterprise-synthetic-data-hub v0.1
+af81c433-f8af-7f34-d68d-96d1334b1511,d7fdea77-7361-0833-dedf-e8aacc88a0a7,USJ1746NTJL9B27MM,Toyota,RAV4,2015,Sedan,Low,Personal,NV,89011,enterprise-synthetic-data-hub v0.1
+476bd96a-3b4b-6602-777d-e74fbf4383b3,05cfda95-cea7-0215-4ff1-c381dd642eae,ALVNYPTZVPDBERMPB,Ford,Maverick,2009,Sedan,Low,Personal,AZ,85071,enterprise-synthetic-data-hub v0.1
+03713578-2662-b0f6-8137-e53ad662a47b,d30a582c-f47b-198a-9bcd-06959e01cb3d,0D5023A2SEN0SAJ3F,Subaru,Forester,2020,Sedan,Low,Personal,CA,94884,enterprise-synthetic-data-hub v0.1
+91419969-4501-d71c-e774-dfa5d70b23c2,bbc1fddc-182c-8843-e266-76e733b86faf,XCPM2GYRS6FUXHR36,Toyota,Camry,2022,Truck,Medium,Commercial,AZ,85288,enterprise-synthetic-data-hub v0.1
+14c88533-eaed-d1e5-e5c6-680e46a96bcd,894b4b14-dd9d-40ca-9d64-b44ce3c7eb0c,36Y4JNMDVMUBAHL6R,Subaru,Forester,2020,Sedan,Low,Personal,OR,97087,enterprise-synthetic-data-hub v0.1
+e0c5d0ed-0120-949f-2929-aef6fc7e0102,7174cb25-dc0d-4eb9-78ae-db72a6e59cb1,A59XHYLZFUDCZ1PPE,Chevrolet,Equinox,2018,SUV,Medium,Commercial,CA,94628,enterprise-synthetic-data-hub v0.1
+290f3349-8b87-f2db-5998-8f99db860a05,4b9f7f2e-7e06-1d0c-a108-033ff78ef816,J8109VEF5Z4D00PG6,Toyota,Camry,2013,SUV,Low,Personal,CA,94769,enterprise-synthetic-data-hub v0.1
+c983ef78-aa6f-06f2-87da-eb48757f8c1c,b77fb9e8-af20-f05f-251a-42c6c8c6aa09,4KX6B33JEM8W9JUUP,Chevrolet,Equinox,2009,Sedan,Low,Personal,AZ,85075,enterprise-synthetic-data-hub v0.1
+eae306a1-5752-4886-28ed-c3daaa93b486,135db03d-fb9f-0899-31ba-a20bcac8f6f0,5GLK42R5VSRWJ4D2Y,Ford,Maverick,2023,SUV,Low,Personal,OR,97483,enterprise-synthetic-data-hub v0.1
+3068db1b-680a-6cbf-dc10-8e96d70bac0d,ae8ca484-380d-36ec-a9c0-44f5aca4ade0,F3YT58F9JM3YJ4F91,Subaru,Outback,2015,SUV,Low,Personal,OR,97565,enterprise-synthetic-data-hub v0.1
+65d4fa28-9531-bf51-91bd-b5518995c64f,a705e957-04b9-e514-89f0-617b1227eda2,056D4WHARN9JJ1U23,Honda,Civic,2009,Sedan,Medium,Personal,WA,98547,enterprise-synthetic-data-hub v0.1
+c54a4407-5fb4-7b0d-b935-39ab0a98d7ac,8dfe5dc4-dc5f-554c-2818-9f4faae365c3,U57ACDVA39GRFFR97,Honda,Accord,2018,Sedan,Medium,Personal,CA,94873,enterprise-synthetic-data-hub v0.1
+9c7266ff-00d8-3c4e-3a27-cf9715684559,4d6522b2-024e-6f1e-0033-f4ba24c59c6b,CM2B4WSCFB26EW2KF,Honda,Civic,2020,Sedan,Medium,Personal,WA,98381,enterprise-synthetic-data-hub v0.1
+cbddb25f-f161-0159-6696-1cee7551e102,2d3d41e5-f1b8-b424-43d3-de0071b9166d,TXHRT9BH1KXGBKMN9,Chevrolet,Malibu,2010,SUV,Low,Personal,WA,98140,enterprise-synthetic-data-hub v0.1
+c075cfb3-af93-8865-12d0-d26aad449b4e,b4f82fc4-1cbc-fd6c-5ed8-f93cec1bf8e9,W2D5U0SUCFBR0N30X,Ford,Maverick,2012,SUV,Medium,Personal,CA,94821,enterprise-synthetic-data-hub v0.1
+c8a2a7ea-2091-13d0-4ab8-685944cc692f,e76aa44c-2177-8f6a-0ae5-54d7f4da053b,773VWT7ACZ6PZX7GR,Subaru,Outback,2017,SUV,Low,Personal,WA,98124,enterprise-synthetic-data-hub v0.1
+30c92ece-c023-3065-ebaf-6a1fabd1ce51,830ba087-d956-c7f5-94ff-d25204947830,GGSHTRAXG5SAALWSG,Subaru,Outback,2020,Sedan,Low,Personal,OR,97197,enterprise-synthetic-data-hub v0.1
+7bc95bc9-211c-fb9b-77af-b8028ee41e36,268a4ba7-a971-4faa-eb5e-7734b9981f95,J4MB4A24W38DW4UKU,Honda,Accord,2009,Sedan,Low,Personal,NV,88999,enterprise-synthetic-data-hub v0.1
+cce0d72b-c59d-6754-faf6-419d90d27f0f,4597f9c6-e72b-67be-c3ab-dcffd6d21905,68K6X58EAEVCFS3FL,Honda,Accord,2015,Sedan,Low,Personal,AZ,85099,enterprise-synthetic-data-hub v0.1
+ceabfe99-8ffd-146a-cba2-cab1b2414607,629bab0a-a5c6-e950-283e-31545359627b,SEHGCYNP9ZRTV4K45,Honda,Civic,2021,Sedan,Medium,Personal,AZ,85119,enterprise-synthetic-data-hub v0.1
+cdadf5ac-fcb6-2e6d-d9e1-7ab0415572a7,bf5a235e-c3f4-73e9-0be6-bae7de6be51c,NHVBVCR0H7WPMLMXV,Chevrolet,Equinox,2021,SUV,High,Commercial,AZ,85004,enterprise-synthetic-data-hub v0.1
+30dbf008-a274-b6d5-3da7-6891f0e1104f,ce2fff34-0657-b778-7101-6bba71c53213,FC0KVZXLPKV946F6X,Subaru,Forester,2009,Sedan,Low,Personal,AZ,85028,enterprise-synthetic-data-hub v0.1
+17ec0577-8bfc-a2fc-e7cf-55443eb7414a,ad877e4e-1cd6-b821-6552-3f4bc45a89d3,9FP0KF99N9ZKGAYC3,Ford,Focus,2009,SUV,Medium,Personal,CA,94874,enterprise-synthetic-data-hub v0.1
+6f1f756f-dc7b-1c38-6093-69f8f1dc40bc,abe681c6-4885-da51-46d4-2dd610064756,9MZ50J64K86694W8R,Honda,Accord,2015,Truck,Medium,Commercial,CA,94925,enterprise-synthetic-data-hub v0.1
+9c52c789-1638-d724-4898-f43e554bc4b0,076efbf0-7b2d-9a1e-e43b-0bba9beb84c2,0GR7GKL0CT0TEZJ8R,Toyota,Prius,2014,Sedan,Medium,Personal,AZ,85246,enterprise-synthetic-data-hub v0.1
+a57a7cfd-bc0a-e47a-8bf1-488b917caa95,d8bc351f-3823-e55c-e9a9-eee886885b77,XAS9WDA8LSYR8YL90,Chevrolet,Malibu,2023,SUV,Low,Personal,NV,89065,enterprise-synthetic-data-hub v0.1
+1ee05893-1039-6a85-824c-c6f1c2dc52bf,4dabde3d-2ab5-54e3-ad15-1798bf39159d,D7XM04SXWEKFTPGZ7,Subaru,Forester,2020,Sedan,Low,Personal,CA,94890,enterprise-synthetic-data-hub v0.1
+37865a13-2215-441e-0d98-5ca18bcfd794,5d31360e-c88e-1ba5-fe57-5e0767fd8aea,34HEAAJDRWMDTM3NN,Honda,Accord,2023,SUV,High,Commercial,NV,89041,enterprise-synthetic-data-hub v0.1
+8ba967da-926d-2c33-28a5-1bfbbe2fde52,962333b8-c81d-c8fa-e5dd-8745b3084556,TPURP24LZ0T4ECEKL,Honda,Accord,2015,SUV,High,Commercial,CA,94684,enterprise-synthetic-data-hub v0.1
+1dac015e-9ef9-678a-cb7e-47ecd2775251,26111f6d-bf33-b91c-f7b3-7c9163613de7,NGD4UNV6LZCG1BYX7,Toyota,Prius,2024,SUV,Low,Personal,CA,94773,enterprise-synthetic-data-hub v0.1
+508f02e4-0430-7979-3d6c-22817b3d2ea6,0d6d66f1-546b-fed8-cd98-1ede0fc3e3cc,EVA88JVGF0AAC8AD7,Chevrolet,Trax,2008,Sedan,Low,Personal,OR,97208,enterprise-synthetic-data-hub v0.1
+a20b02b6-60e6-5ee1-18d9-1fddc89b1e6d,7b331b0d-ffee-b5a5-31e8-e46f4f1ebc3d,A9ULT7WALJX03LAN9,Ford,Focus,2023,SUV,Medium,Commercial,NV,89044,enterprise-synthetic-data-hub v0.1
+1f102053-0e4a-76be-8a5b-780f59bd90d4,6ffeb738-2287-6c77-0634-b46ab3bc1dad,M0VCVBNVWMB47J5KM,Toyota,RAV4,2013,SUV,Medium,Personal,OR,97269,enterprise-synthetic-data-hub v0.1
+aa8e7f80-aeba-99ab-e1b0-1a739d9fd106,057792bf-df0c-8aaa-12d4-ef43bd36a497,PRATP2GSCJX15FV8R,Toyota,Camry,2013,SUV,Low,Personal,NV,89010,enterprise-synthetic-data-hub v0.1
+5764d490-d73e-a855-bba4-c44fac492137,e2059fe9-5726-6b01-0a6d-559b2f1f9373,55W1L6FN9F8NHXJ8Z,Chevrolet,Malibu,2016,Sedan,Low,Personal,NV,88996,enterprise-synthetic-data-hub v0.1
+20a628a7-c60a-f0c2-2de0-fb9453691df0,49c0d790-877a-0df0-2a80-59b380aca51a,BXL7E9CGT14F8F9LB,Toyota,Camry,2013,SUV,Low,Personal,WA,98439,enterprise-synthetic-data-hub v0.1
+a484512b-0c60-f239-7a27-688da71a1fb5,24ed7351-01dc-022b-a29a-08975369e48c,A04FVJPYUNA9X28M9,Chevrolet,Malibu,2019,Sedan,Low,Personal,AZ,85253,enterprise-synthetic-data-hub v0.1
+96fdc84f-fc4f-6139-aa52-fa5624019bc0,0df63a4e-455c-3240-4299-1d15b524a6fa,PMBUG03F99F0A3MJ5,Ford,Maverick,2009,Sedan,Low,Personal,NV,89009,enterprise-synthetic-data-hub v0.1
+f07e7812-48c2-fc14-38b8-45fd4e38e7b5,c1bd219a-fb05-09a3-bc61-b2f817bef148,2BY8A09B5HV2ZTCSW,Ford,Escape,2009,SUV,High,Commercial,WA,98358,enterprise-synthetic-data-hub v0.1
+90d0b4f7-d5c2-05a8-7aa1-0f20bd5f4a04,c030b010-f07c-910c-f62c-0784177fb0a0,PM6D4965UTT4Z2SAL,Ford,Focus,2012,Truck,High,Commercial,OR,97540,enterprise-synthetic-data-hub v0.1
+c6527896-95cd-f0c7-c5e1-986d66bfc70b,9cd62e59-0e56-35ec-d5b7-b0ebc88e7c55,4HE45D37WET1HG6ZH,Subaru,Outback,2015,Truck,Medium,Commercial,AZ,85023,enterprise-synthetic-data-hub v0.1
+68703d8c-a10f-d271-3d63-409eb1bd4979,09b7d69d-b037-d77a-eb91-3ab7ce46f485,47A2HNM76GAEULJZT,Subaru,Outback,2022,SUV,Low,Personal,NV,88963,enterprise-synthetic-data-hub v0.1
+849757fb-5d76-7adb-d88f-cd279f4c48bb,26f5c684-5beb-38f5-5b9b-ea972b40b971,8PB858EX7BUFG56G6,Ford,Maverick,2020,SUV,Medium,Personal,OR,97114,enterprise-synthetic-data-hub v0.1
+5503662c-75fa-af0a-98e8-4ac0f8ec248e,094156f4-cda4-e0ef-e9bf-c5ecd10f43fc,ADYDHXXR6X1FCX55Z,Subaru,Forester,2011,Sedan,Low,Personal,CA,94877,enterprise-synthetic-data-hub v0.1
+c512efcf-85a5-7989-ec05-234fa2487f7f,5500f930-bcca-3f7c-00bf-1cf7b045c1d5,99MGJCAD5KMGY2PR6,Subaru,Forester,2015,Sedan,Low,Personal,NV,89149,enterprise-synthetic-data-hub v0.1
+1b11af13-c851-2e76-5cf4-ff8403ca330b,9451037e-82c9-a8d6-e187-497765fae9d2,SL5YK1ZN3L004EN8J,Toyota,RAV4,2013,Sedan,Low,Personal,AZ,85201,enterprise-synthetic-data-hub v0.1
+d9893eab-8fa8-aa8d-a823-44ef6709abe2,076926bb-2138-200d-8641-685d431a96c5,RX8VK9UGNEC96JMW6,Toyota,Camry,2023,SUV,High,Commercial,WA,98023,enterprise-synthetic-data-hub v0.1
+5fd5eed7-fa56-8130-c3c9-a759529919e9,d27d6c76-0ade-d986-5e7d-d07f334a6077,XUFKPDGVBF77BZTPG,Toyota,RAV4,2014,Sedan,Low,Personal,AZ,85129,enterprise-synthetic-data-hub v0.1
+f3a35c3a-8c45-f384-a38b-dd5d07835c0d,917d26c5-d405-b597-c807-b6a06ed42ed8,4BG0HTPKUGGCCSZM4,Honda,Accord,2008,SUV,Medium,Personal,OR,97584,enterprise-synthetic-data-hub v0.1
+318ede6d-2ad8-c00a-6044-3f3a61acda6f,ae07f8a3-62b5-637d-d1ad-562351af87e8,Y3CDFH5NF42Z7FUKK,Subaru,Forester,2014,SUV,Medium,Personal,NV,88948,enterprise-synthetic-data-hub v0.1
+0a552065-6174-6a8b-fe11-d8a813c73d02,bce4be3d-cfec-f259-b64a-4b9739caa593,6K8SBY55YYMYGYCN6,Chevrolet,Malibu,2020,Sedan,Medium,Personal,AZ,85099,enterprise-synthetic-data-hub v0.1
+945c4266-9603-2d3c-66ff-1a7a78f45fb0,775164c9-4d7e-45e9-6a75-25a80ab17de3,VJP82G4YA40S3RV0N,Ford,Escape,2013,Sedan,Medium,Personal,NV,89123,enterprise-synthetic-data-hub v0.1
+f5f413c0-5acf-73f9-0430-c840fe61fd66,a4142fd5-96e3-daac-f226-8882a2c7a72f,GCE9888NFRRSSY28K,Toyota,Camry,2013,SUV,High,Commercial,AZ,85259,enterprise-synthetic-data-hub v0.1
+479ea9ed-a0a4-a9ee-4577-daa1a8cc2445,4024c933-5562-b678-1409-4a2a34e38e04,HDWWDS6ZB08LBH7GB,Chevrolet,Trax,2024,Sedan,Medium,Personal,AZ,85111,enterprise-synthetic-data-hub v0.1
+3f7175f4-e9eb-4bea-1fd0-1bfa7ba687af,846a158e-8b2a-b7e4-a203-701b06fb49aa,FUSL6A9FN20XXL3T3,Toyota,RAV4,2021,Sedan,Medium,Personal,CA,94935,enterprise-synthetic-data-hub v0.1
+b8b9555d-18e7-a6ec-3f11-23f7579dcda7,78f250d1-d510-fc54-d141-e70c9aacd5aa,2BBXH7EY285GZ6PAR,Honda,Civic,2013,Sedan,Medium,Personal,AZ,85236,enterprise-synthetic-data-hub v0.1
+db954a11-4854-35fb-e5c1-48060272dfb2,60a0c6b8-b267-4aed-6b58-3a0b3ee29456,YW8K6J654MB65UU9P,Subaru,Outback,2021,SUV,High,Commercial,OR,97417,enterprise-synthetic-data-hub v0.1
+148d55ba-ee12-ad7b-9fa2-158d8d48a488,9c53510c-4e77-de29-432b-8fcfe43c758a,HXFGKCLCYLF95Z04Y,Subaru,Forester,2022,SUV,Medium,Personal,NV,88912,enterprise-synthetic-data-hub v0.1
+f50257c3-fda7-fd32-44e6-65079b621cc4,d995d26a-2e65-bbcd-6706-324ac7ea3b46,BE98SH4SE22TCX8YT,Ford,Escape,2014,SUV,Low,Personal,NV,88975,enterprise-synthetic-data-hub v0.1
+c94430cd-f2d5-110d-84c0-cebf7e283eef,60a9fe45-a352-d9b1-a4fd-5da0efccb29e,U1DG5SK4FEHT5BHEM,Toyota,RAV4,2017,SUV,Low,Personal,NV,89093,enterprise-synthetic-data-hub v0.1
+784656f0-5f25-2035-5ffa-675a9df3d5dd,438a4988-0001-bcaf-eb0e-d616095268b0,F8CGP5JPJRV38HKE0,Honda,CR-V,2021,SUV,High,Commercial,WA,98455,enterprise-synthetic-data-hub v0.1
+a3122f68-2f3b-6bfb-64f2-53e499da1ae2,0ff4315a-5c6c-7fe6-6dbc-0e63f684f19b,HP720RVZ76AH3WU7J,Honda,Civic,2018,Truck,High,Commercial,CA,94781,enterprise-synthetic-data-hub v0.1
+2d0e438e-cfdf-010c-edc4-fc5aa41ace62,5f2dc794-b47f-cb09-a994-72cbb7664b57,2SN1TYK6Z9UCZEM3P,Ford,Focus,2019,Truck,High,Commercial,AZ,85193,enterprise-synthetic-data-hub v0.1
+16ef8587-b4c4-55d9-2c61-619a8493ef87,6f10173a-922c-2f73-ffed-ec4aaea8d23c,VGE6AJVNEBB0MAEMA,Subaru,Forester,2019,Truck,Medium,Commercial,CA,94762,enterprise-synthetic-data-hub v0.1
+946aa774-df17-9ba4-15a5-54ca101a4a4a,47a5539e-b347-395d-f149-5f59599b5f6f,VPZ37XJVNMSAG4K6Z,Toyota,Camry,2012,SUV,Low,Personal,NV,89098,enterprise-synthetic-data-hub v0.1
+2194421c-4172-e953-5722-00a986214385,1e102075-b1c8-71f9-72ba-9360462e5ebf,GEP7WBRGAKNA2N2CX,Chevrolet,Equinox,2017,SUV,Medium,Personal,CA,94803,enterprise-synthetic-data-hub v0.1
+bd103aab-48c4-7ceb-ef15-00cd8bb9843d,d4522988-4b35-e2c8-90c0-3c8b30cbbbbe,EK816U9P1ZXNMVCE6,Ford,Escape,2018,SUV,Low,Personal,WA,98549,enterprise-synthetic-data-hub v0.1
+68b5e63b-a5fa-55ad-6bcc-824a01a1b632,10d5407d-5597-998d-4ed8-344252cb0e2c,N3BGS1JH11N4WYUB3,Subaru,Forester,2014,Truck,High,Commercial,CA,94755,enterprise-synthetic-data-hub v0.1
+9dccf44a-afe2-ab01-9076-4d0641580a43,9fdb42b8-0979-13e0-6843-7857be3db0f2,YWG8VFHB3039FFSGW,Ford,Escape,2016,SUV,High,Commercial,CA,94914,enterprise-synthetic-data-hub v0.1
+c70c1b11-663f-9854-a720-31e6913b61c7,5863fbfc-7a7e-6203-3fb4-40bb6096c332,CPD1HASVYJV89XEJ7,Ford,Maverick,2014,SUV,Low,Personal,WA,98288,enterprise-synthetic-data-hub v0.1
+491ac64b-a0e0-653c-77eb-1ca76ec42fd5,0fcecc35-b6b8-25d2-0a55-24b84c643ef0,19GWS5KMKUSDXHNWR,Toyota,Prius,2009,SUV,Medium,Personal,AZ,85144,enterprise-synthetic-data-hub v0.1
+de8c991a-da55-f237-49ab-058960eba009,a646658b-5a1a-66d4-4219-838e9c9b201b,6RZSM7N3E5KY1VX36,Toyota,RAV4,2023,Truck,High,Commercial,AZ,85191,enterprise-synthetic-data-hub v0.1
+fc94c778-2726-8f42-84f3-c6de54106b96,0fd36f79-d1f1-71d1-6956-7efd28bb6eae,0TK8SGB81U3UYC7V9,Toyota,Camry,2022,SUV,Medium,Personal,CA,94675,enterprise-synthetic-data-hub v0.1
+f2a7c563-7caa-e999-c047-5de6dea8cfe1,a58a2931-8077-6514-ea75-d255346f340c,K12HNTMUSKJS1DPZ2,Subaru,Outback,2016,Sedan,Medium,Personal,NV,89053,enterprise-synthetic-data-hub v0.1
+d8c33849-ab5f-1083-ae07-649957960aa5,a4f90b59-9c9e-4782-54f8-0d9624ac1821,LWZFUF0EKW2LJS4D5,Subaru,Forester,2009,SUV,Low,Personal,AZ,85060,enterprise-synthetic-data-hub v0.1
+f222745f-cf80-961c-fbda-7fffabf796cc,36d96b70-1e94-da5d-aec6-e0322d5651c0,DLCSMEH2Z2BM0VDLE,Subaru,Outback,2011,SUV,Medium,Personal,CA,94660,enterprise-synthetic-data-hub v0.1
+63cc336b-1000-ada3-9a90-b81c284b5a1c,894fc7fa-b1d1-5e2b-6701-d36ef937acc9,65BB6VN3JBVXDKHAM,Subaru,Forester,2009,Truck,High,Commercial,OR,97571,enterprise-synthetic-data-hub v0.1
+95d7cd6e-a604-a433-e5e7-142dca2e39ce,624bf64c-ac60-6b6f-7302-755437138ca9,27MUKP5DNAUXYPRKF,Chevrolet,Trax,2024,Sedan,Medium,Personal,CA,94927,enterprise-synthetic-data-hub v0.1
+69e57eff-ef89-082e-9691-d0de8b6b6e40,c6b4e175-3e5a-637c-0a59-f7a6be830267,WNDA6GEAWA2SCBDAU,Toyota,Prius,2018,SUV,Low,Personal,OR,97217,enterprise-synthetic-data-hub v0.1
+bcefcffc-a621-38df-a27b-a381bfc9c3be,bfa6b6f7-d307-26ad-538f-7f18e0c0de5b,EE8GYWLLW2BPWYYWW,Honda,Accord,2010,SUV,Medium,Personal,AZ,85076,enterprise-synthetic-data-hub v0.1
+9a52df88-99b0-ea79-2bea-a13fe811044a,1b88d6ee-3cce-3124-72b0-c910cb1b5b2f,79BRXSVKB7W9NRL8V,Subaru,Outback,2015,SUV,Medium,Personal,AZ,85089,enterprise-synthetic-data-hub v0.1
+2b84e285-e07e-a770-8457-b5b2a0138fa6,22200cbe-b2a8-3a69-344f-5b9cbc947f36,P137E7F8HXW2JK0T6,Chevrolet,Malibu,2012,Truck,Medium,Commercial,NV,89168,enterprise-synthetic-data-hub v0.1
+aad8c105-b010-2d1e-ea10-c0de18a149f3,f08e5311-1b17-9dbd-7643-e8acfd7cc60f,MY9BT10UJ2HEXSU6D,Chevrolet,Trax,2011,Sedan,Medium,Personal,OR,97489,enterprise-synthetic-data-hub v0.1
+f58852e4-df07-d091-7cea-32d4d59cb36d,b1bd0aa5-654c-255a-e1a3-7f978d7daa4a,3KFGWPE7V0NYB06HY,Honda,Civic,2023,SUV,High,Commercial,NV,88926,enterprise-synthetic-data-hub v0.1
+2eca9479-057e-64cf-7066-7dd5b853b962,6849abda-6fef-62d6-ec8a-7bd375c55925,UKWXNPSFVFK1P35DD,Ford,Escape,2016,Sedan,Low,Personal,CA,94766,enterprise-synthetic-data-hub v0.1
+1f020f3c-9b89-9863-60e4-7548c04fcf75,2de41d88-1371-9596-6f7c-729ac772d4f4,83FM4FYR54L8VSC4P,Chevrolet,Malibu,2015,Truck,High,Commercial,CA,94719,enterprise-synthetic-data-hub v0.1
+ce4c48b0-d6f1-fb6c-35ef-1e8284277f2e,56d0030d-b841-6321-a419-91e5602841b1,05043Z283JMJCN6NM,Ford,Escape,2020,Truck,Medium,Commercial,NV,89108,enterprise-synthetic-data-hub v0.1
+8aa1f8ea-3326-1e86-4061-b9ca90c39ee9,13161492-6d45-4464-7d8b-0a1b64de4bbf,PG6992TA8YWPK11HB,Subaru,Forester,2017,SUV,Medium,Personal,NV,88947,enterprise-synthetic-data-hub v0.1
+914094e4-3fab-611e-e962-aa27fa5eabfb,74799a73-6313-32b1-9abb-1035552c0c6a,MM8AW0B3S0D9NA68H,Ford,Focus,2009,SUV,Medium,Personal,AZ,85036,enterprise-synthetic-data-hub v0.1
+9fb06f40-91a3-b43d-ee94-4e30bdef9706,462e49f5-96ab-c080-a91f-c5220797864d,LE0CBJNNZ9RGUKK48,Subaru,Forester,2017,SUV,Medium,Personal,AZ,85192,enterprise-synthetic-data-hub v0.1
+1a4d00d6-9f5b-7d52-9067-9195a1e4a5e5,ff2b174e-57a8-a191-d9c2-b02baba164dd,6D4PRJHHJXAB5UJNH,Ford,Maverick,2022,SUV,Medium,Commercial,NV,88943,enterprise-synthetic-data-hub v0.1
+2e6cc4ff-4d04-a3fd-3d14-bf1064352839,a26703c3-64aa-e6db-56ad-2005ce0f593c,WRK3LF15NR26ACHVC,Chevrolet,Trax,2015,Sedan,Low,Personal,OR,97585,enterprise-synthetic-data-hub v0.1
+22b97314-1e74-3666-bcc2-a08f816e1e5e,8c9e2506-1907-557b-81f4-5137922c8eca,1H4JU190D4RLWEYXA,Subaru,Outback,2020,SUV,Medium,Commercial,NV,89085,enterprise-synthetic-data-hub v0.1
+7422d6d2-80ba-3c00-bd51-ce281ccac6d0,6a17c002-4f07-80d7-92fe-0b83421f256f,ZSCKLY46Y91SV2BDB,Ford,Maverick,2024,Truck,High,Commercial,CA,94914,enterprise-synthetic-data-hub v0.1
+09d4036e-7901-b391-bf4f-7b2d93d408df,477eccd6-5f78-8b3a-31d4-2cc3a1eee609,WK9UNPG1MZALZ514F,Honda,CR-V,2017,SUV,Medium,Personal,WA,98377,enterprise-synthetic-data-hub v0.1
+1c100704-42e6-0b8b-b00c-1fad873fb814,83bc7a65-6c31-acfa-e881-6e80ecacbce1,3MJXLGN7HZU52TBSR,Chevrolet,Trax,2012,Sedan,Medium,Personal,NV,89058,enterprise-synthetic-data-hub v0.1
+000e562e-9010-a1b9-3fde-e06e1ba9e93e,52b825a0-2a12-03e8-30c0-f0823ec9c0d3,Y37LGDW350M6ZS2R8,Honda,Civic,2009,SUV,Medium,Personal,OR,97243,enterprise-synthetic-data-hub v0.1
+a7a49d5c-4476-bd99-bcb2-72bd603b2c75,c34175de-6ed4-5a70-93ef-6cc1f910a3d5,4CU9CC8ATM8A28VDH,Honda,Civic,2015,Sedan,Medium,Personal,WA,98115,enterprise-synthetic-data-hub v0.1
+652a174f-b500-aa1c-d8e8-dc51d82ea54d,3500d864-b37a-3347-2740-6bdd2ad8c05a,7DHSLJNEG12GTTGNM,Honda,Civic,2009,Sedan,Medium,Personal,NV,88990,enterprise-synthetic-data-hub v0.1
+97d76b27-5ebd-39ce-0ddf-eb62439904cd,489cee76-a825-ff7d-4626-6ebe51cddadc,P7SRNRR2T0C0DLME3,Chevrolet,Equinox,2013,Sedan,Medium,Personal,NV,88985,enterprise-synthetic-data-hub v0.1
+2a95b597-be45-18a0-b89e-0e585c29c6fc,83f8aa64-42b0-3bf2-b9e0-6fee384882db,1ASEC2YJ74C8M1YMK,Subaru,Forester,2008,Sedan,Medium,Personal,OR,97070,enterprise-synthetic-data-hub v0.1
+5af3b900-10a2-4feb-8e48-1473de55f9d1,246e5df0-2044-4674-5404-4df6d93e08bb,JTS4DUAP22HGS61RU,Ford,Focus,2011,SUV,High,Commercial,WA,98502,enterprise-synthetic-data-hub v0.1
+3565d227-befd-b455-915c-8241f0b4fe06,dce2908e-7a6d-0fc0-ad5d-971345227c42,JX15T4U3CFED82T8R,Ford,Maverick,2018,Sedan,Medium,Personal,NV,88965,enterprise-synthetic-data-hub v0.1

@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "dataset_version": "v0.1",
+    "generated_at": "2025-11-01T00:00:00",
+    "notes": "Deterministic snapshot generated from rule-based distributions (seed=20251101).",
+    "record_count_persons": 3,
+    "record_count_profiles": 3,
+    "record_count_vehicles": 3
+  },
+  "persons": [
+    {
+      "address_line_1": "100 Main Street",
+      "address_line_2": "Apt 200",
+      "city": "Eugene",
+      "country": "US",
+      "date_of_birth": "2018-07-08",
+      "driver_license_number": "OR9562552",
+      "driver_license_state": "OR",
+      "first_name": "Taylor",
+      "last_name": "Smith",
+      "lob_type": "Personal",
+      "person_id": "38af933f-c4e5-0a39-aaab-c328ad568494",
+      "postal_code": "97381",
+      "state": "OR",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "address_line_1": "101 Main Street",
+      "address_line_2": null,
+      "city": "San Mateo",
+      "country": "US",
+      "date_of_birth": "2019-05-14",
+      "driver_license_number": "CA5418374",
+      "driver_license_state": "CA",
+      "first_name": "Logan",
+      "last_name": "Rivera",
+      "lob_type": "Commercial",
+      "person_id": "ccdd7cef-39be-37a7-82ae-fc6d707056ff",
+      "postal_code": "94781",
+      "state": "CA",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    },
+    {
+      "address_line_1": "102 Main Street",
+      "address_line_2": null,
+      "city": "Henderson",
+      "country": "US",
+      "date_of_birth": "1980-12-07",
+      "driver_license_number": "NV5001211",
+      "driver_license_state": "NV",
+      "first_name": "Jordan",
+      "last_name": "Patel",
+      "lob_type": "Personal",
+      "person_id": "2742c020-f58f-0795-04f3-6d456ca8e125",
+      "postal_code": "88914",
+      "state": "NV",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1"
+    }
+  ],
+  "profiles": [
+    {
+      "city": "Eugene",
+      "full_name": "Taylor Smith",
+      "garaging_state": "OR",
+      "lob_type": "Personal",
+      "person_id": "38af933f-c4e5-0a39-aaab-c328ad568494",
+      "postal_code": "97381",
+      "primary_vehicle_vin": "BD60FX9CCT6GJAYJK",
+      "profile_id": "de53bf07-e16d-544f-bbb4-735bbff8e288",
+      "residence_state": "OR",
+      "risk_rating": "Low",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "34457095-147c-985e-18ba-5d960d72611e",
+      "vehicle_summary": "2018 Honda Accord"
+    },
+    {
+      "city": "San Mateo",
+      "full_name": "Logan Rivera",
+      "garaging_state": "CA",
+      "lob_type": "Commercial",
+      "person_id": "ccdd7cef-39be-37a7-82ae-fc6d707056ff",
+      "postal_code": "94781",
+      "primary_vehicle_vin": "76SBPX6NFBDXJ04JB",
+      "profile_id": "f022fe6b-f8e8-5ccc-af9d-15e9e68b8638",
+      "residence_state": "CA",
+      "risk_rating": "Medium",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "ecde7ad7-44d5-a07a-a140-8e0eb8ecfb07",
+      "vehicle_summary": "2016 Chevrolet Equinox"
+    },
+    {
+      "city": "Henderson",
+      "full_name": "Jordan Patel",
+      "garaging_state": "NV",
+      "lob_type": "Personal",
+      "person_id": "2742c020-f58f-0795-04f3-6d456ca8e125",
+      "postal_code": "88914",
+      "primary_vehicle_vin": "108K5W9NY6GV7HESM",
+      "profile_id": "53b47356-e5ba-53a2-8cd7-b9f9bc9f9825",
+      "residence_state": "NV",
+      "risk_rating": "Low",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "95ae0b96-aeae-8054-9f8b-7f4d9bba6abc",
+      "vehicle_summary": "2008 Subaru Forester"
+    }
+  ],
+  "records_requested": 3,
+  "seed": 20251101,
+  "vehicles": [
+    {
+      "body_style": "Sedan",
+      "garaging_postal_code": "97381",
+      "garaging_state": "OR",
+      "lob_type": "Personal",
+      "make": "Honda",
+      "model": "Accord",
+      "model_year": 2018,
+      "person_id": "38af933f-c4e5-0a39-aaab-c328ad568494",
+      "risk_rating": "Low",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "34457095-147c-985e-18ba-5d960d72611e",
+      "vin": "BD60FX9CCT6GJAYJK"
+    },
+    {
+      "body_style": "SUV",
+      "garaging_postal_code": "94781",
+      "garaging_state": "CA",
+      "lob_type": "Commercial",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "model_year": 2016,
+      "person_id": "ccdd7cef-39be-37a7-82ae-fc6d707056ff",
+      "risk_rating": "Medium",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "ecde7ad7-44d5-a07a-a140-8e0eb8ecfb07",
+      "vin": "76SBPX6NFBDXJ04JB"
+    },
+    {
+      "body_style": "SUV",
+      "garaging_postal_code": "88914",
+      "garaging_state": "NV",
+      "lob_type": "Personal",
+      "make": "Subaru",
+      "model": "Forester",
+      "model_year": 2008,
+      "person_id": "2742c020-f58f-0795-04f3-6d456ca8e125",
+      "risk_rating": "Low",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "95ae0b96-aeae-8054-9f8b-7f4d9bba6abc",
+      "vin": "108K5W9NY6GV7HESM"
+    }
+  ]
+}

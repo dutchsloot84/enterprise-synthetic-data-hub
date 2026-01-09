@@ -1,0 +1,57 @@
+{
+  "metadata": {
+    "dataset_version": "v0.1",
+    "generated_at": "2025-11-01T00:00:00",
+    "notes": "Deterministic snapshot generated from rule-based distributions (seed=20251101).",
+    "record_count_persons": 3,
+    "record_count_profiles": 3,
+    "record_count_vehicles": 3
+  },
+  "record_count": 3,
+  "records_requested": 3,
+  "seed": 20251101,
+  "vehicles": [
+    {
+      "body_style": "Sedan",
+      "garaging_postal_code": "97381",
+      "garaging_state": "OR",
+      "lob_type": "Personal",
+      "make": "Honda",
+      "model": "Accord",
+      "model_year": 2018,
+      "person_id": "38af933f-c4e5-0a39-aaab-c328ad568494",
+      "risk_rating": "Low",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "34457095-147c-985e-18ba-5d960d72611e",
+      "vin": "BD60FX9CCT6GJAYJK"
+    },
+    {
+      "body_style": "SUV",
+      "garaging_postal_code": "94781",
+      "garaging_state": "CA",
+      "lob_type": "Commercial",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "model_year": 2016,
+      "person_id": "ccdd7cef-39be-37a7-82ae-fc6d707056ff",
+      "risk_rating": "Medium",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "ecde7ad7-44d5-a07a-a140-8e0eb8ecfb07",
+      "vin": "76SBPX6NFBDXJ04JB"
+    },
+    {
+      "body_style": "SUV",
+      "garaging_postal_code": "88914",
+      "garaging_state": "NV",
+      "lob_type": "Personal",
+      "make": "Subaru",
+      "model": "Forester",
+      "model_year": 2008,
+      "person_id": "2742c020-f58f-0795-04f3-6d456ca8e125",
+      "risk_rating": "Low",
+      "synthetic_source": "enterprise-synthetic-data-hub v0.1",
+      "vehicle_id": "95ae0b96-aeae-8054-9f8b-7f4d9bba6abc",
+      "vin": "108K5W9NY6GV7HESM"
+    }
+  ]
+}

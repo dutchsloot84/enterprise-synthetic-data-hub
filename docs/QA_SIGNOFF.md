@@ -13,7 +13,7 @@
 - Date: Dec 30, 2025
 
 ### PASS — Core health & deterministic behavior
-- Settings load with deterministic defaults (dataset_version=v0.1, seed 20240601, marker enterprise-synthetic-data-hub v0.1)
+- Settings load with deterministic defaults (dataset_version=v0.1, seed 20251101, marker enterprise-synthetic-data-hub v0.1)
 - scripts/demo_validate.py passes: Person schema checks, Vehicle schema checks, Synthetic marker checks
 - Test suite: pytest -m demo => 14 passed (includes golden determinism, API contract, negative-path)
 
