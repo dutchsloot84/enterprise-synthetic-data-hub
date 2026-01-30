@@ -57,6 +57,7 @@ def _generate_subset(entity: str, bundle: SnapshotBundle) -> dict[str, Any]:
 
 def create_app() -> Flask:
     app = Flask(__name__)
+    # Future: integrate OAuth for production; Pilot may add optional ESDH_API_KEY middleware via env vars.
 
     def _error_response(message: str, *, status: HTTPStatus = HTTPStatus.BAD_REQUEST):
         return (
