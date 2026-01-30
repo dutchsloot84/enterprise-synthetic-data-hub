@@ -172,6 +172,7 @@ sequenceDiagram
        --records 200
    ```
    _Optional flags_: `--seed` overrides the deterministic seed and `--records` sets the record count.
+   _Default_: deterministic seed `20251101` is an anchor for reproducibility (not a project start date). Changing it requires regenerating golden snapshots.
 
 4. **Preview demo data**
    ```bash

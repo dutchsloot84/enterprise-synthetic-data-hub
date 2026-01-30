@@ -1,6 +1,6 @@
 # A-E-V Workflow Explainer
-Version: 0.1.0
-Last Updated: 2024-06-03
+Version: 0.1.1
+Last Updated: 2026-01-06
 
 ## Why Analyze → Execute → Validate
 The POC relies on prompt-driven collaboration between humans and LLM agents. The A-E-V loop standardizes how each slice moves
@@ -19,7 +19,7 @@ from idea to governed artifacts, ensuring deterministic outcomes even when multi
 ## Validate
 - Run automated checks: `pytest`, `agentic/validators/schema_validator.py`, `generator_validator.py`, `cli_validator.py`,
   `api_validator.py` as applicable.
-- Invoke critics from `agentic/critic/` plus the new demo critic to review narrative accuracy.
+- Invoke critics from `agentic/critic/` plus the demo critic to review narrative accuracy.
 - Capture validator + critic output inside PR summaries or task capsules.
 
 ## Governance Alignment

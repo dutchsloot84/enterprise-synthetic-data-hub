@@ -37,7 +37,8 @@ def test_generate_snapshot_bundle_rejects_invalid_count():
 
 
 def test_write_snapshot_bundle_persists_json(tmp_path):
-    bundle = generate_snapshot_bundle(num_records=2, seed=9)
+    seed = 9
+    bundle = generate_snapshot_bundle(num_records=2, seed=seed)
     path = write_snapshot_bundle(bundle, tmp_path)
 
     payload = json.loads(path.read_text(encoding="utf-8"))
@@ -52,6 +53,7 @@ def test_write_snapshot_bundle_persists_json(tmp_path):
     metadata_payload = json.loads(metadata_file.read_text(encoding="utf-8"))
     assert metadata_payload["record_count_persons"] == 2
     assert metadata_payload["notes"].startswith("Deterministic snapshot")
+    assert f"seed={seed}" in metadata_payload["notes"]
 
 
 def test_snapshot_bundle_type_annotations():
@@ -59,3 +61,8 @@ def test_snapshot_bundle_type_annotations():
     assert isinstance(bundle, SnapshotBundle)
     assert bundle.metadata.dataset_version == settings.dataset_version
     assert bundle.profiles
+
+
+def test_snapshot_bundle_notes_use_default_seed():
+    bundle = generate_snapshot_bundle(num_records=1, seed=None)
+    assert f"seed={settings.random_seed}" in bundle.metadata.notes

@@ -1,5 +1,9 @@
 # QA Sign-off Log
 
+## Status update — 2026-01-06
+- No new QA sign-off has been recorded since the 2025-12-30 run below.
+- Demo profiles and orchestration references were refreshed in docs only; no additional test execution is implied.
+
 ## QA Sign-off Summary — 2025-12-30 (Windows / Git Bash / Python 3.13.2)
 
 ### Environment
@@ -9,7 +13,7 @@
 - Date: Dec 30, 2025
 
 ### PASS — Core health & deterministic behavior
-- Settings load with deterministic defaults (dataset_version=v0.1, seed 20240601, marker enterprise-synthetic-data-hub v0.1)
+- Settings load with deterministic defaults (dataset_version=v0.1, seed 20251101, marker enterprise-synthetic-data-hub v0.1)
 - scripts/demo_validate.py passes: Person schema checks, Vehicle schema checks, Synthetic marker checks
 - Test suite: pytest -m demo => 14 passed (includes golden determinism, API contract, negative-path)
 
@@ -24,5 +28,5 @@
 - dataset JSON + metadata + manifest + README + CSVs present
 
 ### Known issues / follow-up
-- scripts/run_demo_flow.py fails on Windows at API start due to (a) scripts/scripts path bug and (b) bash/WSL/MSYS issues.
-- python -m enterprise_synthetic_data_hub.cli.demo --help prints nothing because module is not a __main__ entrypoint; demo CLI is invoked via run_demo() or other entrypoint.
+- Windows environments without bash should use `scripts/bootstrap_and_demo.ps1` or run `python scripts/run_demo_flow.py` directly; `make demo` depends on bash scripts.
+- `python -m enterprise_synthetic_data_hub.cli.demo --help` prints nothing because the module is not a `__main__` entrypoint; use `scripts/demo_data.py` instead.

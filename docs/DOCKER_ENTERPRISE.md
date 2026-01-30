@@ -1,11 +1,15 @@
 # Docker-first (Enterprise-ready) Guide
 
+Last Updated: 2026-01-06
+
 This guide captures the current Docker experience, the enterprise TLS limitation on CSAA networks, and the path to a sustainable Internal PyPI mirror. All findings below are observed in this repository and should be treated as facts, not assumptions.
 
 ## What works today (non-enterprise networks)
 - Build: `docker build -t esdh-demo .`
 - Run tests: `docker run --rm esdh-demo python -m pytest -m demo -q`
 - Run the demo flow: `docker run --rm -p 5000:5000 esdh-demo ./scripts/docker_run_demo.sh`
+- Run the demo gate: `docker run --rm -p 5000:5000 -e DEMO_PROFILE=baseline esdh-demo make demo-gate`
+- Demo profile inspection: `docker run --rm esdh-demo make demo-profile-info`
 - Pip respects standard environment variables (`PIP_INDEX_URL`, `PIP_EXTRA_INDEX_URL`, `PIP_TRUSTED_HOST`) and an optional pip config copied in via `PIP_CONF_PATH` at build time.
 
 ## Observed enterprise limitation on CSAA networks
@@ -78,3 +82,6 @@ This guide captures the current Docker experience, the enterprise TLS limitation
 - Result: Non-enterprise networks path works with `esdh-demo` tag.
 - Next step: provide an Internal PyPI mirror/proxy with trusted certificates.
 - Workarounds: A (home network), B (prebuilt `esdh-demo` image), C (internal index), D (last-resort trusted-host for POC).
+
+## Status update
+- 2026-01-06: Guidance remains current; no Internal PyPI mirror implementation has been captured in-repo yet.

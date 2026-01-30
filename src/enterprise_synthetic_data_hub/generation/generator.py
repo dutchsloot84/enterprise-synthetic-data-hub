@@ -172,7 +172,8 @@ def generate_snapshot_bundle(
     if record_target <= 0:
         raise ValueError("num_records must be positive")
 
-    rng = random.Random(settings.random_seed if seed is None else seed)
+    effective_seed = settings.random_seed if seed is None else seed
+    rng = random.Random(effective_seed)
     persons: List[dict] = []
     vehicles: List[dict] = []
     for index in range(record_target):
@@ -195,7 +196,7 @@ def generate_snapshot_bundle(
         record_count_profiles=len(profiles),
         notes=(
             "Deterministic snapshot generated from rule-based distributions "
-            f"(seed={seed or settings.random_seed})."
+            f"(seed={effective_seed})."
         ),
     )
     return SnapshotBundle(
@@ -234,4 +235,3 @@ __all__ = [
     "generate_snapshot_bundle",
     "write_snapshot_bundle",
 ]
-

@@ -1,6 +1,7 @@
 # Phase 1 Demo Samples & Golden Snapshots
 
-- **Seed**: `20240601` (matches `DatasetSettings.random_seed`)
+- **Seed**: `20251101` (matches `DatasetSettings.random_seed`)
+- **Note**: The seed is a deterministic anchor, not the project start date. Changing it requires regenerating golden snapshots.
 - **Goal**: keep demo payloads deterministic so slide decks and golden tests stay stable.
 
 ## Regenerate demo backup payloads
@@ -21,10 +22,10 @@ app = create_app()
 app.testing = True
 with app.test_client() as client:
     endpoints = {
-        "persons_seed_20240601.json": ("/generate/person", {"records": records, "seed": seed}),
-        "vehicles_seed_20240601.json": ("/generate/vehicle", {"records": records, "seed": seed}),
-        "profiles_seed_20240601.json": ("/generate/profile", {"records": records, "seed": seed}),
-        "bundle_seed_20240601.json": ("/generate/bundle", {"records": records, "seed": seed}),
+        "persons_seed_20251101.json": ("/generate/person", {"records": records, "seed": seed}),
+        "vehicles_seed_20251101.json": ("/generate/vehicle", {"records": records, "seed": seed}),
+        "profiles_seed_20251101.json": ("/generate/profile", {"records": records, "seed": seed}),
+        "bundle_seed_20251101.json": ("/generate/bundle", {"records": records, "seed": seed}),
     }
     for filename, (endpoint, body) in endpoints.items():
         resp = client.post(endpoint, json=body)
@@ -52,11 +53,11 @@ app = create_app()
 app.testing = True
 with app.test_client() as client:
     payloads = {
-        "healthz_seed20240601.json": client.get("/healthz").get_json(),
-        "person_seed20240601_count3.json": client.post("/generate/person", json={"records": records, "seed": seed}).get_json(),
-        "vehicle_seed20240601_count3.json": client.post("/generate/vehicle", json={"records": records, "seed": seed}).get_json(),
-        "profile_seed20240601_count3.json": client.post("/generate/profile", json={"records": records, "seed": seed}).get_json(),
-        "bundle_seed20240601_count3.json": client.post("/generate/bundle", json={"records": records, "seed": seed}).get_json(),
+        "healthz_seed20251101.json": client.get("/healthz").get_json(),
+        "person_seed20251101_count3.json": client.post("/generate/person", json={"records": records, "seed": seed}).get_json(),
+        "vehicle_seed20251101_count3.json": client.post("/generate/vehicle", json={"records": records, "seed": seed}).get_json(),
+        "profile_seed20251101_count3.json": client.post("/generate/profile", json={"records": records, "seed": seed}).get_json(),
+        "bundle_seed20251101_count3.json": client.post("/generate/bundle", json={"records": records, "seed": seed}).get_json(),
     }
 
 for name, payload in payloads.items():
@@ -70,7 +71,7 @@ PY
 
 - Keep `DatasetSettings.generation_timestamp` and `DatasetSettings.random_seed` unchanged when regenerating.
 - Endpoints should be called with the explicit `seed` and `records` shown above to avoid any randomness.
-- Timestamps and UUIDs are already seeded/fixed; if an unexpected timestamp appears, regenerate after verifying the seed is set to `20240601`.
+- Timestamps and UUIDs are already seeded/fixed; if an unexpected timestamp appears, regenerate after verifying the seed is set to `20251101`.
 
 ## When to regenerate (demo backups + golden snapshots)
 
