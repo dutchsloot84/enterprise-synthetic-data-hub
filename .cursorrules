@@ -1,0 +1,12 @@
+# Cursor Rules — Synthetic Data Hub Pilot Governance
+
+## Requirement
+- All new generation logic must include a corresponding test in `tests/fidelity/`.
+
+## Constraint
+- Use the existing Pydantic models in `src/enterprise_synthetic_data_hub/models/` as the single source of truth for all schemas.
+
+## Verification
+- Before completing a task, verify:
+  - `payout_amount` is always >= 0.
+  - `date_of_birth` values are valid dates.
